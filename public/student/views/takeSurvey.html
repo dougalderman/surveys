@@ -1,0 +1,61 @@
+<div id="takeSurvey" class="container">
+    
+    <p>Instructor: {{instructor}}</p>
+    <p>Topic: {{topic}}</p>
+    <br><br>
+    <p> * Required</p>
+     
+    
+    <div class="row">
+         <form action="#">
+            <p>
+                <input name="group1" type="radio" id="test1" />
+                <label for="test1">Red</label>
+            </p>
+            <p>
+                <input name="group1" type="radio" id="test2" />
+                <label for="test2">Yellow</label>
+            </p>
+            <p>
+                <input class="with-gap" name="group1" type="radio" id="test3"  />
+                <label for="test3">Green</label>
+            </p>
+            <p>
+                <input name="group1" type="radio" id="test4" disabled="disabled" />
+                <label for="test4">Brown</label>
+            </p>
+    </form>
+        
+        
+        
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" type="text" class="validate" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate" required>
+                    <label for="email" data-error="Invalid" >Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="phone" type="tel" class="validate">
+                    <label for="phone" data-error="Invalid">Phone</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="validate materialize-textarea"></textarea>
+                    <label for="textarea1">Message</label>
+                </div>
+            </div>
+             <div class="row">
+                <div class="input-field col s12">
+                    <input class="button" type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>    
