@@ -8,7 +8,12 @@ angular.module('surveys')
         });
     }; */
     
-    // Staged data below:
-    
+    // Staged data from json below:
+     this.getSurvey = function(type) {
+    	return $http({
+            method: 'GET',
+            url: 'student/data/takeSurvey.json'
+        });
+    };
     
 });

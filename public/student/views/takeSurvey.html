@@ -4,58 +4,36 @@
     <p>Topic: {{topic}}</p>
     <br><br>
     <p> * Required</p>
-     
-    
-    <div class="row">
-         <form action="#">
+    <br> 
+    <form action="#">
+        <div ng-repeat = "question in survey.questions">
+            <p>{{question.questionText}}</p>
+            <p>Index: {{$index}}</p>
             <p>
-                <input name="group1" type="radio" id="test1" />
-                <label for="test1">Red</label>
+                <input type="radio" name="group{{$index}}" id="selection{{$index}}1">
+                <label for="selection{{$index}}1">1</label>Not very well
             </p>
             <p>
-                <input name="group1" type="radio" id="test2" />
-                <label for="test2">Yellow</label>
+                <input type="radio" name="group{{$index}}" id="selection{{$index}}2">
+                <label for="selection{{$index}}2">2</label>
+               
+            </p>
+                <input type="radio" name="group{{$index}}" id="selection{{$index}}3">
+                <label for="selection{{$index}}3">3</label>
+                
+            <p>
+                <input type="radio" name="group{{$index}}" id="selection{{$index}}4">
+                <label for="selection{{$index}}4">4</label>
+                
             </p>
             <p>
-                <input class="with-gap" name="group1" type="radio" id="test3"  />
-                <label for="test3">Green</label>
+                <input type="radio" name="group{{$index}}" id="selection{{$index}}5">
+                <label for="selection{{$index}}5">5</label>Super very well
+               
             </p>
-            <p>
-                <input name="group1" type="radio" id="test4" disabled="disabled" />
-                <label for="test4">Brown</label>
-            </p>
+            <br>
+        </div>
+        <input type="submit">
     </form>
-        
-        
-        
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="name" type="text" class="validate" required>
-                    <label for="name">Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="email" type="email" class="validate" required>
-                    <label for="email" data-error="Invalid" >Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="phone" type="tel" class="validate">
-                    <label for="phone" data-error="Invalid">Phone</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="validate materialize-textarea"></textarea>
-                    <label for="textarea1">Message</label>
-                </div>
-            </div>
-             <div class="row">
-                <div class="input-field col s12">
-                    <input class="button" type="submit">
-                </div>
-            </div>
-        </form>
-    </div>
+            
 </div>    

@@ -37,6 +37,8 @@ What did he do well, where could he improve?
 */
     
     $scope.type = 'instructor';
+    $scope.instructor = 'Joe Smith';
+    $scope.topic = 'HTML / CSS';
     
     $scope.readSurvey = function() {
        takeSurveyService.getSurvey($scope.type)
@@ -46,4 +48,7 @@ What did he do well, where could he improve?
             $scope.survey = response.data;
     }); 
    }
+    
+   $scope.readSurvey();
+
 });

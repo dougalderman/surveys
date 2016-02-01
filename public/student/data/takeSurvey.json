@@ -1,0 +1,36 @@
+{
+    "surveyType" : "instructor",
+    "questions" : [
+        {
+            "questionText" :  "How prepared do you feel the instructor was?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 5
+        },
+        {
+            "questionText" :  "How well did the instructor explain things?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 5
+        },
+        {
+            "questionText" :  "How well did the instructor do overall?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 10
+        },
+        {
+            "questionText" :  "Would you like the instructor to teach again?",
+	        "type" : "yes_no",
+	        "required" : true
+	    },
+        {
+            "questionText" :  "What did the instructor do well, and where could he / she improve?",
+	        "type" : "text",
+	        "required" : false
+	    }
+    ]
+}
