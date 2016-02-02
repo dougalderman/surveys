@@ -31,31 +31,49 @@ html, body {
     color: orangered;
 }
 
-.slider_div {
+#takeSurvey .survey-question {
+    margin-bottom: 100px;
+}
+
+#takeSurvey .range-field {
     position: relative;
     height: 40px;
-    width: 100%;
-    margin-bottom: 60px;
+    width:  60%;
 }
 
-.slider_left {
+#takeSurvey .slider_left {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 30px;
+    font-family: Arial;
+    font-size: 0.7em;
 }
 
-.slider_right {
+#takeSurvey .slider_right {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 30px;
+    font-family: Arial;
+    font-size: 0.7em;
+} 
+
+#takeSurvey .boolQuestion {
+    visibility: visible;
+    position: static;
+    margin-right: 10px;
 }
 
-.slider_div input {
-    position: absolute;
-    height: 10px;
-    width: 100%;
-    top: 20px;
-    left: 0;
+
+#takeSurvey .radioLabel {
+    font-family: Arial;
+    font-size: 0.9em;
 }
 
+#takeSurvey .button {
+    width: 80px;
+    font-family: Arial;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    margin-top: -20px;
+}
 

@@ -1,8 +1,8 @@
-<p>{{questionText}}</p>
+<p>{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
  
 <div class="row">
     <div class="input-field col s12">
-          <textarea ng-model="response" id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Textarea</label>
+          <textarea ng-model="response.text" id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Type Response Here</label>
     </div>
 </div>

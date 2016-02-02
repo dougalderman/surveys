@@ -45,13 +45,13 @@ passport.deserializeUser(function(obj, done) {
     done(null, obj);
 })
 
-var mongoUri = 'mongodb://localhost:27017/ecommerce';
+/* var mongoUri = 'mongodb://localhost:27017/surveys';
 
 mongoose.connect(mongoUri);
 
 mongoose.connection.once('open', function() {
     console.log("Successfully connected to mongodb")
-})
+}) */
 
 
 var requireAuth = function(req, res, next) {
