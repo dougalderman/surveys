@@ -1,15 +1,16 @@
 <div id="takeSurvey" class="container">
     
-    <p>Instructor: {{instructor}}</p>
-    <p>Topic: {{topic}}</p>
+    <h4><span class="left">Name:</span>{{survey.name}}</h4>
+    <h4><span class="left">Description:</span>{{survey.description}}</h4>
+    <h4><span class="left">Topic:</span>{{survey.topic}}</h4>
     <br><br>
-    <p> * Required</p>
+    <p class="required"> * Required</p>
     <br> 
     <form action="#">
         <div ng-repeat = "question in survey.questions">
-            <numeric-question ng-show="question.type === 'numeric'"></numeric-question>
-            <yes-no-question ng-show="question.type === 'yes_no'"></yes-no-question>
-            <text-question ng-show="question.type === 'text'"></text-question>
+            <numeric-question low-range="question.lowRange" high-range="question.highRange" required="question.required" question-text="{{question.questionText}}" response="response" question-index="{{$index}}" question-type="{{question.type}}" ng-show="question.type === 'numeric'"></numeric-question>
+            <boolean-question required="question.required" question-text="{{question.questionText}}" response="response" question-index="{{$index}}" question-type="{{question.type}}" ng-show="question.type === 'boolean'"></boolean-question>
+            <text-question required="question.required" question-text="{{question.questionText}}" response="response" question-index="{{$index}}" question-type="{{question.type}}"ng-show="question.type === 'text'"></text-question>
         </div>
         <input type="submit">
     </form>

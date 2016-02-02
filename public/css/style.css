@@ -7,8 +7,55 @@ html, body {
     padding: 0;
 }
 
-#takeSurvey label {
+/* #takeSurvey label {
     margin-right: 20px;
+} */
+
+#takeSurvey h4 {
+    font-family: Arial;
+    font-size: 1.8em;
+    color: rgb(0, 25, 100);
+}
+
+#takeSurvey h4 .left {
+    color: maroon;
+    margin-right: 10px;
+}
+
+#takeSurvey p {
+    font-family: 'Times New Roman';
+    font-size: 1.4em;
+}
+
+#takeSurvey .required {
+    color: orangered;
+}
+
+.slider_div {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.slider_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.slider_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.slider_div input {
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    top: 20px;
+    left: 0;
 }
 
 

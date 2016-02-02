@@ -1,9 +1,11 @@
-<p>{{question.questionText}}</p>
- 
+<p>{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
+<br> 
 <p class="range-field">
-    Not very well    
-    <input type="range" ng-model="response" id="numeric_question" min="{{question.lowRange}}"
-             max="{{question.highRange}}" />
-    Super very well
+    <div class="slider_div">
+        <span class="slider_left">Not very well</span> 
+        <span class="slider_right">Super very well</span>
+        <input type="range" ng-model="response" id="{{id}}">
+    </div>
+    
 </p>
  

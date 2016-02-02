@@ -1,8 +1,8 @@
 angular.module('surveys')
-.directive('textQuestion', function() {
+.directive('booleanQuestion', function() {
     return {
         restrict: 'E',
-        templateUrl: 'student/views/textQuestion.html', 
+        templateUrl: 'student/views/booleanQuestion.html', 
         scope: {
             required: '=',
             questionIndex: '@',

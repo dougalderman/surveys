@@ -1,5 +1,7 @@
 {
-    "surveyType" : "instructor",
+    "name" : "Joe Smith Survey",
+    "description": "Instructor Survey",
+    "topic": "HTML/CSS",
     "questions" : [
         {
             "questionText" :  "How prepared do you feel the instructor was?",
@@ -24,7 +26,7 @@
         },
         {
             "questionText" :  "Would you like the instructor to teach again?",
-	        "type" : "yes_no",
+	        "type" : "boolean",
 	        "required" : true
 	    },
         {

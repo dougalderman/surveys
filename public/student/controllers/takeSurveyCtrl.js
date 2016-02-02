@@ -36,19 +36,16 @@ What did he do well, where could he improve?
 [Submit button] 
 */
     
-    $scope.type = 'instructor';
-    $scope.instructor = 'Joe Smith';
-    $scope.topic = 'HTML / CSS';
-    
+       
     $scope.readSurvey = function() {
        takeSurveyService.getSurvey($scope.type)
        .then(function( response ) {
             console.log('in takeSurveyCtrl');
             console.log('response', response);
             $scope.survey = response.data;
-    }); 
-   }
+        }); 
+    }
     
-   $scope.readSurvey();
-
+    $scope.readSurvey();
+    
 });
