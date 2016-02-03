@@ -1,4 +1,9 @@
 angular.module('surveys')
 .controller('adminCtrl', function($scope ) {
-    $scope.test = "Alderman"
+   
+    
+    /* For dropdowns
+    document.ready
+    select(material.select)
+    */
 });

@@ -10,11 +10,21 @@ angular.module('surveys')
             questionIndex: '@',
             questionText: '@',
             questionType: '@',
-            response: '='
+            response: '=',
+            requiredField: '='
         },
         controller: function($scope) {
-            $scope.response = {};
-            /* $scope.response.numeric =  $scope.lowRange + Math.floor(0.5*($scope.highRange - $scope.lowRange)); */
+            
+                      
+            if ($scope.questionType === 'numeric') {
+            
+                /* $scope.response = {}; */
+                $scope.response.numericAnswer =  $scope.lowRange + Math.floor(0.5*($scope.highRange - $scope.lowRange));
+             
+            }
+                                     
+                    
+            
         }
     }
         

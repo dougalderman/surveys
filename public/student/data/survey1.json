@@ -1,0 +1,55 @@
+{
+    "name" : "Nick Jones Survey",
+    "description": "Instructor Survey",
+    "topic": "Angular II",
+    "questions" : [
+        {
+            "questionText" :  "How prepared do you feel the instructor was?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 5
+        },
+        {
+            "questionText" :  "Do you like this instructor?",
+	        "type" : "boolean",
+	        "required" : true
+	    },
+        {
+            "questionText" :  "How well did the instructor explain things?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 20
+        },
+        {
+            "questionText" :  "How well did the instructor do overall?",
+	        "type" : "numeric",
+	        "required" : true,
+	        "lowRange" : 1,
+	        "highRange": 10
+        },
+        {
+            "questionText" :  "What did you learn in this class?",
+	        "type" : "text",
+	        "required" : true
+	    },
+        {
+            "questionText" :  "Would you like the instructor to teach again?",
+	        "type" : "boolean",
+	        "required" : true
+	    },
+        {
+            "questionText" :  "What did the instructor do well, and where could he / she improve?",
+	        "type" : "text",
+	        "required" : false
+	    },
+        {
+            "questionText" :  "How did you do in this class?",
+	        "type" : "numeric",
+	        "required" : false,
+	        "lowRange" : 1,
+	        "highRange": 8
+        }
+    ]
+}

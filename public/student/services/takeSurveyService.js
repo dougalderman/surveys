@@ -1,10 +1,10 @@
 angular.module('surveys')
 .service('takeSurveyService', function( $http ) {
       
-     /* this.getSurvey = function(type) {
+     /* this.getSurvey = function(surveyId) {
     	return $http({
             method: 'GET',
-            url: '/api/survey/' + type
+            url: '/api/surveys/' + surveyId
         });
     }; */
     
@@ -12,8 +12,16 @@ angular.module('surveys')
      this.getSurvey = function(type) {
     	return $http({
             method: 'GET',
-            url: 'student/data/takeSurvey.json'
+            url: 'student/data/survey2.json'
         });
     };
+    
+    /* this.writeSurveyResults = function(data) {
+    	return $http({
+            method: 'POST',
+            url: '/api/surveys/',
+            body: data
+        });
+    }; */
     
 });

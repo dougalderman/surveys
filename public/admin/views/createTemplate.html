@@ -1,0 +1,37 @@
+<h2>Create a Template</h2>
+<br><br>
+<form ng-submit="processForm()"
+
+ <div class="row">
+    <div class="input-field col s12">
+          Name: <textarea ng-model="template.name" id="name" class="materialize-textarea" ng-required="required"></textarea>
+          <label for="name">Type Name Here</label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+          Description: <textarea ng-model="template.description" id="description" class="materialize-textarea" ng-required="required"></textarea>
+          <label for="description">Type Description Here</label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Choose Question Type</option>
+          <option value="numeric">Numeric</option>
+          <option value="boolean">Boolean</option>
+          <option value="text">Text</option>
+        </select>
+        <label>Question Type Select</label>
+      </div>
+</div>
+
+<div class="row">
+    <p>
+      <input type="checkbox" id="required" />
+      <label for="required">Required?</label>
+    </p>
+</div>
+   

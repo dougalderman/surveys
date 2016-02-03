@@ -2,10 +2,9 @@
 <br> 
 <p class="range-field">
     
-        <input type="range" ng-model="response.numeric" min="{{lowRange}}" max="{{highRange}}">
+        <input type="range" name="slider{{questionIndex}}" ng-model="response.numericAnswer" min="{{lowRange}}" max="{{highRange}}" ng-required="required">
         <span class="slider_left">Not very well</span> 
         <span class="slider_right">Super very well</span>
    
-    
 </p>
  

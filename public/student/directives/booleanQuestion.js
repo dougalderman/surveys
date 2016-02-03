@@ -11,7 +11,7 @@ angular.module('surveys')
             response: '='
         },
         controller: function($scope) {
-           
+            
         }
     }
         

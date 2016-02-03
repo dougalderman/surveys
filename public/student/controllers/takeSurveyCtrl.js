@@ -35,7 +35,24 @@ What did he do well, where could he improve?
  
 [Submit button] 
 */
+    $scope.results = {};
     
+     $scope.initializeResults = function() {
+       
+       /*     $scope.results.survey = response._id; 
+            $scope.results.user = [logged in]; */
+        $scope.results.answers = [];
+        // $scope.requiredFld = [];
+        
+        console.log('$scope.survey.questions', $scope.survey.questions);
+        $scope.survey.questions.forEach(function(question, index, array) {
+            $scope.results.answers[index] = {
+                type: question.type
+            };
+        });
+        console.log('$scope.results.answers = ', $scope.results.answers);
+        
+    }
        
     $scope.readSurvey = function() {
        takeSurveyService.getSurvey($scope.type)
@@ -43,9 +60,19 @@ What did he do well, where could he improve?
             console.log('in takeSurveyCtrl');
             console.log('response', response);
             $scope.survey = response.data;
+            $scope.initializeResults();
         }); 
     }
     
+   
+    
+    $scope.processForm = function() {
+        console.log('results = ', $scope.results);
+     /*   takeSurveyService.writeSurveyResults($scope.results); */
+    }
+    
     $scope.readSurvey();
+     
+
     
 });

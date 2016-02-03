@@ -1,11 +1,10 @@
 <p>{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
 
-<div ng-model="response.bool">
+<div>
     <p>
-        <input class="boolQuestion" name="boolGroup" type="radio" value="true"><span class="radioLabel">Yes</span>
+        <input class="boolQuestion" name="boolGroup{{questionIndex}}" type="radio" ng-model="response.booleanAnswer" value="true" ng-required="required"><span class="radioLabel">Yes</span>
     </p>
     <p>
-        <input class="boolQuestion" name="boolGroup" type="radio" value="false"><span class="radioLabel">No</span>
+        <input class="boolQuestion" name="boolGroup{{questionIndex}}" type="radio" ng-model="response.booleanAnswer" value="false" ng-required="required"><span class="radioLabel">No</span>
     </p>
- 
 </div>
