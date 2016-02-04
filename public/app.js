@@ -9,7 +9,7 @@ angular.module('surveys', ['ui.router'])
         
 	})
     .state('takeSurvey', {
-		url: '/student/takeSurvey',
+		url: '/student/take_survey',
 		templateUrl: 'student/views/takeSurvey.html',
         controller: 'takeSurveyCtrl'
 	})
@@ -18,23 +18,36 @@ angular.module('surveys', ['ui.router'])
 		templateUrl: 'admin/views/admin.html',
 		controller: 'adminCtrl'
 	})
-    .state('createTemplate', {
-		url: '/admin/createTemplate',
-		templateUrl: 'admin/views/createTemplate.html',
-		controller: 'createTemplateCtrl'
+    .state('createModifyTemplate', {
+		url: '/admin/create_modify_template',
+		templateUrl: 'admin/views/createModifyTemplate.html',
+		controller: 'createModifyTemplateCtrl',
+        resolve: {
+            templates: function(templateService) {
+                return templateService.getAllTemplateNames()
+                .then(function( response ) {
+                    return response.data;
+              }); 
+            }
+        } 
+	})
+    .state('deleteTemplate', {
+		url: '/admin/delete_template',
+		templateUrl: 'admin/views/deleteTemplate.html',
+		controller: 'deleteTemplateCtrl'
 	})
     .state('sendSurvey', {
-		url: '/admin/sendSurvey',
+		url: '/admin/send_survey',
 		templateUrl: 'admin/views/sendSurvey.html',
 		controller: 'sendSurveyCtrl'
 	})
     .state('viewResults', {
-		url: '/admin/viewResults',
+		url: '/admin/view_results',
 		templateUrl: 'admin/views/viewResults.html',
 		controller: 'viewResultsCtrl'
 	})
     .state('updateTopics', {
-		url: '/admin/updateTopics',
+		url: '/admin/update_topics',
 		templateUrl: 'admin/views/updateTopics.html',
 		controller: 'updateTopicsCtrl'
 	})

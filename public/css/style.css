@@ -11,23 +11,39 @@ html, body {
     margin-right: 20px;
 } */
 
-#takeSurveyHeader {
+.surveyHeader {
     background-color: #444;
     width: 100%;
     height: 70px;
+    line-height: 70px;
     display: inline-block;
+    position: fixed; 
 }
 
-#takeSurveyHeader .logo {
+.surveyHeader .logo {
     padding: 15px 15px 15px 0px;
     /* border-right: 1px solid; */
 }
 
-#takeSurvey {
-    background-color: rgba(238, 238, 238, 0.63);
-    padding: 20px 0;
-    margin-top: -15x;
+.surveyHeader .headerTitle {
+    color: #eee;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.5em;
+    height: inherit;
+    line-height: inherit;
+    width: inherit;
+    vertical-align: center;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
+
+.surveyContainer {
+    background-color: rgba(238, 238, 238, 0.63);
+    padding: 40px 0;
+}
+
 
 #takeSurvey h4 {
     font-family: Arial;
@@ -50,7 +66,7 @@ html, body {
 }
 
 #takeSurvey .survey-question {
-    margin-bottom: 100px;
+    margin-bottom: 120px;
 }
 
 #takeSurvey .range-field {
@@ -73,6 +89,18 @@ html, body {
     top: 30px;
     font-family: Arial;
     font-size: 0.7em;
+} 
+
+#takeSurvey .slider_left_img {
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+#takeSurvey .slider_right_img {
+    position: absolute;
+    right: 0;
+    top: 50px;
 } 
 
 #takeSurvey .boolQuestion {
@@ -101,3 +129,33 @@ html, body {
     width: 60%;
 }
 
+#adminMain {
+    height: 100vh;
+}
+
+#adminMain ul {
+    margin-top: 50px;
+}
+
+#adminMain li {
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial;
+    font-size: 2em;
+}
+
+#templateName {
+    width: 40%;
+}
+
+#templateDescription {
+    width: 60%;
+}
+
+#templateName {
+    width: 40%;
+}
+
+#createModifyTemplate div > option {
+    display: none;
+}

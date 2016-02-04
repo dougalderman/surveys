@@ -1,14 +1,14 @@
 {
-    "name" : "Dev Mtn Survey",
+    "name" : "DevMountain Survey",
     "description": "6 week review",
-    "topic": "Overall",
+    "topic": "All Topics",
     "questions" : [
         {
             "questionText" :  "How would you rate DevMountain's instructors overall?",
 	        "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 5
+	        "lowValue" : 1,
+	        "highValue": 5
         },
         {
             "questionText" :  "Additional thoughts on instructors",
@@ -24,8 +24,8 @@
             "questionText" :  "Mentor ratings",
 	        "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 20
+	        "lowValue" : 1,
+	        "highValue": 20
         },
         {
             "questionText" :  "What did you learn in this class?",
@@ -36,8 +36,8 @@
             "questionText" :  "DevMountain ratings",
             "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 5
+	        "lowValue" : 1,
+	        "highValue": 5
 	        
 	    },
         {
@@ -49,8 +49,8 @@
             "questionText" :  "How did you do in this class?",
 	        "type" : "numeric",
 	        "required" : false,
-	        "lowRange" : 1,
-	        "highRange": 8
+	        "lowValue" : 1,
+	        "highValue": 8
         },
         {
             "questionText" :  "Tell us about DevMountain",

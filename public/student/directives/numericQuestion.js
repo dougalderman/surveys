@@ -4,8 +4,8 @@ angular.module('surveys')
         restrict: 'E',
         templateUrl: 'student/views/numericQuestion.html', 
         scope: {
-            lowRange: '=',
-            highRange: '=',
+            lowValue: '=',
+            highValue: '=',
             required: '=',
             questionIndex: '@',
             questionText: '@',
@@ -19,7 +19,7 @@ angular.module('surveys')
             if ($scope.questionType === 'numeric') {
             
                 /* $scope.response = {}; */
-                $scope.response.numericAnswer =  $scope.lowRange + Math.floor(0.5*($scope.highRange - $scope.lowRange));
+                $scope.response.numericAnswer =  $scope.lowValue + 0.5*($scope.highValue - $scope.lowValue);
              
             }
                                      

@@ -1,27 +1,28 @@
-<header id="takeSurveyHeader">
-    <img class="logo" src="/images/devmountain_logo.png" height="70">
-    </img>
-    <h4>{{survey.name}}</h4>
-</header>
+<div class="navbar-fixed">
+    <header class="surveyHeader">
+        <img class="logo" src="/images/devmountain_logo.png" height="70">
+        </img>
+        <div class="headerTitle">{{survey.name}}</div>
+    </header>
+</div>
 
-<div id="takeSurvey">
+<div id="takeSurvey" class="surveyContainer">
     
     <div class="container">
     
-   
-    <h4>{{survey.description}}</h4>
-    <h4>{{survey.topic}}</h4>
-    <br><br>
-    <p class="required"> * Required</p>
-    <br> 
-    <form ng-submit="processForm()">
-        <div class="survey-question" ng-repeat = "question in survey.questions">
-          <numeric-question low-range="question.lowRange" high-range="question.highRange" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'numeric'"></numeric-question>
-            <boolean-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'boolean'"></boolean-question>
-           <text-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'text'"></text-question>
-        </div>
-        <input class="button" type="submit">
-    </form>
+        <h4>{{survey.description}}</h4>
+        <h4>{{survey.topic}}</h4>
+        <br><br>
+        <p class="required"> * Required</p>
+        <br> 
+        <form ng-submit="processForm()">
+            <div class="survey-question" ng-repeat = "question in survey.questions">
+              <numeric-question low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'numeric'"></numeric-question>
+                <boolean-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'boolean'"></boolean-question>
+               <text-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'text'"></text-question>
+            </div>
+            <input class="button" type="submit">
+        </form>
            
     </div>    
 </div>    

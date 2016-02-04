@@ -1,0 +1,56 @@
+<div class="question_crud">
+                
+   
+    <p>Question Text:</p>
+    <div class="row">
+        <div class="input-field col s6">
+            <textarea ng-model="template.questionText" id="questionText" class="materialize-textarea"></textarea>
+            <label for="questionText">Type Question Text Below</label>
+        </div>
+        <div class="input-field col s6">
+            <img class="delete_icon" ng-click="deleteQuestion()" ng-src="images/delete_icon.jpg" height="20">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="choose_question_type" ng-model="template.questionType" ng-change="updateQuestionType()">
+
+                <option value="" disabled selected>Choose Question Type</option>
+                <option value="numeric">Numeric</option>
+                <option value="boolean">Boolean</option>
+                <option value="text">Text</option>
+
+            </select>
+            <label>Choose Question Type</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+          <input type="checkbox" ng-model="template.questionRequired" id="questionRequired"/>
+          <label for="questionRequired">Required?</label>
+        </p>
+    </div>
+
+    <div ng-show="template.questionType==='numeric'">
+        <p>Low Value:</p>
+        <div class="row">
+            <div class="input-field col s12">
+                  <textarea ng-model="template.questionLowRange" id="questionLowValue" class="materialize-textarea" ></textarea>
+                  <label for="questionLowValue">Type low value for response below</label>
+            </div>
+        </div>
+
+        <p>High Value:</p>
+        <div class="row">
+            <div class="input-field col s12">
+                  <textarea ng-model="template.questionLowRange" id="questionHighValue" class="materialize-textarea" ></textarea>
+                  <label for="questionHighValue">Type high value for response below</label>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+            

@@ -7,22 +7,22 @@
             "questionText" :  "How prepared do you feel the instructor was?",
 	        "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 5
+	        "lowValue" : 1,
+	        "highValue": 5
         },
         {
             "questionText" :  "How well did the instructor explain things?",
 	        "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 5
+	        "lowValue" : 1,
+	        "highValue": 5
         },
         {
             "questionText" :  "How well did the instructor do overall?",
 	        "type" : "numeric",
 	        "required" : true,
-	        "lowRange" : 1,
-	        "highRange": 10
+	        "lowValue" : 1,
+	        "highValue": 10
         },
         {
             "questionText" :  "Would you like the instructor to teach again?",
