@@ -166,6 +166,27 @@ html, body {
     margin-bottom: 60px;
 }
 
+
+#createModifyTemplate .button {
+    width: 180px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-family: Arial;
+    font-size: 1.2em;
+    background: #444;
+    color: white;
+}
+
+#sendSurvey .button {
+    font-family: Arial;
+    font-size: 1.2em;
+    background: #444;
+    color: white;
+    width: 180px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
 .delete_icon:hover {
     cursor: pointer;
 }

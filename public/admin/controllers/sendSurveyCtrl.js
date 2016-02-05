@@ -6,6 +6,7 @@ angular.module('surveys')
     $scope.template = {};
     $scope.template.questions = [];
     $scope.vars = [];
+    $scope.survey = {};
     
     console.log('In sendSurveyCtrl');
     console.log('templates', $scope.templates);
@@ -26,7 +27,11 @@ angular.module('surveys')
             console.log('in loadSelectedResponse');
             console.log('response', response);
             $scope.template = response.data;
-            $('select').material_select();
+            // Initialize name and description to template name and desc
+            // $scope.survey.name = $scope.template.name
+            // $scope.survey.description = $scope.survey.description
+            
+            // Find variables in name, description, and questions
             $scope.vars = templateService.checkForVars($scope.template);
             console.log('$scope.vars', $scope.vars);
         }); 

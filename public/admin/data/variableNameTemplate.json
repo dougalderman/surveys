@@ -1,6 +1,6 @@
  {
     "_id" : 1, 
-    "name" : "$$name$$ Template",
+    "name" : "$$name$$ $$title$$",
     "description": "$$description$$",
     "questions" : [
         {

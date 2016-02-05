@@ -9,39 +9,62 @@
 <div id="sendSurvey" class="surveyContainer">
     <div class="container">
         
-        <form ng-submit="processForm()">
-            
-        <p>Name:</p>
-            <div class="row">
-                <div class="input-field col s6">
-                      <input ng-model="survey.name" type="text" id="surveyName">
-                </div>
-            </div>    
-        
         <div class="row">
             <div class="input-field col s6">
                 <select id="choose_survey_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
-                    <option value="" disabled selected>Select Template to Load</option>
+                    <option value="" disabled selected>Select Template</option>
                 </select>
-                <label>Select Template to Load</label>
+                <label>Select Template</label>
             </div>
         </div>
         
-        <p>Variables:</p>
-        <div ng-repeat="var in vars" class="row">
-             
-            <div class="input-field col s6">
-               <p>{{var}}:</p>
-                  <input ng-model="survey.var[$index]" type="text" id="surveyVar{{$index}}">
+        <form ng-submit="processForm()">
+                
+                        
+            <p>Name:</p>
+                <div class="row">
+                    <div class="input-field col s6">
+                          <input ng-model="survey.name" type="text" id="surveyName">
+                </div>
+            </div>    
+
+            <p>Description:</p>
+                <div class="row">
+                    <div class="input-field col s6">
+                          <input ng-model="survey.description" type="text" id="surveyName">
+                </div>
+            </div>    
+
+            <p>Variables:</p>
+            <div ng-repeat="var in vars" class="row">
+
+                <div class="input-field col s6">
+                   <p>{{var}}:</p>
+                      <input ng-model="survey.var[$index]" type="text" id="surveyVar{{$index}}">
+                </div>
             </div>
-        </div>
             
-
-          
-
+            <div class="row">
+                <div class="input-field col s6">
+                    <select id="choose_survey_topic" ng-options="topic.name for topic in topics" ng-model="selectedTopic">
+                        <option value="" disabled selected>Select Topic</option>
+                    </select>
+                    <label>Select Topic</label>
+                </div>
+            </div>
         
-            <br><br>         
-            <button class="button" type="submit">Save</button>
+            <p>Send to:</p>
+                <div class="row">
+                    <div class="input-field col s6">
+                          <input ng-model="survey.sentTo" type="text" id="survey_sentTo">
+                    </div>
+                </div>    
+            
+           
+                
+            <button class="button" type="button">Preview</button>
+            <br>     
+            <button class="button" type="submit">Send</button>
 
         </form>
         

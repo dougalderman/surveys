@@ -47,9 +47,15 @@ angular.module('surveys')
     }; 
     
     this.findMatch = function(str) {
-        var regex = /\$\$(.*?)\$\$/;
-        var match = regex.exec(str);
-        return match;
+        var regex = /\$\$(.*?)\$\$/g;
+        var resultArr = [];
+        var arr = regex.exec(str);
+        while (arr !== null) {
+            resultArr.push(arr[1]);
+            arr = regex.exec(str);
+        }
+            
+        return resultArr;
     }
     
     this.removeDuplicates = function(arr) {
@@ -70,16 +76,22 @@ angular.module('surveys')
         
         var match = this.findMatch(template.name);
         if (match) {
-             arrayOfVars.push(match[1]);
-        }
+             for (var i = 0; i < match.length; i++) {
+                arrayOfVars.push(match[i]);
+             }
+        } 
         var match = this.findMatch(template.description);
         if (match) {
-             arrayOfVars.push(match[1]);
+             for (var i = 0; i < match.length; i++) {
+                arrayOfVars.push(match[i]);
+             }
         }
         for (var i = 0; i < template.questions.length; i++) {
             var match = this.findMatch(template.questions[i].questionText);
             if (match) {
-                 arrayOfVars.push(match[1]);
+                 for (var j = 0; j < match.length; j++) {
+                    arrayOfVars.push(match[j]);
+                 }
             }
         }
         return this.removeDuplicates(arrayOfVars);
