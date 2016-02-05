@@ -1,29 +1,29 @@
  {
     "_id" : 1, 
-    "name" : "Nick Jones Survey",
-    "description": "Instructor Survey",
+    "name" : "$$name$$ Template",
+    "description": "$$description$$",
     "questions" : [
         {
-            "questionText" :  "How prepared do you feel the instructor was?",
+            "questionText" :  "How prepared do you feel the $$name$$ was?",
             "type" : "numeric",
             "required" : true,
             "lowValue" : 1,
             "highValue": 5
         },
         {
-            "questionText" :  "Do you like this instructor?",
+            "questionText" :  "Do you like $$name$$?",
             "type" : "boolean",
             "required" : true
         },
         {
-            "questionText" :  "How well did the instructor explain things?",
+            "questionText" :  "How well did $$name$$ explain things?",
             "type" : "numeric",
             "required" : true,
             "lowValue" : 1,
             "highValue": 20
         },
         {
-            "questionText" :  "How well did the instructor do overall?",
+            "questionText" :  "How well did $$name$$ do overall?",
             "type" : "numeric",
             "required" : true,
             "lowValue" : 1,
@@ -35,12 +35,12 @@
             "required" : true
         },
         {
-            "questionText" :  "Would you like the instructor to teach again?",
+            "questionText" :  "Would you like $$name$$ to teach again?",
             "type" : "boolean",
             "required" : true
         },
         {
-            "questionText" :  "What did the instructor do well, and where could he / she improve?",
+            "questionText" :  "What did $$name$$ do well, and where could $$name$$ improve?",
             "type" : "text",
             "required" : false
         },

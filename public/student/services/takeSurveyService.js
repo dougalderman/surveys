@@ -12,7 +12,7 @@ angular.module('surveys')
      this.getSurvey = function(type) {
     	return $http({
             method: 'GET',
-            url: 'student/data/survey2.json'
+            url: 'student/data/survey1.json'
         });
     };
     

@@ -11,7 +11,8 @@ angular.module('surveys')
             questionText: '@',
             questionType: '@',
             response: '=',
-            requiredField: '='
+            requiredField: '=',
+            notAnswered: '='
         },
         controller: function($scope) {
             
@@ -19,7 +20,11 @@ angular.module('surveys')
             if ($scope.questionType === 'numeric') {
             
                 /* $scope.response = {}; */
-                $scope.response.numericAnswer =  $scope.lowValue + 0.5*($scope.highValue - $scope.lowValue);
+                if ($scope.required)
+                    $scope.response.numericAnswer = 0;
+                else
+                    $scope.response.numericAnswer = Math.round($scope.lowValue + 0.5*($scope.highValue - $scope.lowValue));
+             
              
             }
                                      

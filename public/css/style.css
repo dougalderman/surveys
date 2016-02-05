@@ -129,6 +129,11 @@ html, body {
     width: 60%;
 }
 
+#takeSurvey .bright_red {
+    color: red;
+    font-weight: bold;
+}
+
 #adminMain {
     height: 100vh;
 }
@@ -144,18 +149,28 @@ html, body {
     font-size: 2em;
 }
 
-#templateName {
+/* #templateName {
     width: 40%;
 }
 
 #templateDescription {
     width: 60%;
-}
-
-#templateName {
-    width: 40%;
-}
+} */
 
 #createModifyTemplate div > option {
     display: none;
 }
+
+#createModifyTemplate .question_crud {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.delete_icon:hover {
+    cursor: pointer;
+}
+
+#sendSurvey div > option {
+    display: none;
+}
+

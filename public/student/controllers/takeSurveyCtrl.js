@@ -4,6 +4,8 @@ angular.module('surveys')
 
     $scope.results = {};
     
+    $scope.notAnswered = [];
+    
     $scope.surveyID = 123 // Need to get surveyID as passed parm from Q
     
     $scope.initializeResults = function() {
@@ -18,8 +20,12 @@ angular.module('surveys')
             $scope.results.answers[index] = {
                 type: question.type
             };
+            $scope.notAnswered[index] = false;
         });
         console.log('$scope.results.answers = ', $scope.results.answers);
+        console.log('$scope.notAnswered = ', $scope.notAnswered)
+        
+       
         
     }
        
@@ -33,12 +39,63 @@ angular.module('surveys')
         }); 
     }
     
-   
+   $scope.checkForRequired = function() {
+       
+       var allRequiredFieldsAnswered = true;
+       
+       for (var i = 0; i < $scope.survey.questions.length; i++) {
+           if ($scope.survey.questions[i].required) {
+                switch ($scope.results.answers[i].type) {
+                    case 'numeric': 
+                        if (!$scope.results.answers[i].numericAnswer) {
+                            console.log('numeric not answered');
+                            $scope.notAnswered[i] = true;
+                            allRequiredFieldsAnswered = false;
+                        }
+                        else {
+                            $scope.notAnswered[i] = false;
+                        }
+                        break;
+                    case 'boolean':
+                        if (!$scope.results.answers[i].booleanAnswer) {
+                            console.log('boolean not answered');
+                            $scope.notAnswered[i] = true;
+                            allRequiredFieldsAnswered = false;
+                        }
+                        else {
+                            $scope.notAnswered[i] = false;
+                        }
+                        break;
+                    case 'text':
+                        if (!$scope.results.answers[i].textAnswer) {
+                            console.log('text not answered');
+                            $scope.notAnswered[i] = true;
+                            allRequiredFieldsAnswered = false;
+                        }
+                        else {
+                            $scope.notAnswered[i] = false;
+                        }
+                        break;
+                }
+            }
+           
+       }
+       
+       return allRequiredFieldsAnswered;
+       
+   }
     
     $scope.processForm = function() {
-        console.log('results = ', $scope.results);
+        var allRequiredAnswered = $scope.checkForRequired();
+        if (allRequiredAnswered) {
+            console.log('results = ', $scope.results);
      /*   takeSurveyService.writeSurveyResults($scope.results); */
+        }
+        else {
+           alert('Need to answer all required questions shown in red');
+        }
     }
+    
     
     $scope.readSurvey();
      

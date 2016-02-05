@@ -3,20 +3,26 @@ angular.module('surveys')
     return {
         restrict: 'E',
         templateUrl: 'admin/views/questionCrud.html', 
-        /*scope: {
-           
-        }, */
+        scope: {
+            question: '=',
+            questionTypes: '=',
+            deleteQuestion: '&',
+            questionIndex: '='
+        }, 
         controller: function($scope) {
             $(document).ready(function() {
-        
-                $('select').material_select();
-        
+                window.setTimeout(function() {  // Need to delay execution of material_select to make sure Angular has 
+                                        // updated the DOM.
+                    $('select').material_select();
+                }, 100);
             });
-            
-             $scope.updateQuestionType = function() {
-                $scope.template.questionType  = $('#choose_question_type').val();
-                console.log('questionType = ', $scope.template.questionType);
+                        
+                    
+            $scope.updateQuestionType = function() {
+                // $scope.question.type  = $('#choose_question_type').val();
+                // console.log('question type = ', $scope.question.type);
             };
+            
         }
     }
         

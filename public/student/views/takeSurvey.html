@@ -17,9 +17,9 @@
         <br> 
         <form ng-submit="processForm()">
             <div class="survey-question" ng-repeat = "question in survey.questions">
-              <numeric-question low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'numeric'"></numeric-question>
-                <boolean-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'boolean'"></boolean-question>
-               <text-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" ng-if="question.type === 'text'"></text-question>
+              <numeric-question low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'numeric'"></numeric-question>
+                <boolean-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'boolean'"></boolean-question>
+               <text-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'text'"></text-question>
             </div>
             <input class="button" type="submit">
         </form>

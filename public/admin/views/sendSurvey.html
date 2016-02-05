@@ -1,3 +1,50 @@
-sendSurvey
-<br><br>
-{{test}}
+<div class="navbar-fixed">
+    <header class="surveyHeader">
+        <img class="logo" src="/images/devmountain_logo.png" height="70">
+        </img>
+        <div class="headerTitle">Send Survey</div>
+    </header>
+</div>
+
+<div id="sendSurvey" class="surveyContainer">
+    <div class="container">
+        
+        <form ng-submit="processForm()">
+            
+        <p>Name:</p>
+            <div class="row">
+                <div class="input-field col s6">
+                      <input ng-model="survey.name" type="text" id="surveyName">
+                </div>
+            </div>    
+        
+        <div class="row">
+            <div class="input-field col s6">
+                <select id="choose_survey_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
+                    <option value="" disabled selected>Select Template to Load</option>
+                </select>
+                <label>Select Template to Load</label>
+            </div>
+        </div>
+        
+        <p>Variables:</p>
+        <div ng-repeat="var in vars" class="row">
+             
+            <div class="input-field col s6">
+               <p>{{var}}:</p>
+                  <input ng-model="survey.var[$index]" type="text" id="surveyVar{{$index}}">
+            </div>
+        </div>
+            
+
+          
+
+        
+            <br><br>         
+            <button class="button" type="submit">Save</button>
+
+        </form>
+        
+        
+    </div>
+</div>

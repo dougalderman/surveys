@@ -26,7 +26,7 @@ angular.module('surveys', ['ui.router'])
             templates: function(templateService) {
                 return templateService.getAllTemplateNames()
                 .then(function( response ) {
-                    return response.data;
+                     return response.data;
               }); 
             }
         } 
@@ -34,12 +34,28 @@ angular.module('surveys', ['ui.router'])
     .state('deleteTemplate', {
 		url: '/admin/delete_template',
 		templateUrl: 'admin/views/deleteTemplate.html',
-		controller: 'deleteTemplateCtrl'
+		controller: 'deleteTemplateCtrl',
+        resolve: {
+            templates: function(templateService) {
+                return templateService.getAllTemplateNames()
+                .then(function( response ) {
+                     return response.data;
+              }); 
+            }
+        } 
 	})
     .state('sendSurvey', {
 		url: '/admin/send_survey',
 		templateUrl: 'admin/views/sendSurvey.html',
-		controller: 'sendSurveyCtrl'
+		controller: 'sendSurveyCtrl',
+        resolve: {
+            templates: function(templateService) {
+                return templateService.getAllTemplateNames()
+                .then(function( response ) {
+                     return response.data;
+              }); 
+            }
+        } 
 	})
     .state('viewResults', {
 		url: '/admin/view_results',

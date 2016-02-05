@@ -8,7 +8,8 @@ angular.module('surveys')
             questionIndex: '@',
             questionText: '@',
             questionType: '@',
-            response: '='
+            response: '=',
+            notAnswered: '='
         },
         controller: function($scope) {
            

@@ -1,7 +1,7 @@
-<p>{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
+<p ng-class= "{bright_red: notAnswered[questionIndex]}">{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
 <p class="range-field">
     
-        <input type="range" name="slider{{questionIndex}}" ng-model="response.numericAnswer" min="{{lowValue}}" max="{{highValue}}" ng-required="required">
+        <input type="range" name="slider{{questionIndex}}" ng-model="response.numericAnswer" min="{{lowValue}}" max="{{highValue}}">
         <span class="slider_left">Not very well</span> 
         <span class="slider_right">Super very well</span>
         <img class="slider_left_img" src="/images/dislike_emoticon.jpg" width="60">
