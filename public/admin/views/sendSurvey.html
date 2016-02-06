@@ -9,12 +9,13 @@
 <div id="sendSurvey" class="surveyContainer">
     <div class="container">
         
+        <p>Select Template:</p>
         <div class="row">
             <div class="input-field col s6">
                 <select id="choose_survey_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
                     <option value="" disabled selected>Select Template</option>
                 </select>
-                <label>Select Template</label>
+                <!--<label>Select Template</label>-->
             </div>
         </div>
         
@@ -31,39 +32,41 @@
             <p>Description:</p>
                 <div class="row">
                     <div class="input-field col s6">
-                          <input ng-model="survey.description" type="text" id="surveyName">
+                          <input ng-model="survey.description" type="text" id="surveyDescription">
                 </div>
             </div>    
 
-            <p>Variables:</p>
-            <div ng-repeat="var in vars" class="row">
+            <p ng-show="var_names.length">Variables:</p>
+            <div ng-repeat="var_name in var_names" class="row">
 
                 <div class="input-field col s6">
-                   <p>{{var}}:</p>
-                      <input ng-model="survey.var[$index]" type="text" id="surveyVar{{$index}}">
+                   <p>{{var_name}}:</p>
+                      <input ng-model="var_values[$index]" type="text" id="var_value{{$index}}">
                 </div>
             </div>
             
+            <p>Select Topic:</p>
             <div class="row">
                 <div class="input-field col s6">
-                    <select id="choose_survey_topic" ng-options="topic.name for topic in topics" ng-model="selectedTopic">
+                    <select id="choose_survey_topic" ng-options="topic.name for topic in topics" ng-model="survey.topic">
                         <option value="" disabled selected>Select Topic</option>
                     </select>
-                    <label>Select Topic</label>
+                    <!--<label>Select Topic</label>-->
                 </div>
             </div>
         
-            <p>Send to:</p>
+            <p>Send to (cohort ID):</p>
                 <div class="row">
                     <div class="input-field col s6">
-                          <input ng-model="survey.sentTo" type="text" id="survey_sentTo">
+                          <input ng-model="cohortId" type="number" id="survey_sentTo">
                     </div>
                 </div>    
             
            
                 
-            <button class="button" type="button">Preview</button>
+            <button class="button" type="button" ng-click="previewSurvey()">Preview</button>
             <br>     
+            <preview-survey survey-name="{{prevSurvey.name}}" survey-description="{{prevSurvey.description}}" survey-topic="{{prevSurvey.topic.name}}" survey-questions="prevSurvey.questions" ng-show="previewSelected"></preview-survey>
             <button class="button" type="submit">Send</button>
 
         </form>

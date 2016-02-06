@@ -157,6 +157,15 @@ html, body {
     width: 60%;
 } */
 
+#createModifyTemplate p {
+  font-family: 'Times New Roman';
+  font-size: 1.3em;
+}
+
+#createModifyTemplate .container .row {
+  margin-bottom: 50px;
+}
+
 #createModifyTemplate div > option {
     display: none;
 }
@@ -177,6 +186,15 @@ html, body {
     color: white;
 }
 
+#sendSurvey p {
+  font-family: 'Times New Roman';
+  font-size: 1.3em;
+}
+
+#sendSurvey .container .row {
+  margin-bottom: 50px;
+}
+
 #sendSurvey .button {
     font-family: Arial;
     font-size: 1.2em;
@@ -194,4 +212,19 @@ html, body {
 #sendSurvey div > option {
     display: none;
 }
+
+.preview_survey h4 {
+    font-family: Arial;
+    font-size: 1.7em;
+}
+
+#survey_questions p {
+    font-family: Helvetica;
+    font-size: 1.2em;
+}
+
+#survey_questions .bold {
+    font-weight: bold;
+}
+
 

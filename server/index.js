@@ -4,7 +4,7 @@ var express = require('express'),
     config = require('./config.js'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    localStrategy = require('passport-local'),
+    localStrategy = require('passport-local').Strategy,
     config = require('./config.js');
 
 // db models

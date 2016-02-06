@@ -12,18 +12,18 @@
         </div>
     </div>
 
+    <p>Choose Question Type:</p>
     <div class="row">
         <div class="input-field col s6">
             <select id="choose_question_type" ng-model="question.type" ng-options="type for type in questionTypes" ng-change="updateQuestionType()" >
-            
-
+                
                 <option value="" disabled selected>Choose Question Type</option>
                 <!--<option value="numeric">Numeric</option>
                 <option value="boolean">Boolean</option>
                 <option value="text">Text</option>-->
 
             </select>
-            <label>Choose Question Type</label>
+           <!-- <label>Choose Question Type</label>-->
         </div>
     </div>
 

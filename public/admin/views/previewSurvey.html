@@ -1,0 +1,19 @@
+<div class="preview_survey">
+    
+    <h4>Survey Name: {{surveyName}}</h4>
+    <h4>Survey Description: {{surveyDescription}}</h4>
+    <h4>Survey Topic: {{surveyTopic}}</h4>
+    <br>
+    <div id="survey_questions" ng-repeat="question in surveyQuestions">
+    
+        <p class="bold">Question Text: {{question.questionText}}</p>
+        <p>Question Type: {{question.type}}</p>
+        <p>Question Required?: {{question.required}}</p>
+        <p>Question Low Value (if numeric): {{question.lowValue}}</p>
+        <p>Question High Value (if numeric): {{question.highValue}}</p>
+        <br>
+    
+    </div>
+
+</div>
+            

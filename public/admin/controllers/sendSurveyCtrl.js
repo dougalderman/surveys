@@ -1,13 +1,17 @@
 angular.module('surveys')
-.controller('sendSurveyCtrl', function($scope, templates, templateService) {
+.controller('sendSurveyCtrl', function($scope, templates, templateSurveyService) {
     
     
     $scope.templates = templates;
     $scope.template = {};
     $scope.template.questions = [];
-    $scope.vars = [];
+    $scope.var_names = [];
+    $scope.var_values = [];
+    $scope.varsCompiled = false;
     $scope.survey = {};
+    $scope.previewSelected = false;
     
+        
     console.log('In sendSurveyCtrl');
     console.log('templates', $scope.templates);
     
@@ -21,30 +25,57 @@ angular.module('surveys')
        
     $scope.loadSelectedTemplate = function() {
         console.log('selectedTemplate', $scope.selectedTemplate);
-        templateService.getTemplate($scope.selectedTemplate._id)
+        templateSurveyService.getTemplate($scope.selectedTemplate._id)
         .then(function( response ) {
-            console.log('in createModifyTemplateCtrl');
+            console.log('in sendSurveyCtrl');
             console.log('in loadSelectedResponse');
             console.log('response', response);
-            $scope.template = response.data;
-            // Initialize name and description to template name and desc
-            // $scope.survey.name = $scope.template.name
-            // $scope.survey.description = $scope.survey.description
-            
+            $scope.survey = response.data;
+           
             // Find variables in name, description, and questions
-            $scope.vars = templateService.checkForVars($scope.template);
-            console.log('$scope.vars', $scope.vars);
+            $scope.var_names = templateSurveyService.checkForVars($scope.survey);
+            console.log('$scope.var_names', $scope.var_names);
         }); 
     };
     
-            
-    $scope.processForm = function() {
-        console.log('in processForm');
-        console.log('survey', $scope.survey);
-        
-
+    $scope.loadTopicNames = function() {
+        templateSurveyService.getAllTopicNames()
+        .then(function( response ) {
+            console.log('in sendSurveyCtrl');
+            console.log('in loadTopicNames');
+            console.log('response', response);
+            $scope.topics = response.data;
+        }); 
     };
     
-   
+    $scope.previewSurvey = function() {
+        $scope.prevSurvey = {};
+        $scope.previewSelected = true;
+        console.log('in previewSurvey');
+        console.log('survey before compileVariables', $scope.survey);
+        $scope.prevSurvey = templateSurveyService.compileVariables($scope.survey, $scope.var_names, $scope.var_values);
+        console.log('prevSurvey after compileVariables', $scope.prevSurvey);
+        $scope.varsCompiled = true;
+
+    };
+    $scope.processForm = function() {
+        $scope.newSurvey = {};
+        console.log('in processForm');
+        console.log('survey before compileVariables', $scope.survey);
+        $scope.newSurvey = templateSurveyService.compileVariables($scope.survey, $scope.var_names, $scope.var_values);
+        console.log('survey after compileVariables', $scope.newSurvey);
+        templateSurveyService.checkForUsers($scope.cohortId)
+        .then(function( response ) {
+            $scope.newSurvey.dateSent = new Date();
+            $scope.newSurvey.sentTo = response.data;
+            console.log('survey before writing to database', $scope.newSurvey);
+            // templateSurveyService.writeNewSurvey($scope.newSurvey);
+        });
+       
+    
+        
+    };
+    
+    $scope.loadTopicNames();
     
 });

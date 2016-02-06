@@ -1,5 +1,5 @@
 angular.module('surveys')
-.controller('createModifyTemplateCtrl', function($scope, templates, templateService) {
+.controller('createModifyTemplateCtrl', function($scope, templates, templateSurveyService) {
     
     $scope.templates = templates;
     $scope.template = {};
@@ -23,7 +23,7 @@ angular.module('surveys')
         }, 100);
      });
    /* $scope.readAllTemplateNames = function() {
-        templateService.getAllTemplateNames()
+        templateSurveyService.getAllTemplateNames()
          .then(function( response ) {
             console.log('in createModifyTemplateCtrl');
             console.log('in readAllTemplateNames');
@@ -39,7 +39,7 @@ angular.module('surveys')
         /* $scope.templateId  = $('#choose_template').val();
         console.log('templateId = ', $scope.templateId); */
        console.log('selectedTemplate', $scope.selectedTemplate);
-        templateService.getTemplate($scope.selectedTemplate._id)
+        templateSurveyService.getTemplate($scope.selectedTemplate._id)
         .then(function( response ) {
             console.log('in createModifyTemplateCtrl');
             console.log('in loadSelectedResponse');
@@ -78,14 +78,14 @@ angular.module('surveys')
             var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving.");
             if (select === true) {
                 console.log('update template')
-                //templateService.updateTemplate(template._id, $scope.template);
+                //templateSurveyService.updateTemplate(template._id, $scope.template);
             }
         } 
         else {  // new template
             console.log('new template')
-            //templateService.writeNewTemplate($scope.template);
+            //templateSurveyService.writeNewTemplate($scope.template);
         }
-        // templateService.
+        // templateSurveyService.
 
     };
     

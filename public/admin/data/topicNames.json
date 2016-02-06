@@ -1,0 +1,54 @@
+[
+    {
+        "_id" : 1,
+        "name" : "HTML/CSS"
+    },
+    {
+        "_id" : 2,
+        "name" : "Javascript I"
+    },
+    {
+        "_id" : 4,
+        "name" : "Javascript II"
+    },
+    {
+        "_id" : 5,
+        "name" : "Closures"
+    },
+    {
+        "_id" : 6,
+        "name" : "JQuery"
+    },
+    {
+        "_id" : 7,
+        "name" : "Angular I"
+    },
+    {
+        "_id" : 8,
+        "name" : "Angular II"
+    },
+    {
+        "_id" : 9,
+        "name" : "Angular III"
+    },
+    {
+        "_id" : 10,
+        "name" : "Angular IV"
+    },
+    {
+        "_id" : 11,
+        "name" : "Node I"
+    },
+    {
+        "_id" : 12,
+        "name" : "Node II"
+    },
+    {
+        "_id" : 13,
+        "name" : "Mongo"
+    },
+    {
+        "_id" : 14,
+        "name" : "Mongoose"
+    }
+]

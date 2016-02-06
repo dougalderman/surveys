@@ -23,8 +23,8 @@ angular.module('surveys', ['ui.router'])
 		templateUrl: 'admin/views/createModifyTemplate.html',
 		controller: 'createModifyTemplateCtrl',
         resolve: {
-            templates: function(templateService) {
-                return templateService.getAllTemplateNames()
+            templates: function(templateSurveyService) {
+                return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
               }); 
@@ -36,8 +36,8 @@ angular.module('surveys', ['ui.router'])
 		templateUrl: 'admin/views/deleteTemplate.html',
 		controller: 'deleteTemplateCtrl',
         resolve: {
-            templates: function(templateService) {
-                return templateService.getAllTemplateNames()
+            templates: function(templateSurveyService) {
+                return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
               }); 
@@ -49,8 +49,8 @@ angular.module('surveys', ['ui.router'])
 		templateUrl: 'admin/views/sendSurvey.html',
 		controller: 'sendSurveyCtrl',
         resolve: {
-            templates: function(templateService) {
-                return templateService.getAllTemplateNames()
+            templates: function(templateSurveyService) {
+                return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
               }); 
