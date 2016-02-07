@@ -10,7 +10,7 @@ angular.module('surveys')
     }; */
     
     // Staged data from json below:
-    this.getAllTemplateNames = function(type) {
+    this.getAllTemplateNames = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/templateNames.json'
@@ -56,7 +56,7 @@ angular.module('surveys')
     }; */
     
     // Staged data from json below:
-    this.getAllTopicNames = function(type) {
+    this.getAllTopicNames = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/topicNames.json'
@@ -84,7 +84,65 @@ angular.module('surveys')
         });
     };
     
+    /* this.getAllSurveyNames = function() {
+    	return $http({
+            method: 'GET',
+            url: '/api/admin/surveys/' 
+        });
+    }; */
     
+    // Staged data from json below:
+    this.getAllSurveyNames = function() {
+    	return $http({
+            method: 'GET',
+            url: 'admin/data/surveyNames.json'
+        });
+     };
+    
+     /* this.getSurvey = function(id) {
+    	return $http({
+            method: 'GET',
+            url: '/api/admin/surveys/' + id 
+        });
+    }; */
+    
+    // Staged data from json below:
+    this.getSurvey = function() {
+    	return $http({
+            method: 'GET',
+            url: 'admin/data/survey1.json'
+        });
+     };
+    
+    /* this.getSurveyUsers = function(survey_id) {
+        return $http({
+            method: 'GET',
+            url: '/api/admin/users?curr_surveys=' + survey_id 
+        });
+    }; */
+    
+    // Staged data from json below:
+    this.getSurveyUsers = function(survey_id) {
+    	return $http({
+            method: 'GET',
+            url: 'admin/data/users.json'
+        });
+     };
+    
+    /* this.getSurveyResults = function(survey_id) {
+        return $http({
+            method: 'GET',
+            url: '/api/admin/results?survey=' + survey_id 
+        });
+    }; */
+    
+    // Staged data from json below:
+    this.getSurveyResults = function(survey_id) {
+    	return $http({
+            method: 'GET',
+            url: 'admin/data/results_51225.json'
+        });
+     };
 // Non-CRUD    
     
     this.findMatch = function(str) { // look for $$something$$

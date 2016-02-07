@@ -1,4 +1,4 @@
-angular.module('surveys', ['ui.router'])
+angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns'])
 
 .config(function( $stateProvider, $urlRouterProvider ) {
 
@@ -60,7 +60,16 @@ angular.module('surveys', ['ui.router'])
     .state('viewResults', {
 		url: '/admin/view_results',
 		templateUrl: 'admin/views/viewResults.html',
-		controller: 'viewResultsCtrl'
+        controller: 'viewResultsCtrl',
+        resolve: {
+            surveys: function(templateSurveyService) {
+                return templateSurveyService.getAllSurveyNames()
+                .then(function( response ) {
+                     return response.data;
+              }); 
+            }
+        } 
+		
 	})
     .state('updateTopics', {
 		url: '/admin/update_topics',

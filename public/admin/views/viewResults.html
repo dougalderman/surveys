@@ -1,3 +1,40 @@
-viewResults
-<br><br>
-{{test}}
+<div class="navbar-fixed">
+    <header class="surveyHeader">
+        <img class="logo" src="/images/devmountain_logo.png" height="70">
+        </img>
+        <div class="headerTitle">View Survey Results</div>
+    </header>
+</div>
+
+<div id="viewSurveyResults" class="surveyContainer">
+    <div class="container">
+        
+        <p>Select Survey:</p>
+        <div class="row">
+            <div class="input-field col s6">
+                <select id="choose_survey" ng-options="surv.name for surv in surveys" ng-model="selectedSurvey" ng-change="loadSelectedSurvey()">
+                    <option value="" disabled selected>Select Template</option>
+                </select>
+                <!--<label>Select Template</label>-->
+            </div>
+        </div>
+        
+       
+                        
+        <h4 ng-show="survey">Survey Name: {{survey.name}}</h4>
+        <h4 ng-show="survey">Survey Description: {{survey.description}}</h4>
+        <h4 ng-show="survey">Survey Topic: {{survey.topic}}</h4>
+        <br><br>
+        <h4 ng-show="survey">Report of Users Sent Survey</h4>
+
+        <!--<div class="grid">
+          <div id="user_report" ui-grid="user_report_options"></div>
+        </div>
+        
+        <h4>Questions and Answers</h4>
+        <div class="grid">
+          <div id="q&a" ui-grid="q&a"></div>
+        </div>-->
+        
+    </div>
+</div>

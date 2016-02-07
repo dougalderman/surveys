@@ -39,7 +39,7 @@ angular.module('surveys')
         }); 
     }
     
-   $scope.checkForRequired = function() {
+    $scope.checkForRequired = function() {
        
        var allRequiredFieldsAnswered = true;
        
@@ -83,12 +83,42 @@ angular.module('surveys')
        
        return allRequiredFieldsAnswered;
        
-   }
+    }
+   
+    $scope.convertValues = function() {
+        
+        var newObj = {};
+        
+        newObj = JSON.parse(JSON.stringify($scope.results));
+        
+        for (var i = 0; i < newObj.answers.length; i++) {
+         
+            switch (newObj.answers[i].type) {
+                case 'numeric': 
+                    if (newObj.answers[i].numericAnswer) {
+                      newObj.answers[i].numericAnswer =
+                            Number(newObj.answers[i].numericAnswer) // convert to numeric answer
+                    }
+                    break;
+                case 'boolean':
+                    if (newObj.answers[i].booleanAnswer) {
+                        newObj.answers[i].booleanAnswer = (newObj.answers[i].booleanAnswer === "true"); // convert to boolean answer
+                    }
+                    break;
+            }
+        }
+        
+        return newObj;
+    }
+       
+       
+    
     
     $scope.processForm = function() {
         var allRequiredAnswered = $scope.checkForRequired();
         if (allRequiredAnswered) {
-            console.log('results = ', $scope.results);
+            $scope.newResults = $scope.convertValues()
+            console.log('newResults = ', $scope.newResults);
      /*   takeSurveyService.writeSurveyResults($scope.results); */
         }
         else {

@@ -1,0 +1,166 @@
+[
+    {
+        "_id": 5122,
+        "user": 323,
+        "answers": 
+        [
+            {
+                "numericAnswer": 2,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 4,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 9,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": false,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "Not a whole lot",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "_id": 5822,
+        "user": 325,
+        "answers": 
+        [
+            {
+                "numericAnswer": 1,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 2,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 5,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": true,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "I liked him",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "_id": 3115,
+        "user": 153,
+        "answers": 
+        [
+            {
+                "numericAnswer": 4,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 3,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 8,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": true,
+                "type": "boolean"
+            },
+            {
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "_id": 6125,
+        "user": 44,
+        "answers": 
+        [
+            {
+                "numericAnswer": 3,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 3,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 6,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": true,
+                "type": "boolean"
+            },
+            {
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "_id": 2641,
+        "user": 156,
+        "answers": 
+        [
+            {
+                "numericAnswer": 1,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 1,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 2,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": false,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "I hated him",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "_id": 4151,
+        "user": 232,
+        "answers": 
+        [
+            {
+                "numericAnswer": 4,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 5,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 9,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": true,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "My favorite teacher.",
+                "type": "text"
+            }
+        ]
+    }
+]
+            
+        
+            
+        
