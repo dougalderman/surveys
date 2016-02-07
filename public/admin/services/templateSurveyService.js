@@ -114,21 +114,35 @@ angular.module('surveys')
         });
      };
     
-    /* this.getSurveyUsers = function(survey_id) {
+    /* this.getSurveyUsersRequested = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/users?curr_surveys=' + survey_id 
+            url: '/api/admin/users?requested_surveys=' + survey_id 
         });
     }; */
     
     // Staged data from json below:
-    this.getSurveyUsers = function(survey_id) {
+    this.getSurveyUsersRequested = function(survey_id) {
     	return $http({
             method: 'GET',
-            url: 'admin/data/users.json'
+            url: 'admin/data/usersRequested.json'
         });
      };
     
+     /* this.getSurveyUsersUntaken = function(survey_id) {
+        return $http({
+            method: 'GET',
+            url: '/api/admin/users?untaken_surveys=' + survey_id 
+        });
+    }; */
+    
+    // Staged data from json below:
+    this.getSurveyUsersUntaken = function(survey_id) {
+    	return $http({
+            method: 'GET',
+            url: 'admin/data/usersUntaken.json'
+        });
+     };
     /* this.getSurveyResults = function(survey_id) {
         return $http({
             method: 'GET',
@@ -226,5 +240,42 @@ angular.module('surveys')
             
         return newSurvey;
     }; 
+    
+    this.findWhoTookSurvey = function(users_requested, users_untaken) {
+        userTookSurvey = [];
+        users_requested.forEach(function(user, index, array) {
+            var tookSurvey = true;
+            users_untaken.forEach(function(us, ind, arr) {
+                 if (user._id === us._id) {
+                    tookSurvey = false;
+                 }
+            });
+            if (tookSurvey) {
+                userTookSurvey[index] = 'Yes';
+            }
+            else {
+                userTookSurvey[index] = 'No';
+            }
+            
+        });
+        
+        return userTookSurvey;
+    }
+    
+    this.loadUserReportGrid = function(usersRequested, usersUntaken)     {
+        var newArray = [];
+        var tookSurvey = [];
+        tookSurvey = this.findWhoTookSurvey(usersRequested, usersUntaken);
+        for (var i = 0; i < usersRequested.length; i++) {
+           
+            newArray.push({
+                'first_name' : usersRequested[i].first_name,
+                'last_name'  : usersRequested[i].last_name,
+                'took_survey': tookSurvey[i]
+            })
+        }
+        
+        return newArray;
+    }
     
 });

@@ -227,4 +227,15 @@ html, body {
     font-weight: bold;
 }
 
+#viewSurveyResults .container {
+    min-height: 100vh;
+}
+
+#viewSurveyResults .user_report_grid {
+    width: 500px;
+    height: 400px;  
+}
+
+
+
 

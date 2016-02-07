@@ -8,7 +8,8 @@
         "email": "dabrams@yahoo.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id" : 323,
@@ -19,7 +20,8 @@
         "email": "jfr1@gmail.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id" : 155,
@@ -30,7 +32,8 @@
         "email": "jsmith@microsoft.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": []
     },
     {
         "_id" : 189,
@@ -41,7 +44,8 @@
         "email": "brjones@yahoo.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": []
     },
     {
         "_id" : 44,
@@ -52,7 +56,8 @@
         "email": "zach@reachforthestars.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id" : 325,
@@ -63,7 +68,8 @@
         "email": "luke@starwars.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id" : 129,
@@ -74,7 +80,8 @@
         "email": "joe@49ers.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": []
     },
     {
         "_id" : 153,
@@ -85,7 +92,8 @@
         "email": "harry2@gmail.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id" : 232,
@@ -96,7 +104,8 @@
         "email": "wendy512@newhorizons.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": [51225]
     },
     {
         "_id": 415,
@@ -107,7 +116,8 @@
         "email": "mary1@yahoo.com",
         "password": "123",
         "roles": ["student"],
-        "curr_surveys": [51225]
+        "requested_surveys": [51225],
+        "taken_surveys": []
     }
 ]
    
