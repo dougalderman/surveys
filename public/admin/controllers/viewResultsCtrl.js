@@ -3,6 +3,8 @@ angular.module('surveys')
     
     $scope.surveys = surveys;
     $scope.userReportData = [];
+    $scope.q_a_columns = [];
+    $scope.q_a_data = [];
       
     console.log('In viewResultsCtrl');
     console.log('surveys', $scope.surveys);
@@ -16,16 +18,31 @@ angular.module('surveys')
     
     $scope.user_report_options = {
         data: 'userReportData',
-        /* height: '110px', */
-        /* rowHeight: 30, */
         columnDefs: [
           {field: 'first_name', displayName: 'First Name', enableHiding: false},
           {field: 'last_name', displayName: 'Last Name', enableHiding: false},
           {field: 'took_survey',  displayName: 'Took Survey?', enableHiding: false}
         ]
     };
-            
     
+    $scope.q_a_options = {
+        data: 'q_a_data',
+        showGridFooter: true,
+        showColumnFooter: true
+        /* onRegisteWrApi: function( gridApi ) { 
+            $scope.gridApi = gridApi;
+            var cellTemplate = '<div class="ui-grid-disable-selection"><div class="ui-grid-cell-contents" ng=repeat="row_header in row_headers"> <ui-grid-selection-row-header-buttons> </ui-grid-selection-row-header-buttons></div></div>';   // you could use your own template here
+            $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 70, cellTemplate: cellTemplate}             );
+        } */
+   
+
+        /* columnDefs: $scope.q_a_columns, */
+        /* onRegisterApi: function( gridApi ) { 
+            $scope.gridApi = gridApi;
+            var cellTemplate = 'ui-grid/selectionRowHeader';   // you could use your own template here
+            $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 60, cellTemplate: cellTemplate} ); }*/  
+    };
+     
     $scope.loadSurveyResults = function() {
         templateSurveyService.getSurveyResults($scope.survey._id)
         .then(function( response ) {
@@ -33,8 +50,14 @@ angular.module('surveys')
             console.log('in loadSurveyResults');
             console.log('response', response);
             $scope.results = response.data;
-            $scope.userReportData = templateSurveyService.loadUserReportGrid($scope.usersRequested, $scope.usersUntaken);
-             console.log('userReportData', $scope.userReportData);
+            $scope.userReportData = templateSurveyService.loadUserReportData($scope.usersRequested, $scope.usersUntaken);
+            console.log('userReportData', $scope.userReportData);
+            $scope.q_a_columns = templateSurveyService.loadQAColumns($scope.survey, $scope.results);
+            console.log('q_a_columns', $scope.q_a_columns);
+            $scope.q_a_options.columnDefs = $scope.q_a_columns;
+            $scope.q_a_data =  templateSurveyService.loadQAData($scope.survey, $scope.results);
+            console.log('q_a_data', $scope.q_a_data); 
+           
         }); 
     };
 

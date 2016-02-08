@@ -1,5 +1,5 @@
 angular.module('surveys')
-.service('templateSurveyService', function( $http ) {
+.service('templateSurveyService', function( $http, uiGridConstants) {
    // CRUD 
     
     /* this.getAllTemplateNames = function() {
@@ -262,7 +262,7 @@ angular.module('surveys')
         return userTookSurvey;
     }
     
-    this.loadUserReportGrid = function(usersRequested, usersUntaken)     {
+    this.loadUserReportData = function(usersRequested, usersUntaken)     {
         var newArray = [];
         var tookSurvey = [];
         tookSurvey = this.findWhoTookSurvey(usersRequested, usersUntaken);
@@ -272,10 +272,90 @@ angular.module('surveys')
                 'first_name' : usersRequested[i].first_name,
                 'last_name'  : usersRequested[i].last_name,
                 'took_survey': tookSurvey[i]
-            })
+            });
         }
         
         return newArray;
     }
+    
+    this.loadQAColumns = function(survey, results)     {
+        var newArray = [];
+          
+        /* newArray.push({
+            field: 'column0',
+            displayName: '',
+            width: 80,
+            enableHiding: false
+        }); 
+        
+        for (var i = 1; i <= survey.questions.length; i++) {
+            newArray.push({
+                field: 'column' + i,
+                displayName: survey.questions[i - 1].questionText,
+                width: 120,
+                headerTooltip: true,
+                enableHiding: false
+            });
+        } */
+        
+        for (var i = 0; i < survey.questions.length; i++) {
+            newArray.push({
+                field: 'column' + i,
+                displayName: survey.questions[i].questionText,
+                /* width: 160, */
+                headerTooltip: true,
+                enableHiding: false
+            });
+            if (survey.questions[i].type === 'numeric') {
+                newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg
+            }
+        } 
+        
+        return newArray;
+    }
+    
+    /* this.sortByType = function(answers) {
+        answers.sort(function(a, b) {
+            if (a.type > b.type) {
+                return 1;
+             }
+            if (a.type < b.type) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0; 
+        });
+        return answers;
+    }; */
+      
+    this.loadQAData = function(survey, results)     {
+        var newArray = [];
+        
+        for (var i = 0; i < results.length; i++) {
+            // results[i].answers = this.sortByType(results[i].answers);
+            newArray[i] = {};
+            for (var j = 0; j < results[i].answers.length; j++) {
+                var columnId = 'column' + j;
+                switch (results[i].answers[j].type) {
+                    case 'numeric':
+                        if (results[i].answers[j].numericAnswer)
+                            newArray[i][columnId] = results[i].answers[j].numericAnswer;
+                        break;
+                    case 'boolean':
+                        newArray[i][columnId] = results[i].answers[j].booleanAnswer; 
+                        break; 
+                    case 'text':
+                        if (results[i].answers[j].textAnswer)
+                            newArray[i][columnId] = results[i].answers[j].textAnswer
+                        break;    
+                        
+                }
+            }
+        } 
+        
+            
+        return newArray;
+    }; 
+    
     
 });
