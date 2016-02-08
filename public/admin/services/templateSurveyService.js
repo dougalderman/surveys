@@ -306,8 +306,30 @@ angular.module('surveys')
                 headerTooltip: true,
                 enableHiding: false
             });
-            if (survey.questions[i].type === 'numeric') {
-                newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg
+            switch(survey.questions[i].type) {
+                case 'numeric':
+                    newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg;
+                    break;
+                case 'boolean' :
+                    newArray[i].aggregationFn = function( aggregation, fieldValue, numValue ){
+                        if ( typeof(aggregation.count) === 'undefined' ){
+    aggregation.count = 0;
+                        }
+                        if ( typeof(aggregation.total) === 'undefined' ){
+      aggregation.total = 0;
+                        }
+                        aggregation.count++;
+                        if (fieldValue) { // if true
+                            aggregation.total++;
+                        }
+                    };
+                    newArray[i].finalizerFn = function( aggregation ){
+                        aggregation.value = aggregation.total;
+                    };       
+                break;
+                case 'text' :
+                    newArray[i].cellTooltip = true;
+                    break;
             }
         } 
         
@@ -338,15 +360,15 @@ angular.module('surveys')
                 var columnId = 'column' + j;
                 switch (results[i].answers[j].type) {
                     case 'numeric':
-                        if (results[i].answers[j].numericAnswer)
-                            newArray[i][columnId] = results[i].answers[j].numericAnswer;
+                        // if (results[i].answers[j].numericAnswer)
+                        newArray[i][columnId] = results[i].answers[j].numericAnswer;
                         break;
                     case 'boolean':
                         newArray[i][columnId] = results[i].answers[j].booleanAnswer; 
                         break; 
                     case 'text':
-                        if (results[i].answers[j].textAnswer)
-                            newArray[i][columnId] = results[i].answers[j].textAnswer
+                        //if (results[i].answers[j].textAnswer)
+                        newArray[i][columnId] = results[i].answers[j].textAnswer
                         break;    
                         
                 }

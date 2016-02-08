@@ -29,19 +29,7 @@ angular.module('surveys')
         data: 'q_a_data',
         showGridFooter: true,
         showColumnFooter: true
-        /* onRegisteWrApi: function( gridApi ) { 
-            $scope.gridApi = gridApi;
-            var cellTemplate = '<div class="ui-grid-disable-selection"><div class="ui-grid-cell-contents" ng=repeat="row_header in row_headers"> <ui-grid-selection-row-header-buttons> </ui-grid-selection-row-header-buttons></div></div>';   // you could use your own template here
-            $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 70, cellTemplate: cellTemplate}             );
-        } */
-   
-
-        /* columnDefs: $scope.q_a_columns, */
-        /* onRegisterApi: function( gridApi ) { 
-            $scope.gridApi = gridApi;
-            var cellTemplate = 'ui-grid/selectionRowHeader';   // you could use your own template here
-            $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 60, cellTemplate: cellTemplate} ); }*/  
-    };
+       };
      
     $scope.loadSurveyResults = function() {
         templateSurveyService.getSurveyResults($scope.survey._id)
