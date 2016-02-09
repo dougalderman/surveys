@@ -1,6 +1,5 @@
 var surveysModel = require('./../models/surveysModel.js');
 var usersModel = require('./../models/usersModel.js');
-var resultsModel = require('./../models/resultsModel.js');
 
 module.exports = {
     
@@ -22,7 +21,7 @@ module.exports = {
     readNames: function(req, res) {
         console.log('in adminSurveyCtrl');
         console.log('in readNames');
-        SurveysModel
+        surveysModel
         .find({},'name')
         .exec(function(err, result) {
              console.log('err', err);
@@ -41,7 +40,7 @@ module.exports = {
         console.log('in adminSurveyCtrl');
         console.log('in read');
         console.log('req.params', req.params)
-        SurveysModel
+        surveysModel
         .findById(req.params.id)
         .exec(function(err, result) {
              console.log('err', err);
@@ -60,23 +59,35 @@ module.exports = {
         console.log('in adminSurveyCtrl');
         console.log('in update');
         console.log('req.params = ', req.params)
-        UsersModel
+        usersModel
         .find(req.query, 'requested_surveys untaken_surveys')
         .exec(function(err, result) {
-             console.log('err', err);
-             console.log('result', result);
-             if (err) {
-                 console.log('in error routine');
-                 return res.status(500).send(err);
-             }
-             else {
-                 // Put update code here
+            console.log('err', err);
+            console.log('result', result);
+            if (err) {
+                console.log('in error routine');
+                return res.status(500).send(err);
+            }
+            else {
+                if (!result.requested_surveys)
+                    result.requested_surveys = [];
                  
-                 res.send(result)
+                result.requested_surveys.push(req.params.survey_id);
+                    
+                if (!result.requested_surveys)
+                    result.requested_surveys = [];
+                 
+                result.requested_surveys.push(req.params.survey_id);
+                 
+                result.save(function(er, re) {
+                    if (er)
+                        return res.status(500).send(er);
+                    else
+                        res.send(re);  
+                });
+                
              }
-        })
+        });
     }
-    
-  
-    
+ 
 }

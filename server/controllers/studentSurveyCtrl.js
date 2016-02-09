@@ -23,7 +23,7 @@ module.exports = {
         console.log('in studentSurveyCtrl');
         console.log('in read');
         console.log('req.params = ', req.params)
-        SurveysModel
+        surveysModel
         .findById(req.params.id, 'name description topic questions')
         .exec(function(err, result) {
              console.log('err', err);
@@ -42,7 +42,7 @@ module.exports = {
         console.log('in studentSurveyCtrl');
         console.log('in readUntaken');
         console.log('req.params = ', req.params)
-        UsersModel
+        usersModel
         .findById(req.params.student_id, 'untaken_surveys')
         .exec(function(err, result) {
              console.log('err', err);
@@ -62,7 +62,7 @@ module.exports = {
         console.log('in deleteUntaken');
         console.log('req.params = ', req.params)
         console.log('req.query = ', req.query)
-        UsersModel
+        usersModel
         .find(req.query)
         .exec(function(err, result) {
              console.log('err', err);

@@ -82,13 +82,14 @@ app.put('/api/admin/surveys/:survey_id', requireAuth, adminSurveyCtrl.update); /
 app.get('/api/admin/surveys/', requireAuth, adminSurveyCtrl.readNames) //  Get all survey names and Mongo ID's. Surveys collection.
 app.get('/api/admin/surveys/:id', requireAuth, adminSurveyCtrl.read) // Get survey based on id. Surveys collection.
 app.get('/api/admin/results/:id', requireAuth, adminSurveyCtrl.readResults) // Get survey results based on survey ID. Results collection.
-app.get('/api/admin/templates/:id', requireAuth, templatesCtrl.read) // Get specific template based on Mongo ID. If no params, then get all template names and Mongo ID's. Templates collection.
+app.get('/api/admin/templates', requireAuth, templatesCtrl.readNames) // Get all template names and Mongo ID's. Templates collection.
+app.get('/api/admin/templates/:id', requireAuth, templatesCtrl.read) // Get specific template based on Mongo ID.
 app.post('/api/admin/templates', requireAuth, templatesCtrl.create) // Writes new template. Templates collection.
-app.put('/api/admin/templates/:id', requireAuth, templatesCtrl.create) // Updates existing template. Templates collection.
+app.put('/api/admin/templates/:id', requireAuth, templatesCtrl.update) // Updates existing template. Templates collection.
 app.delete('/api/admin/templates/:id', requireAuth, templatesCtrl.delete) // Delete template based on id
 app.get('/api/admin/topics', requireAuth, topicsCtrl.read); // Read all topics from Topics collection.
 app.post('/api/admin/topics', requireAuth, topicsCtrl.create); // Write new topic record to Topics collection.
-app.delete('/api/admin/topics', requireAuth, topicsCtrl.delete); // Delete topic record from Topics collection.
+app.delete('/api/admin/topics/:id', requireAuth, topicsCtrl.delete); // Delete topic record based on id from Topics collection.
 app.get('/api/admin/users', requireAuth, usersCtrl.read); // Get all users from Users collection. Query parameter--can get individual user, all users in a cohort, all users assigned to a survey, or users who haven't yet taken survey. Users collection.
 app.put('/api/admin/users/:id', requireAuth, usersCtrl.read); // Update user.
 app.post('/api/admin/users/', requireAuth, usersCtrl.read); // Add new user.
