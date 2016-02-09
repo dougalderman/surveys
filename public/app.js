@@ -1,4 +1,4 @@
-angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns'])
+angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.exporter'])
 
 .config(function( $stateProvider, $urlRouterProvider ) {
 

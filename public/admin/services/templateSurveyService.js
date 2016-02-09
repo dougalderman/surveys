@@ -278,6 +278,21 @@ angular.module('surveys')
         return newArray;
     }
     
+    this.getYesNoFooterCellTemplate = function() {
+        return '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> Yes: {{col.getAggregationValue()}}</div> </div>';
+    }
+    
+    this.calculateYesCount = function(visRows, self) {
+        var yesCount = 0;
+        var column_id = self.name;
+        visRows.forEach(function(row, index, array) {
+            if (row.entity[column_id] === 'Yes') {
+                yesCount++;
+            }
+        });
+        return yesCount;
+    }
+     
     this.loadQAColumns = function(survey, results)     {
         var newArray = [];
           
@@ -311,7 +326,8 @@ angular.module('surveys')
                     newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg;
                     break;
                 case 'boolean' :
-                    newArray[i].aggregationFn = function( aggregation, fieldValue, numValue ){
+                    /* newArray[i].footerCellTemplate = '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> True: {{col.getTrueCount()}}, False: {{col.getFalseCount()}}</div> </div>';
+                    newArray[i].getTrueCount = function( aggregation, fieldValue, numValue ){
                         if ( typeof(aggregation.count) === 'undefined' ){
     aggregation.count = 0;
                         }
@@ -322,11 +338,11 @@ angular.module('surveys')
                         if (fieldValue) { // if true
                             aggregation.total++;
                         }
-                    };
-                    newArray[i].finalizerFn = function( aggregation ){
-                        aggregation.value = aggregation.total;
-                    };       
-                break;
+                        return aggregation.total;
+                    }; */
+                    newArray[i].footerCellTemplate =  this.getYesNoFooterCellTemplate();
+                    newArray[i].aggregationType = this.calculateYesCount;
+                    break;
                 case 'text' :
                     newArray[i].cellTooltip = true;
                     break;
@@ -360,15 +376,22 @@ angular.module('surveys')
                 var columnId = 'column' + j;
                 switch (results[i].answers[j].type) {
                     case 'numeric':
-                        // if (results[i].answers[j].numericAnswer)
-                        newArray[i][columnId] = results[i].answers[j].numericAnswer;
+                        if (results[i].answers[j].hasOwnProperty('numericAnswer')) {
+                            newArray[i][columnId] = results[i].answers[j].numericAnswer;
+                        }
                         break;
                     case 'boolean':
-                        newArray[i][columnId] = results[i].answers[j].booleanAnswer; 
+                        if(results[i].answers[j].hasOwnProperty('booleanAnswer')) {
+                            if (results[i].answers[j].booleanAnswer)
+                                newArray[i][columnId] = 'Yes';
+                            else
+                                newArray[i][columnId] = 'No';
+                        }
                         break; 
                     case 'text':
-                        //if (results[i].answers[j].textAnswer)
-                        newArray[i][columnId] = results[i].answers[j].textAnswer
+                        if (results[i].answers[j].hasOwnProperty('textAnswer')) {
+                            newArray[i][columnId] = results[i].answers[j].textAnswer
+                        }
                         break;    
                         
                 }

@@ -18,18 +18,23 @@ angular.module('surveys')
     
     $scope.user_report_options = {
         data: 'userReportData',
+        showGridFooter: true,
+        showColumnFooter: true,
         columnDefs: [
           {field: 'first_name', displayName: 'First Name', enableHiding: false},
           {field: 'last_name', displayName: 'Last Name', enableHiding: false},
-          {field: 'took_survey',  displayName: 'Took Survey?', enableHiding: false}
+          {field: 'took_survey',  displayName: 'Took Survey?', enableHiding: false, footerCellTemplate: templateSurveyService.getYesNoFooterCellTemplate(), aggregationType: templateSurveyService.calculateYesCount}
         ]
     };
     
     $scope.q_a_options = {
         data: 'q_a_data',
         showGridFooter: true,
-        showColumnFooter: true
-       };
+        showColumnFooter: true,
+        exporterCsvFilename: 'surveyData.csv',
+        enableGridMenu: true,
+        exporterMenuPdf: false
+    };
      
     $scope.loadSurveyResults = function() {
         templateSurveyService.getSurveyResults($scope.survey._id)

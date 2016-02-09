@@ -22,6 +22,13 @@ angular.module('surveys')
             url: '/api/surveys/',
             body: data
         });
-    }; */
+    };
+    
+    /* this.deleteFromUntakenSurveys = function(surveyId, studentId) {
+    	return $http({
+            method: 'DELETE',
+            url: '/api/surveys/untaken/surveyId?_id=' + studentId,
+        });
+    };*/
     
 });

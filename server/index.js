@@ -7,9 +7,12 @@ var express = require('express'),
     localStrategy = require('passport-local').Strategy,
     config = require('./config.js');
 
-// db models
-// var User = require('./api/models/UserModel.js');
-
+/* var adminSurveyCtrl = require('./controllers/adminSurveyCtrl.js'),
+    studentSurveyCtrl = require('./controllers/studentSurveyCtrl.js'),
+    templatesCtrl = require('./controllers/templatesCtrl.js'),
+    topicsCtrl = require('./controllers/topicsCtrl.js'),
+    usersCtrl = require('./controllers/usersCtrl.js');
+*/
 
 var app = express(),
     port = 7518;
@@ -35,7 +38,7 @@ app.use(passport.session());
 			return done(null, user.toJSON());
 		});
 	});
-})); */
+})); 
 
 
 passport.serializeUser(function(user, done) {
@@ -45,6 +48,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
     done(null, obj);
 })
+*/
 
 /* var mongoUri = 'mongodb://localhost:27017/surveys';
 
@@ -55,19 +59,41 @@ mongoose.connection.once('open', function() {
 }) */
 
 
-var requireAuth = function(req, res, next) {
+/* var requireAuth = function(req, res, next) {
   if (req.isAuthenticated()) {
 		next();
 	}
     else {
         return res.status(403).send('Not logged in');
     }
+} */
+
+var requireAuth = function(req, res, next) {
+    
 }
-
-/* app.get('/api/github/following', requireAuth, gitCtrl.getFollowing); 
-
-app.get('/api/github/:username/activity', requireAuth, gitCtrl.getActivity); */
-
+/*
+// Endpoints
+app.get('/api/surveys/untaken/:student_id', requireAuth, studentSurveyCtrl.readUntaken); // Get untaken surveys for student Mongo Id. Users collection.
+app.delete('/api/surveys/untaken/:survey_id', requireAuth, studentSurveyCtrl.deleteUntaken); // Delete untaken survey for student (after survey successfully completed). Param is survey Mongo Id, and query is student Mongo Id. Users collection.
+app.get('/api/surveys/:id',  requireAuth, studentSurveyCtrl.read); // Get survey questions for survey id under Surveys.
+app.post('/api/surveys/results', requireAuth, isAuthenticated, studentSurveyCtrl.create); // Write survey answers. Results collection.
+app.post('/api/admin/surveys', requireAuth, adminSurveyCtrl.create); // Create new survey. Surveys collection.
+app.put('/api/admin/surveys/:survey_id', requireAuth, adminSurveyCtrl.update); // Write requested and untaken surveys to user record. Param is survey Mongo ID, and query is student Mongo Id. Users collection.
+app.get('/api/admin/surveys/', requireAuth, adminSurveyCtrl.readNames) //  Get all survey names and Mongo ID's. Surveys collection.
+app.get('/api/admin/surveys/:id', requireAuth, adminSurveyCtrl.read) // Get survey based on id. Surveys collection.
+app.get('/api/admin/results/:id', requireAuth, adminSurveyCtrl.readResults) // Get survey results based on survey ID. Results collection.
+app.get('/api/admin/templates/:id', requireAuth, templatesCtrl.read) // Get specific template based on Mongo ID. If no params, then get all template names and Mongo ID's. Templates collection.
+app.post('/api/admin/templates', requireAuth, templatesCtrl.create) // Writes new template. Templates collection.
+app.put('/api/admin/templates/:id', requireAuth, templatesCtrl.create) // Updates existing template. Templates collection.
+app.delete('/api/admin/templates/:id', requireAuth, templatesCtrl.delete) // Delete template based on id
+app.get('/api/admin/topics', requireAuth, topicsCtrl.read); // Read all topics from Topics collection.
+app.post('/api/admin/topics', requireAuth, topicsCtrl.create); // Write new topic record to Topics collection.
+app.delete('/api/admin/topics', requireAuth, topicsCtrl.delete); // Delete topic record from Topics collection.
+app.get('/api/admin/users', requireAuth, usersCtrl.read); // Get all users from Users collection. Query parameter--can get individual user, all users in a cohort, all users assigned to a survey, or users who haven't yet taken survey. Users collection.
+app.put('/api/admin/users/:id', requireAuth, usersCtrl.read); // Update user.
+app.post('/api/admin/users/', requireAuth, usersCtrl.read); // Add new user.
+app.delete('/api/admin/users/:id', requireAuth, usersCtrl.read); // Delete user based on id.
+*/
 
 app.listen(port, function() {
     console.log('Server is running on port ' + port);

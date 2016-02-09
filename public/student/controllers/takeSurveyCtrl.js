@@ -119,7 +119,21 @@ angular.module('surveys')
         if (allRequiredAnswered) {
             $scope.newResults = $scope.convertValues()
             console.log('newResults = ', $scope.newResults);
-     /*   takeSurveyService.writeSurveyResults($scope.results); */
+     /*   takeSurveyService.writeSurveyResults($scope.newResults)
+         .then(function( response ) {
+            console.log('in takeSurveyCtrl');
+            console.log('in processForm');
+            console.log('after writeSurveyResults');
+            console.log('response', response);
+            takeSurveyService.deleteFromUntakenSurveys($scope.survey._id, $scope.student._id)
+           .then(function( response ) {
+                console.log('in takeSurveyCtrl');
+                console.log('in processForm');
+                console.log('after deleteUntakenSurvey');
+                console.log('response', response);
+                // send back to previous page
+        }); */
+            
         }
         else {
            alert('Need to answer all required questions shown in red');
