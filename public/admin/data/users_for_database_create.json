@@ -1,0 +1,120 @@
+[
+    {
+        "first_name": "Dan",
+        "last_name": "Abrams",
+        "student_id": 32512,
+        "cohort":  350,
+        "email": "dabrams@yahoo.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Julie",
+        "last_name": "Ferrera",
+        "student_id": 76212,
+        "cohort":  350,
+        "email": "jfr1@gmail.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "John",
+        "last_name": "Smith",
+        "student_id": 151235,
+        "cohort":  350,
+        "email": "jsmith@microsoft.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Bruce",
+        "last_name": "Jones",
+        "student_id": 13451,
+        "cohort":  350,
+        "email": "brjones@yahoo.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Zach",
+        "last_name": "Nanney",
+        "student_id": 74125,
+        "cohort":  350,
+        "email": "zach@reachforthestars.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Luke",
+        "last_name": "Skywalker",
+        "student_id": 5151325,
+        "cohort":  350,
+        "email": "luke@starwars.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Joe",
+        "last_name": "Montana",
+        "student_id": 958512,
+        "cohort":  350,
+        "email": "joe@49ers.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Harry",
+        "last_name": "Mason",
+        "student_id": 612153,
+        "cohort":  350,
+        "email": "harry2@gmail.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Wendy",
+        "last_name": "Wilson",
+        "student_id": 574156,
+        "cohort":  350,
+        "email": "wendy512@newhorizons.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Mary",
+        "last_name": "Donalds",
+        "student_id": 51235156,
+        "cohort":  350,
+        "email": "mary1@yahoo.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Michael",
+        "last_name": "Smith",
+        "student_id": 35512159,
+        "cohort":  250,
+        "email": "michael323@gmail.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Nick",
+        "last_name": "Verrechio",
+        "student_id": 21231159,
+        "cohort":  250,
+        "email": "nick4511@apple.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Yenta",
+        "last_name": "Cohen",
+        "student_id": 913131,
+        "cohort":  250,
+        "email": "yenta511@netflix.com",
+        "password": "123",
+        "roles": ["student"]
+    }
+]
+   

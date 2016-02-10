@@ -78,17 +78,22 @@ angular.module('surveys')
             var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving.");
             if (select === true) {
                 console.log('update template')
-                //templateSurveyService.updateTemplate(template._id, $scope.template);
+                templateSurveyService.updateTemplate($scope.template._id, $scope.template);
+                // then / catch for promise
+                // $state.go(admin)
             }
         } 
         else {  // new template
             console.log('new template')
-            //templateSurveyService.writeNewTemplate($scope.template);
+            if ($scope.template._id)
+                delete $scope.template._id; // delete id in case user modifies template and changes name.
+            
+            templateSurveyService.writeNewTemplate($scope.template);
+            // then / catch for promise
+            // $state.go(admin)
         }
-        // templateSurveyService.
-
+       
     };
     
-    //$scope.readAllTemplateNames();
     
 });

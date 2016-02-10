@@ -77,6 +77,17 @@ angular.module('surveys')
         }); 
     };
     
+    $scope.loadTopic = function() {
+        templateSurveyService.getTopic($scope.selectedSurvey.topic)
+        .then(function( response ) {
+            console.log('in viewResultsCtrl');
+            console.log('in loadSelectedSurvey');
+            console.log('response', response);
+            $scope.topic = response.data;
+            $scope.loadUsersRequested();
+        }); 
+    };
+    
     $scope.loadSelectedSurvey = function() {
         console.log('selectedSurvey', $scope.selectedSurvey);
         templateSurveyService.getSurvey($scope.selectedSurvey._id)
@@ -85,7 +96,7 @@ angular.module('surveys')
             console.log('in loadSelectedSurvey');
             console.log('response', response);
             $scope.survey = response.data;
-            $scope.loadUsersRequested();
+            $scope.loadTopic();
         }); 
     };
    

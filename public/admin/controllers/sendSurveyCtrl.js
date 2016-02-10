@@ -31,7 +31,9 @@ angular.module('surveys')
             console.log('in loadSelectedResponse');
             console.log('response', response);
             $scope.survey = response.data;
-           
+            // Delete template Mongo Id so that it doesn't get saved as survey Mongo Id
+            if ($scope.survey._id)
+                delete $scope.survey._id;
             // Find variables in name, description, and questions
             $scope.var_names = templateSurveyService.checkForVars($scope.survey);
             console.log('$scope.var_names', $scope.var_names);
@@ -58,23 +60,51 @@ angular.module('surveys')
         $scope.varsCompiled = true;
 
     };
+    
+    $scope.updateUserRecords = function() {
+        templateSurveyService.updateSurveyUsers($scope.surveyId, $scope.newSurvey.cohortSentTo)
+        .then(function(response) {
+            console.log('in updateUserRecords');
+            console.log('response = ' + response);
+            // $state.go('admin');
+        });
+    };
+    
+    $scope.writeSurvey = function() {
+        templateSurveyService.writeNewSurvey($scope.newSurvey)
+        .then(function( response ) {
+            console.log('in writeSurvey');
+            console.log('response', response);
+            $scope.surveyId = response.data._id;
+            $scope.updateUserRecords();
+        });
+             
+    };
+      
+    /* $scope.findUsersInCohort = function() {
+        templateSurveyService.checkForUsersInCohort($scope.cohortId)
+        .then(function( response ) {
+            console.log('in findUsersInCohort');
+            console.log('response', response);
+            $scope.newSurvey.dateSent = new Date();
+            $scope.sentTo = response.data;
+            console.log('survey before writing to database', $scope.newSurvey);
+            $scope.writeSurvey();
+        });
+    } */
+    
     $scope.processForm = function() {
         $scope.newSurvey = {};
         console.log('in processForm');
         console.log('survey before compileVariables', $scope.survey);
         $scope.newSurvey = templateSurveyService.compileVariables($scope.survey, $scope.var_names, $scope.var_values);
         console.log('survey after compileVariables', $scope.newSurvey);
-        templateSurveyService.checkForUsers($scope.cohortId)
-        .then(function( response ) {
-            $scope.newSurvey.dateSent = new Date();
-            $scope.newSurvey.sentTo = response.data;
-            console.log('survey before writing to database', $scope.newSurvey);
-            // templateSurveyService.writeNewSurvey($scope.newSurvey);
-        });
-       
-    
-        
+        $scope.newSurvey.dateSent = new Date();
+        // $scope.findUsersInCohort();
+        console.log('survey before writing to database', $scope.newSurvey);
+        $scope.writeSurvey();
     };
+       
     
     $scope.loadTopicNames();
     

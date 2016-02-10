@@ -20,8 +20,9 @@ module.exports = {
     read: function(req, res) {
         console.log('in topicsCtrl');
         console.log('in read');
+        console.log('req.query = ', req.query)
         topicsModel
-        .find({})
+        .find(req.query)
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);

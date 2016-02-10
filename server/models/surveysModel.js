@@ -3,12 +3,12 @@ var questionSchema = require('./../schema/questionSchema.js');
 var Schema = mongoose.Schema;
   
 var surveysSchema = new Schema({
-    name: {type: 'String', required: true]},
+    name: {type: 'String', required: true},
 	description: {type: 'String'},
-	sentTo: [{type: Schema.Types.ObjectId, ref: 'Users'}],
+	cohortSentTo: {type: 'Number', required: true},
 	dateSent: {type: 'Date', required: true},
-	topic: {type: 'String', required: true},
-	results: [{type: Schema.Types.ObjectId, ref: 'Results'}],
+	topic: {type: Schema.Types.ObjectId, ref: 'Topics'},
+//	results: [{type: Schema.Types.ObjectId, ref: 'Results'}],
 	questions: [questionSchema]
 });
 

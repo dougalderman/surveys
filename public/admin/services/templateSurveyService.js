@@ -2,40 +2,40 @@ angular.module('surveys')
 .service('templateSurveyService', function( $http, uiGridConstants) {
    // CRUD 
     
-    /* this.getAllTemplateNames = function() {
+    this.getAllTemplateNames = function() {
     	return $http({
             method: 'GET',
             url: '/api/admin/templates/' 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getAllTemplateNames = function() {
+    /* this.getAllTemplateNames = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/templateNames.json'
         });
-     };
+     }; */
     
-    /* this.getTemplate = function(id) {
+     this.getTemplate = function(id) {
     	return $http({
             method: 'GET',
-            url: '/api/admin/templates/id' 
+            url: '/api/admin/templates/' + id 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getTemplate = function(id) {
+    /* this.getTemplate = function(id) {
     	return $http({
             method: 'GET',
             url: 'admin/data/nickJonesTemplate.json'
         });
-    };
+    }; */
     
     this.updateTemplate = function(id, data) {
     	return $http({
             method: 'PUT',
-            url: '/api/admin/templates/:id',
+            url: '/api/admin/templates/' + id,
             data: data
         });
     }; 
@@ -48,20 +48,27 @@ angular.module('surveys')
         });
     }; 
     
-      /* this.getAllTopicNames = function() {
+    this.getAllTopicNames = function() {
     	return $http({
             method: 'GET',
             url: '/api/admin/topics/' 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getAllTopicNames = function() {
+    /* this.getAllTopicNames = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/topicNames.json'
         });
-     };
+     }; */
+    
+    /* this.checkForUsersInCohort = function(cohortId) {
+    	return $http({
+            method: 'GET',
+            url: '/api/admin/users/cohort/' + cohortId,
+        });
+    };  */
     
     this.writeNewSurvey = function(data) {
     	return $http({
@@ -71,92 +78,102 @@ angular.module('surveys')
         });
     }; 
     
-    /* this.checkForUsers = function(cohortId) {
+     this.updateSurveyUsers = function(survey_id, cohort_id) {
     	return $http({
-            method: 'GET',
-            url: '/api/admin/surveys?cohort=' + cohortId,
+            method: 'PUT',
+            url: '/api/admin/surveys/' + survey_id + '?cohort=' + cohort_id,
         });
-    };  */
-    this.checkForUsers = function(cohortId) {
+    }; 
+    
+    // Staged data from json below:
+    /* this.checkForUsers = function(cohortId) {
     	return $http({
             method: 'GET',
             url: '/admin/data/usersInCohort.json',
         });
-    };
+    }; */
     
-    /* this.getAllSurveyNames = function() {
+    this.getAllSurveyNames = function() {
     	return $http({
             method: 'GET',
             url: '/api/admin/surveys/' 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getAllSurveyNames = function() {
+    /* this.getAllSurveyNames = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/surveyNames.json'
         });
-     };
+     }; */
     
-     /* this.getSurvey = function(id) {
+    this.getSurvey = function(id) {
     	return $http({
             method: 'GET',
             url: '/api/admin/surveys/' + id 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getSurvey = function() {
+    /* this.getSurvey = function() {
     	return $http({
             method: 'GET',
             url: 'admin/data/survey1.json'
         });
-     };
+     }; */
     
-    /* this.getSurveyUsersRequested = function(survey_id) {
+    this.getTopic = function(topic_id) {
+    	return $http({
+            method: 'GET',
+            url: '/api/admin/topics?_id='+topic_id 
+        });
+    }; 
+    
+    this.getSurveyUsersRequested = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/users?requested_surveys=' + survey_id 
+            url: '/api/admin/users/requested_surveys/' + survey_id 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getSurveyUsersRequested = function(survey_id) {
+    /* this.getSurveyUsersRequested = function(survey_id) {
     	return $http({
             method: 'GET',
             url: 'admin/data/usersRequested.json'
         });
-     };
+     }; */
     
-     /* this.getSurveyUsersUntaken = function(survey_id) {
+    this.getSurveyUsersUntaken = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/users?untaken_surveys=' + survey_id 
+            url: '/api/admin/users/untaken_surveys/' + survey_id 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getSurveyUsersUntaken = function(survey_id) {
+    /* this.getSurveyUsersUntaken = function(survey_id) {
     	return $http({
             method: 'GET',
             url: 'admin/data/usersUntaken.json'
         });
-     };
-    /* this.getSurveyResults = function(survey_id) {
+     }; */
+    
+    this.getSurveyResults = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/results?survey=' + survey_id 
+            url: '/api/admin/results/' + survey_id 
         });
-    }; */
+    }; 
     
     // Staged data from json below:
-    this.getSurveyResults = function(survey_id) {
+    /* this.getSurveyResults = function(survey_id) {
     	return $http({
             method: 'GET',
             url: 'admin/data/results_51225.json'
         });
-     };
+     }; */
 // Non-CRUD    
     
     this.findMatch = function(str) { // look for $$something$$
