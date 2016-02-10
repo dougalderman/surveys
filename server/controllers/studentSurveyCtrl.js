@@ -42,8 +42,8 @@ module.exports = {
         console.log('in studentSurveyCtrl');
         console.log('in readUntaken');
         console.log('req.params = ', req.params)
-        usersModel
-        .findById(req.params.student_id, 'untaken_surveys')
+        surveysModel
+        .find({users_untaken: req.params.student_id}, 'users_untaken')
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);
@@ -62,7 +62,7 @@ module.exports = {
         console.log('in deleteUntaken');
         console.log('req.params = ', req.params)
         console.log('req.query = ', req.query)
-        usersModel
+        surveysModel
         .find(req.query)
         .exec(function(err, result) {
              console.log('err', err);
@@ -72,10 +72,10 @@ module.exports = {
                  return res.status(500).send(err);
              }
              else {
-                 if (result.untaken_surveys) {
-                    var indx = result.untaken_surveys.indexOf(req.params.survey_id);
+                 if (result.usersUntaken) {
+                    var indx = result.usersUntaken.indexOf(req.params.student_id);
                     if (indx !== -1) {
-                        result.untaken_surveys = result.untaken_surveys.splice(indx, 1)
+                        result.usersUntaken = result.usersUntaken.splice(indx, 1)
                     }
                     result.save(function(er, re) {
                         if (er)

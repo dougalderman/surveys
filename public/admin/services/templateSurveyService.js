@@ -63,7 +63,7 @@ angular.module('surveys')
         });
      }; */
     
-    /* this.checkForUsersInCohort = function(cohortId) {
+     /* this.checkForUsersInCohort = function(cohortId) {
     	return $http({
             method: 'GET',
             url: '/api/admin/users/cohort/' + cohortId,
@@ -78,12 +78,12 @@ angular.module('surveys')
         });
     }; 
     
-     this.updateSurveyUsers = function(survey_id, cohort_id) {
+    /* this.updateSurveyUsers = function(survey_id, cohort_id) {
     	return $http({
             method: 'PUT',
             url: '/api/admin/surveys/' + survey_id + '?cohort=' + cohort_id,
         });
-    }; 
+    }; */
     
     // Staged data from json below:
     /* this.checkForUsers = function(cohortId) {

@@ -8,9 +8,9 @@ var usersSchema = new Schema({
 	cohort:  {type: 'Number', required: true},
 	email: {type: 'String', required: true},
 	password: {type: 'String', required: true},
-	roles: [{type: 'String', required: true}],
-	requested_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}],
-	untaken_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}]
+	roles: [{type: 'String', required: true}]
+//	requested_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}],
+//	untaken_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}]
 });
 
 module.exports =  mongoose.model('Users', usersSchema);

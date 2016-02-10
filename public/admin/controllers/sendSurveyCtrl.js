@@ -61,22 +61,23 @@ angular.module('surveys')
 
     };
     
-    $scope.updateUserRecords = function() {
+/*    $scope.updateUserRecords = function() {
         templateSurveyService.updateSurveyUsers($scope.surveyId, $scope.newSurvey.cohortSentTo)
         .then(function(response) {
             console.log('in updateUserRecords');
             console.log('response = ' + response);
             // $state.go('admin');
         });
-    };
+    }; */
     
     $scope.writeSurvey = function() {
         templateSurveyService.writeNewSurvey($scope.newSurvey)
         .then(function( response ) {
             console.log('in writeSurvey');
             console.log('response', response);
-            $scope.surveyId = response.data._id;
-            $scope.updateUserRecords();
+        //    $scope.surveyId = response.data._id;
+        //    $scope.updateUserRecords();
+            // $state.go('admin');
         });
              
     };
@@ -100,7 +101,7 @@ angular.module('surveys')
         $scope.newSurvey = templateSurveyService.compileVariables($scope.survey, $scope.var_names, $scope.var_values);
         console.log('survey after compileVariables', $scope.newSurvey);
         $scope.newSurvey.dateSent = new Date();
-        // $scope.findUsersInCohort();
+     //   $scope.findUsersInCohort();
         console.log('survey before writing to database', $scope.newSurvey);
         $scope.writeSurvey();
     };

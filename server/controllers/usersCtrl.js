@@ -36,7 +36,7 @@ module.exports = {
         })
     },
     
-    /* readUsersInCohort: function(req, res) {
+    readUsersInCohort: function(req, res) {
         console.log('in usersCtrl');
         console.log('in readUsersInCohort');
         console.log('req.params', req.params)
@@ -53,9 +53,9 @@ module.exports = {
                  res.send(result)
              }
         })
-    }, */
+    }, 
     
-     readRequestedSurveyUsers: function(req, res) {
+    /* readRequestedSurveyUsers: function(req, res) {
         console.log('in usersCtrl');
         console.log('in readRequestedSurveyUsers');
         console.log('req.params', req.params)
@@ -91,7 +91,7 @@ module.exports = {
                  res.send(result)
              }
         })
-    },
+    }, */
     
     update: function(req, res) {
         console.log('in usersCtrl');
