@@ -93,10 +93,10 @@ angular.module('surveys')
         });
     }; */
     
-    this.getAllSurveyNames = function() {
+    this.getAllSurveyNamesAndDates = function() {
     	return $http({
             method: 'GET',
-            url: '/api/admin/surveys/' 
+            url: '/api/admin/surveys/names_dates' 
         });
     }; 
     
@@ -130,10 +130,10 @@ angular.module('surveys')
         });
     }; 
     
-    this.getSurveyUsersRequested = function(survey_id) {
+    this.getSurveyUsersSentTo = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/users/requested_surveys/' + survey_id 
+            url: '/api/admin/surveys/sent_to/' + survey_id 
         });
     }; 
     
@@ -148,7 +148,7 @@ angular.module('surveys')
     this.getSurveyUsersUntaken = function(survey_id) {
         return $http({
             method: 'GET',
-            url: '/api/admin/users/untaken_surveys/' + survey_id 
+            url: '/api/admin/surveys/untaken/' + survey_id 
         });
     }; 
     
@@ -277,7 +277,7 @@ angular.module('surveys')
         });
         
         return userTookSurvey;
-    }
+    };
     
     this.loadUserReportData = function(usersRequested, usersUntaken)     {
         var newArray = [];
@@ -293,11 +293,11 @@ angular.module('surveys')
         }
         
         return newArray;
-    }
+    };
     
     this.getYesNoFooterCellTemplate = function() {
         return '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> Yes: {{col.getAggregationValue()}}</div> </div>';
-    }
+    };
     
     this.calculateYesCount = function(visRows, self) {
         var yesCount = 0;
@@ -308,7 +308,7 @@ angular.module('surveys')
             }
         });
         return yesCount;
-    }
+    };
      
     this.loadQAColumns = function(survey, results)     {
         var newArray = [];
@@ -367,7 +367,7 @@ angular.module('surveys')
         } 
         
         return newArray;
-    }
+    };
     
     /* this.sortByType = function(answers) {
         answers.sort(function(a, b) {
@@ -418,6 +418,10 @@ angular.module('surveys')
             
         return newArray;
     }; 
+    
+    this.checkForAdminAuth = function() {
+        
+    }
     
     
 });

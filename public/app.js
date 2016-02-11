@@ -16,7 +16,15 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 	.state('admin', {
 		url: '/admin',
 		templateUrl: 'admin/views/admin.html',
-		controller: 'adminCtrl'
+		controller: 'adminCtrl',
+        resolve: {
+            auth: function(templateSurveyService) {
+                return templateSurveyService.checkForAdminAuth()
+                .then(function( response ) {
+                     return response.data;
+              }); 
+            }
+        } 
 	})
     .state('createModifyTemplate', {
 		url: '/admin/create_modify_template',
@@ -63,7 +71,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
         controller: 'viewResultsCtrl',
         resolve: {
             surveys: function(templateSurveyService) {
-                return templateSurveyService.getAllSurveyNames()
+                return templateSurveyService.getAllSurveyNamesAndDates()
                 .then(function( response ) {
                      return response.data;
               }); 
@@ -75,6 +83,21 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		url: '/admin/update_topics',
 		templateUrl: 'admin/views/updateTopics.html',
 		controller: 'updateTopicsCtrl'
+	})
+    .state('login', {
+		url: '/login',
+		templateUrl: 'admin/views/login.html',
+		controller: 'studentLoginCtrl'
+	})
+    .state('adminLogin', {
+		url: '/admin/login',
+		templateUrl: 'admin/views/login.html',
+		controller: 'adminLoginCtrl'
+	})
+    .state('signup', {
+		url: '/signup',
+		templateUrl: 'admin/views/signup.html',
+		controller: 'signupCtrl'
 	})
    
 

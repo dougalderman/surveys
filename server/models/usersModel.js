@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt-nodejs');
   
 var usersSchema = new Schema({
     first_name: {type: 'String', required: true},
@@ -12,5 +13,16 @@ var usersSchema = new Schema({
 //	requested_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}],
 //	untaken_surveys: [{type: Schema.Types.ObjectId, ref: 'Surveys'}]
 });
+
+// Methods
+// Generate hash
+usersSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(9), null);
+};
+
+//Check if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
 
 module.exports =  mongoose.model('Users', usersSchema);

@@ -1,13 +1,21 @@
 angular.module('surveys')
 .controller('viewResultsCtrl', function($scope, surveys, templateSurveyService) {
     
-    $scope.surveys = surveys;
+ //   $scope.surveys = surveys;
+    $scope.displaySurveys = [];
+    for (var i = 0; i < surveys.length; i++) {
+        $scope.displaySurveys[i] = {};
+        var timeIndex = surveys[i].dateSent.indexOf('T');
+        surveys[i].dateSent = surveys[i].dateSent.slice(0, timeIndex);
+        $scope.displaySurveys[i].nameDate = surveys[i].name + '___' + surveys[i].dateSent;
+        $scope.displaySurveys[i]._id = surveys[i]._id;
+    }
     $scope.userReportData = [];
     $scope.q_a_columns = [];
     $scope.q_a_data = [];
       
     console.log('In viewResultsCtrl');
-    console.log('surveys', $scope.surveys);
+    console.log('surveys', surveys);
     
     $(document).ready(function() {
         window.setTimeout(function() {  // Need to delay execution of material_select to make sure Angular has 
@@ -66,11 +74,11 @@ angular.module('surveys')
     };
     
     
-    $scope.loadUsersRequested = function() {
-        templateSurveyService.getSurveyUsersRequested($scope.survey._id)
+    $scope.loadUsersSentTo = function() {
+        templateSurveyService.getSurveyUsersSentTo($scope.survey._id)
         .then(function( response ) {
             console.log('in viewResultsCtrl');
-            console.log('in loadUsersRequested');
+            console.log('in loadUsersSentTo');
             console.log('response', response);
             $scope.usersRequested = response.data;
             $scope.loadUsersUntaken();
@@ -78,18 +86,18 @@ angular.module('surveys')
     };
     
     $scope.loadTopic = function() {
-        templateSurveyService.getTopic($scope.selectedSurvey.topic)
+        templateSurveyService.getTopic($scope.survey.topic)
         .then(function( response ) {
             console.log('in viewResultsCtrl');
-            console.log('in loadSelectedSurvey');
+            console.log('in loadTopic');
             console.log('response', response);
             $scope.topic = response.data;
-            $scope.loadUsersRequested();
+            $scope.loadUsersSentTo();
         }); 
     };
     
     $scope.loadSelectedSurvey = function() {
-        console.log('selectedSurvey', $scope.selectedSurvey);
+        console.log('selectedSurvey = ', $scope.selectedSurvey);
         templateSurveyService.getSurvey($scope.selectedSurvey._id)
         .then(function( response ) {
             console.log('in viewResultsCtrl');

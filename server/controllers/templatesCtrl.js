@@ -89,7 +89,7 @@ module.exports = {
         console.log('in update');
         console.log('req.params = ', req.params)
         templatesModel
-        .findById(req.params)
+        .findByIdAndRemove(req.params.id)
         .exec(function(err, result) {
             console.log('err', err);
             console.log('result', result);
@@ -98,14 +98,8 @@ module.exports = {
                 return res.status(500).send(err);
             }
             else {
-                result.delete(function(er, re) {
-                    if (er)
-                        return res.status(500).send(er);
-                    else
-                        res.send(re);  
-                });
-                
-             }
+                res.send(result);  
+            }
         });
     }
  

@@ -1,0 +1,30 @@
+ <header class="surveyHeader">
+    <img class="logo" src="/images/devmountain_logo.png" height="70">
+    </img>
+    <div class="headerTitle">Signup</div>
+</header>
+
+<div id="signupScreen" class="surveyContainer">
+    <div class="container">
+        <form ng-submit="processForm()">
+
+       
+            <p>Name:</p>
+            <div class="row">
+                <div class="input-field col s6">
+                      <input ng-model="user.name" type="text" id="templateName">
+                      <!--<label for="templateName">Type Name Below</label>-->
+                </div>
+            </div>
+
+            <p>Description:</p>
+            <div class="row">
+                <div class="input-field col s6">
+                      <input ng-model="template.description" type="text" id="templateDescription">
+                      <!--<label for="tempateDescription">Type Description Below</label>-->
+                </div>
+            </div>
+            
+         </form>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+{
+        "survey": "56bb3f7247da527c2135cb29",
+        "user": "56ba24d978f9db8826bee7a4",
+        "answers": 
+        [
+            {
+                "numericAnswer": 2,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 4,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 9,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": false,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "Not a whole lot",
+                "type": "text"
+            },
+            {
+                "booleanAnswer": true,
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "survey": "56bb3f7247da527c2135cb29",
+        "user": "56ba26b83bc5dc4c04cefc65",
+        "answers": 
+        [
+            {
+                "numericAnswer": 3,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 2,
+                "type": "numeric"
+            },
+            {
+                "numericAnswer": 6,
+                "type": "numeric"
+            },
+            {
+                "booleanAnswer": false,
+                "type": "boolean"
+            },
+            {
+                "textAnswer": "I liked him. He's a great teacher.",
+                "type": "text"
+            },
+            {
+                "booleanAnswer": false,
+                "type": "boolean"
+            }
+        ]
+    }

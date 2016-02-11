@@ -39,6 +39,25 @@ module.exports = {
     read: function(req, res) {
         console.log('in adminSurveyCtrl');
         console.log('in read');
+        console.log('req.query', req.query)
+        surveysModel
+        .find(req.query)
+        .exec(function(err, result) {
+             console.log('err', err);
+             console.log('result', result);
+             if (err) {
+                 console.log('in error routine');
+                 return res.status(500).send(err);
+             }
+             else {
+                 res.send(result)
+             }
+        })
+    },
+    
+    readOne: function(req, res) {
+        console.log('in adminSurveyCtrl');
+        console.log('in readOne');
         console.log('req.params', req.params)
         surveysModel
         .findById(req.params.id)
@@ -55,11 +74,11 @@ module.exports = {
         })
     },
     
-    readNames: function(req, res) {
+    readNamesAndDates: function(req, res) {
         console.log('in adminSurveyCtrl');
-        console.log('in readNames');
+        console.log('in readNamesAndDates');
         surveysModel
-        .find({},'name')
+        .find({},'name dateSent')
         .sort({dateSent: 'desc'})
         .exec(function(err, result) {
              console.log('err', err);
@@ -76,7 +95,7 @@ module.exports = {
     
     readResults: function(req, res) {
         console.log('in adminSurveyCtrl');
-        console.log('in readNames');
+        console.log('in readResults');
         console.log('req.params', req.params)
         resultsModel
         .find({survey: req.params.id})
@@ -95,10 +114,10 @@ module.exports = {
     
     readSentTo: function(req, res) {
         console.log('in adminSurveyCtrl');
-        console.log('in read');
+        console.log('in readSentTo');
         console.log('req.params', req.params)
         surveysModel
-        .findById(req.params.id, 'usersSentTo')
+        .findById(req.params.survey_id, 'usersSentTo')
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);
@@ -108,7 +127,7 @@ module.exports = {
              }
              else {
                     usersModel
-                    .find({'_id': { $in: result.usersSentTo} }, 'first_name last_name')
+                    .find({'_id': { $in: result._doc.usersSentTo} }, 'first_name last_name')
                     .exec(function(er, re) {
                     if (er)
                         return res.status(500).send(er);
@@ -121,10 +140,10 @@ module.exports = {
     
     readUntaken: function(req, res) {
         console.log('in adminSurveyCtrl');
-        console.log('in read');
+        console.log('in readUntaken');
         console.log('req.params', req.params)
         surveysModel
-        .findById(req.params.id, 'usersUntaken')
+        .findById(req.params.survey_id, 'usersUntaken')
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);
@@ -134,7 +153,7 @@ module.exports = {
              }
              else {
                     usersModel
-                    .find({'_id': { $in: result.usersUntaken} }, 'first_name last_name')
+                    .find({'_id': { $in: result._doc.usersUntaken} }, 'first_name last_name')
                     .exec(function(er, re) {
                     if (er)
                         return res.status(500).send(er);
