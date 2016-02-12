@@ -3,6 +3,11 @@ angular.module('surveys')
     
     console.log('$stateParams = ', $stateParams);
     
+    $(document).ready(function() {
+        if ($stateParams.toastMessage) 
+             Materialize.toast($stateParams.toastMessage, 4000);
+    });
+       
     $scope.gotoTop = function() {
         // set the location.hash to the id of
         // the element you wish to scroll to.
@@ -19,7 +24,12 @@ angular.module('surveys')
             console.log('in processForm')
             console.log('response', response);
             if (response.status === 200) {
-                $state.go('student');
+                if ($stateParams.successRedirect) {
+                    $state.go($stateParams.successRedirect);
+                }
+                else { // default redirect to student
+                    $state.go('student');
+                }
             }
         })
         .catch(function(err) {

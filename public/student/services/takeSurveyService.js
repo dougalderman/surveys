@@ -16,6 +16,13 @@ angular.module('surveys')
         });
      }
     
+    this.getTopic = function(topicId) {
+    	return $http({
+            method: 'GET',
+            url: '/api/topics?_id=' + topicId
+        });
+     }
+    
     // Staged data from json below:
     /* this.getSurvey = function(type) {
     	return $http({

@@ -3,6 +3,7 @@
         <img class="logo" src="/images/devmountain_logo.png" height="70">
         </img>
         <div class="headerTitle">Create / Modify Template</div>
+        <div class="admin_logout" ng-click="adminLogout()">Logout</div>
     </header>
 </div>
 
@@ -49,6 +50,7 @@
             
             <button class="button" type="button" ng-click="addNewQuestion()">Add New Question</button>
             <br>
+            <p class="error_msg" ng-show="errorMsg">{{errorMsg}}</p>
             <button class="button" type="submit">Save</button>
 
         </form>

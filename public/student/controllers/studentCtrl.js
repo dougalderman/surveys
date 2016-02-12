@@ -1,7 +1,22 @@
 angular.module('surveys')
-.controller('studentCtrl', function(takeSurveyService, $scope, auth, authService, $stateParams, $state) {
+.controller('studentCtrl', function(takeSurveyService, $scope, auth, authService, $stateParams, $state, $location, $anchorScroll) {
     console.log('auth', auth);
     console.log('$stateParams = ', $stateParams);
+    
+    $(document).ready(function() {
+        if ($stateParams.toastMessage) 
+             Materialize.toast($stateParams.toastMessage, 4000);
+    });
+    
+    $scope.gotoTop = function() {
+        // set the location.hash to the id of
+        // the element you wish to scroll to.
+        $location.hash('top');  // top of body
+
+        // call $anchorScroll()
+        $anchorScroll();
+    };
+    
         
     $scope.loadUntakenSurveys = function() {
         takeSurveyService.getUntaken(auth._id)
@@ -24,6 +39,10 @@ angular.module('surveys')
             }
         }); 
     }
+  
+    $scope.gotoTop();
     
     $scope.loadUntakenSurveys();
+    
+      
 });

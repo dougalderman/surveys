@@ -16,12 +16,12 @@ var setSignupDefaults = function(user) {
 
 module.exports = {
     
-    successRedirect: function(req, res) {
+    /* successRedirect: function(req, res) {
         if (checkRoles(req.user, 'admin'))
             res.redirect('/#/admin');
         else 
             return res.status(403).send('Not authorized');
-    },
+    }, */
 
     
     successRespond: function(req, res) {
@@ -56,10 +56,16 @@ module.exports = {
     },
     
     current_admin_user: function(req, res) {
-        if (req.isAuthenticated() && checkRoles(req.user, 'admin'))
-            res.send(req.user);
-        else
-            res.status(403).send('Not authorized');
+        if (req.isAuthenticated()) {
+            // Check user record for admin role
+            if (checkRoles(req.user, 'admin'))
+                res.send(req.user);
+            else
+                res.status(403).send('Not authorized');
+        }
+        else {
+            res.status(401).send('Not logged in');
+        }
     },
     
     requireAuth: function (req, res, next) {
@@ -71,12 +77,17 @@ module.exports = {
     },
 
     requireAdminAuth: function (req, res, next) {
-        // Check user record for admin role
-        if (req.isAuthenticated() && checkRoles(req.user, 'admin')) {
-            next();
-        } else {
-            return res.status(403).send('Not authorized');
+        if (req.isAuthenticated()) {
+             // Check user record for admin role
+            if (checkRoles(req.user, 'admin'))
+                next();
+            else
+                res.status(403).send('Not authorized');
         }
+        else {
+            res.status(401).send('Not logged in');
+        }
+        
     }
     
 }

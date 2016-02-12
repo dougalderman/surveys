@@ -6,6 +6,9 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 	.state('student', {
 		url: '/student',
 		templateUrl: 'student/views/student.html',
+        params : {
+            toastMessage: ''
+        },
         controller: 'studentCtrl',
         resolve: {
              auth: function(authService, $state, $stateParams) {
@@ -18,7 +21,9 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 .catch(function(err) {
                     // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
-                    $state.go('login');
+                    $state.go('login', {
+                        successRedirect: 'student'
+                    });
                 });
             }
         }
@@ -27,26 +32,36 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		url: '/student/take_survey',
 		templateUrl: 'student/views/takeSurvey.html',
         controller: 'takeSurveyCtrl',
+        params : {
+            surveyId: ''
+        },
         resolve: {
-            survey: function(takeSurveyService, $stateParams) {
-                 return takeSurveyService.getSurvey($stateParams.survey_id)
-                 .then(function( response ) {
-                      return response.data;
-                 })
-                 .catch(function(err) {
-                      // For any error, send them back to login screen.     
-                     console.error('err = ', err);
-                     $state.go('login');
-                 });
+            auth: function(authService, $state, $stateParams) {
+                return authService.checkForAuth()
+                .then(function( response ) {
+                    if (response.status === 200) {
+                        return response.data;
+                    }
+                })
+                .catch(function(err) {
+                    // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login', {
+                        successRedirect: 'student'
+                    });
+                });
             }
         }
-	})
+    })
 	.state('admin', {
 		url: '/admin',
 		templateUrl: 'admin/views/admin.html',
 		controller: 'adminCtrl',
+        params : {
+            toastMessage: ''
+        },
         resolve: {
-            auth: function(authService) {
+            auth: function(authService, $state) {
                 return authService.checkForAdminAuth()
                 .then(function( response ) {
                     return response.data;
@@ -54,7 +69,14 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 .catch(function(err) {
                     // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
-                    $state.go('login');
+                    if (err.status === 403) { //  if unauthorized
+                        $state.go('unAuthorized')
+                    }
+                    else { 
+                        $state.go('login', {
+                            successRedirect: 'admin'
+                        });
+                    }
                 });
             }
         } 
@@ -64,7 +86,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'admin/views/createModifyTemplate.html',
 		controller: 'createModifyTemplateCtrl',
         resolve: {
-            templates: function(templateSurveyService) {
+            templates: function(templateSurveyService, $state) {
                 return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
@@ -72,7 +94,14 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 .catch(function(err) {
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
-                    $state.go('login');
+                    if (err.status === 403) { //  if unauthorized
+                        $state.go('unAuthorized')
+                    }
+                    else { 
+                        $state.go('login', {
+                            successRedirect: 'createModifyTemplate'
+                        });
+                    }
                 });
             }
         } 
@@ -95,7 +124,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'admin/views/sendSurvey.html',
 		controller: 'sendSurveyCtrl',
         resolve: {
-            templates: function(templateSurveyService) {
+            templates: function(templateSurveyService, $state) {
                 return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
@@ -103,7 +132,14 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 .catch(function(err) {
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
-                    $state.go('login');
+                    if (err.status === 403) { //  if unauthorized
+                        $state.go('unAuthorized')
+                    }
+                    else { 
+                        $state.go('login', {
+                            successRedirect: 'sendSurvey'
+                        });
+                    }
                 });
             }
         } 
@@ -113,7 +149,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'admin/views/viewResults.html',
         controller: 'viewResultsCtrl',
         resolve: {
-            surveys: function(templateSurveyService) {
+            surveys: function(templateSurveyService, $state) {
                 return templateSurveyService.getAllSurveyNamesAndDates()
                 .then(function( response ) {
                      return response.data;
@@ -121,20 +157,31 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 .catch(function(err) {
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
-                    $state.go('login');
+                    if (err.status === 403) { //  if unauthorized
+                        $state.go('unAuthorized')
+                    }
+                    else { 
+                        $state.go('login', {
+                            successRedirect: 'viewResults'
+                        });
+                    }
                 });
             }
         } 
 		
 	})
-    .state('updateTopics', {
+    /*.state('updateTopics', {
 		url: '/admin/update_topics',
 		templateUrl: 'admin/views/updateTopics.html',
 		controller: 'updateTopicsCtrl'
-	})
+	}) */
     .state('login', {
 		url: '/login',
 		templateUrl: 'auth/views/login.html',
+        params : {
+            toastMessage: '',
+            successRedirect: ''
+        },
 		controller: 'loginCtrl'
     })
     .state('signup', {
@@ -142,6 +189,10 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'auth/views/signup.html',
 		controller: 'signupCtrl'
     })
+    .state('unAuthorized', {
+		url: '/unauthorized',
+		template: '<h1>Not authorized</h1>'
+	})
    
 
 	$urlRouterProvider.otherwise('/student');

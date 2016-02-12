@@ -1,5 +1,5 @@
 angular.module('surveys')
-.controller('viewResultsCtrl', function($scope, surveys, templateSurveyService) {
+.controller('viewResultsCtrl', function($scope, surveys, templateSurveyService, authService, $state) {
     
  //   $scope.surveys = surveys;
     $scope.displaySurveys = [];
@@ -23,6 +23,20 @@ angular.module('surveys')
             $('select').material_select();
         }, 100);
     });
+    
+    $scope.adminLogout = function() {
+        authService.logout()
+        .then(function( response ) {
+            console.log('in adminCtrl');
+            console.log('in logout')
+            console.log('response', response);
+            if (response.status === 200) {
+                $state.go('login', {
+                    successRedirect: 'admin'
+                });
+            }
+        }); 
+    }
     
     $scope.user_report_options = {
         data: 'userReportData',

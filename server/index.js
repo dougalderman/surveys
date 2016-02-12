@@ -55,6 +55,7 @@ app.get('/api/surveys/untaken/:student_id', authCtrl.requireAuth, studentSurveyC
 // app.delete('/api/surveys/untaken/:student_id', authCtrl.authCtrl.requireAuth, studentSurveyCtrl.deleteUntaken); // Delete untaken survey for student (after survey successfully completed). Param is student Mongo Id, and query is survey Mongo Id. Surveys collection.
 app.get('/api/surveys/:id',  authCtrl.requireAuth, studentSurveyCtrl.read); // Get survey questions for survey id under Surveys.
 app.post('/api/surveys/results', authCtrl.requireAuth, studentSurveyCtrl.create); // Write survey answers. Results collection. After successful write, delete untaken survey for student in the Surveys collection.
+app.get('/api/topics',  authCtrl.requireAuth, topicsCtrl.read); // Read topics from Topics collection. Accepts query parameter.
 app.post('/api/admin/surveys', authCtrl.requireAdminAuth, adminSurveyCtrl.create); // Create new survey. Surveys collection. 
 app.get('/api/admin/surveys', authCtrl.requireAdminAuth, adminSurveyCtrl.read) //  Get surveys. Accepts query parameter. Surveys collection.
 app.get('/api/admin/surveys/names_dates', authCtrl.requireAdminAuth, adminSurveyCtrl.readNamesAndDates) //  Get all survey names and Mongo ID's, reverse sorted by date. Surveys collection.
@@ -68,10 +69,10 @@ app.get('/api/admin/templates/:id', authCtrl.requireAdminAuth, templatesCtrl.rea
 app.post('/api/admin/templates', authCtrl.requireAdminAuth, templatesCtrl.create) // Writes new template. Templates collection.
 app.put('/api/admin/templates/:id', authCtrl.requireAdminAuth, templatesCtrl.update) // Updates existing template. Templates collection.
 app.delete('/api/admin/templates/:id', authCtrl.requireAdminAuth, templatesCtrl.delete) // Delete template based on id
-app.get('/api/admin/topics', authCtrl.requireAdminAuth, topicsCtrl.read); // Read all topics from Topics collection. Accepts query parameter.
+app.get('/api/admin/topics', authCtrl.requireAdminAuth, topicsCtrl.read); // Read topics from Topics collection. Accepts query parameter.
 app.post('/api/admin/topics', authCtrl.requireAdminAuth, topicsCtrl.create); // Write new topic record to Topics collection.
 app.delete('/api/admin/topics/:id', authCtrl.requireAdminAuth, topicsCtrl.delete); // Delete topic record based on id from Topics collection.
-app.get('/api/admin/users', authCtrl.requireAdminAuth, usersCtrl.read); // Get all users from Users collection. Can use query parameter to restrict query. Users collection.
+app.get('/api/admin/users', authCtrl.requireAdminAuth, usersCtrl.read); // Get users from Users collection. Can use query parameter to restrict query. Users collection.
 app.get('/api/admin/users/cohort/:cohort_id', authCtrl.requireAdminAuth, usersCtrl.readUsersInCohort); // Get Mongo ID's of all users in a cohort specified by cohort_id.
 // app.get('/api/admin/users/requested_surveys/:id', authCtrl.requireAuth, usersCtrl.readRequestedSurveyUsers); // Get first and last names of all users who were requested a particular survey specified by id.
 // app.get('/api/admin/users/untaken_surveys/:id', authCtrl.requireAuth, usersCtrl.readUntakenSurveyUsers); // Get first and last names of all users who have not yet taken a requested survey specified by id.

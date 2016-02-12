@@ -11,7 +11,7 @@
     <div class="container">
     
         <h4>{{survey.description}}</h4>
-        <h4>{{survey.topic}}</h4>
+        <h4>{{topic}}</h4>
         <br><br>
         <p class="required"> * Required</p>
         <br> 
@@ -21,6 +21,7 @@
                 <boolean-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'boolean'"></boolean-question>
                <text-question required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'text'"></text-question>
             </div>
+            <p class="error_msg" ng-show="errorMsg">{{errorMsg}}</p>
             <input class="button" type="submit">
         </form>
            

@@ -1,5 +1,5 @@
 angular.module('surveys')
-.controller('createModifyTemplateCtrl', function($scope, templates, templateSurveyService) {
+.controller('createModifyTemplateCtrl', function($scope, templates, templateSurveyService, authService, $state) {
     
     $scope.templates = templates;
     $scope.template = {};
@@ -22,7 +22,22 @@ angular.module('surveys')
             $('select').material_select();
         }, 100);
      });
-   /* $scope.readAllTemplateNames = function() {
+    
+    $scope.adminLogout = function() {
+        authService.logout()
+        .then(function( response ) {
+            console.log('in adminCtrl');
+            console.log('in logout')
+            console.log('response', response);
+            if (response.status === 200) {
+                $state.go('login', {
+                    successRedirect: 'admin'
+                });
+            }
+        }); 
+    }
+   
+    /* $scope.readAllTemplateNames = function() {
         templateSurveyService.getAllTemplateNames()
          .then(function( response ) {
             console.log('in createModifyTemplateCtrl');
@@ -78,21 +93,46 @@ angular.module('surveys')
             var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving.");
             if (select === true) {
                 console.log('update template')
-                templateSurveyService.updateTemplate($scope.template._id, $scope.template);
-                // then / catch for promise
-                // $state.go(admin)
+                templateSurveyService.updateTemplate($scope.template._id, $scope.template)
+                .then(function( response ) {
+                    console.log('in createModifyTemplateCtrl');
+                    console.log('in processForm')
+                    console.log('response', response);
+                    if (response.status === 200) {
+                        $state.go('admin', {
+                            toastMessage: 'Template Successfully Updated'
+                        });
+                    }
+                })
+                .catch(function(err) {
+                    console.error('err = ', err);
+                    $scope.errorMsg = 'Error in Creating Template'
+                });
             }
         } 
         else {  // new template
-            console.log('new template')
+            console.log('new template');
             if ($scope.template._id)
                 delete $scope.template._id; // delete id in case user modifies template and changes name.
             
-            templateSurveyService.writeNewTemplate($scope.template);
+            templateSurveyService.writeNewTemplate($scope.template)
             // then / catch for promise
             // $state.go(admin)
-        }
-       
+            .then(function( response ) {
+                console.log('in createModifyTemplateCtrl');
+                console.log('in processForm')
+                console.log('response', response);
+                if (response.status === 200) {
+                    $state.go('admin', {
+                        toastMessage: 'Template Successfully Created'
+                    });
+                }
+            })
+            .catch(function(err) {
+                console.error('err = ', err);
+                $scope.errorMsg = 'Error in Creating Template';
+            });
+        }    
     };
     
     

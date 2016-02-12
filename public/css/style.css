@@ -39,6 +39,24 @@ html, body {
     top: 0;
 }
 
+.surveyHeader .admin_logout, .surveyHeader .student_logout {
+    width: 70px;
+    height: 35px;
+    color: #eee;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.5em;
+    background: inherit;
+    position: absolute;
+    right: 0;
+    top: 17px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.surveyHeader .admin_logout:hover, .surveyHeader .student_logout:hover {
+    cursor: pointer;
+}
+
 .surveyContainer {
     background-color: rgba(238, 238, 238, 0.63);
     padding: 40px 0;
@@ -156,9 +174,20 @@ html, body {
     width: 60%;
 } */
 
-#createModifyTemplate p {
-  font-family: 'Times New Roman';
-  font-size: 1.3em;
+#createModifyTemplate p, #sendSurvey p {
+    font-family: Helvetica, sans-serif;
+    font-size: 1.3em;
+    color: rgb(0, 53, 139);
+}
+
+#createModifyTemplate .bold_text {
+    font-weight: bold;
+}
+
+#createModifyTemplate p.error_msg, #sendSurvey p.error_msg, #loginScreen p.error_msg, #signupScreen p.error_msg, #takeSurvey p.error_msg {
+    color: red;
+    font-weight: bold;
+    text-align: center;
 }
 
 #createModifyTemplate .container .row {
@@ -185,10 +214,10 @@ html, body {
     color: white;
 }
 
-#sendSurvey p {
+/* #sendSurvey p {
   font-family: 'Times New Roman';
   font-size: 1.3em;
-}
+} */
 
 #sendSurvey .container .row {
   margin-bottom: 50px;
@@ -270,12 +299,6 @@ html, body {
     background-color:  #2aabe2;
 }
 
-#loginScreen .error_msg {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-}
-
 #signupScreen .container {
     height: 100vh;
     text-align: center;
@@ -301,26 +324,24 @@ html, body {
     color: white;
 }
 
-#signupScreen .error_msg {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-}
-
 #studentMain .container {
     height: 100vh;
     text-align: center;
 }
 
-#studentMain button  {
-    width: 100px;
+#studentMain h4 {
     font-family: Arial;
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    background: #444;
-    color: white;
+    font-size: 1.8em;
+    margin-top: 70px;
 }
+
+#studentMain a {
+    font-family: Arial;
+    font-size: 1.4em;
+    margin-top: 30px;
+}
+
+
 
 
  

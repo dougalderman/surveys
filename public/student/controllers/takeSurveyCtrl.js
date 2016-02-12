@@ -1,14 +1,34 @@
 angular.module('surveys')
-.controller('takeSurveyCtrl', function(takeSurveyService, $scope, survey ) {
+.controller('takeSurveyCtrl', function(takeSurveyService, $scope, auth, $stateParams, $state) {
 
-    $scope.survey = survey;
+    // $scope.survey = survey;
+    
+    console.log('in takeSurveyCtrl');
+    
+    console.log('$stateParams.surveyId = ', $stateParams.surveyId);
     
     $scope.results = {};
     
+    $scope.response = {};
+    
     $scope.notAnswered = [];
     
-    $scope.surveyID = 123 // Need to get surveyID as passed parm from Q
-    
+    $scope.readTopic = function() {
+        takeSurveyService.getTopic($scope.survey.topic)
+        .then(function( response ) {
+            console.log('in takeSurveyCtrl');
+            console.log('in getTopic');
+            console.log('response', response);
+            if (response.status === 200) {
+                $scope.topic = response.data[0].name;
+            }
+         })
+        .catch(function(err) {
+        // For any error, send them back to admin login screen.     
+            console.error('err = ', err);
+        });        
+    }
+       
     $scope.initializeResults = function() {
        
        /*     $scope.results.survey = response._id; 
@@ -26,19 +46,25 @@ angular.module('surveys')
         console.log('$scope.results.answers = ', $scope.results.answers);
         console.log('$scope.notAnswered = ', $scope.notAnswered)
         
-       
-        
     }
+    
+   
        
-    /* $scope.readSurvey = function() {
-       takeSurveyService.getSurvey($scope.surveyID)
+    $scope.readSurvey = function() {
+       takeSurveyService.getSurvey($stateParams.surveyId)
        .then(function( response ) {
             console.log('in takeSurveyCtrl');
+            console.log('in readSurvey')
             console.log('response', response);
             $scope.survey = response.data;
             $scope.initializeResults();
-        }); 
-    } */
+            $scope.readTopic();
+        })
+        .catch(function(err) {
+            console.error('err = ', err);
+            $state.go('student');
+        })
+    } 
     
     $scope.checkForRequired = function() {
        
@@ -119,6 +145,8 @@ angular.module('surveys')
         var allRequiredAnswered = $scope.checkForRequired();
         if (allRequiredAnswered) {
             $scope.newResults = $scope.convertValues()
+            $scope.newResults.user = auth._id;
+            $scope.newResults.survey = $stateParams.surveyId;
             console.log('newResults = ', $scope.newResults);
             takeSurveyService.writeSurveyResults($scope.newResults)
             .then(function( response ) {
@@ -127,14 +155,14 @@ angular.module('surveys')
                 console.log('response', response);
                 if (response.status === 200) {
                     $state.go('student', {
-                        surveySuccessFlag: true
+                        toastMessage: 'Survey Successfully Submitted'
                     });
                 }
              })
             .catch(function(err) {
             // For any error, send them back to admin login screen.     
                 console.error('err = ', err);
-                $scope.errorMsg = err.data.message;
+                $scope.errorMsg = 'Error Submitting Survey';
             });        
         }
         else {
@@ -142,9 +170,7 @@ angular.module('surveys')
         }
     }
     
-    
-    // $scope.readSurvey();
-     
-    $scope.initializeResults();
+    $scope.readSurvey();
+   
     
 });

@@ -18,7 +18,7 @@ angular.module('surveys')
             console.log('response', response);
             if (response.status === 200) {
                 $state.go('login', {
-                    signupSuccessFlag: true
+                    toastMessage: 'Signup Successful'
                 });
             }
         })

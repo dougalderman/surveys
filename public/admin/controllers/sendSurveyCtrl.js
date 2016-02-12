@@ -1,5 +1,5 @@
 angular.module('surveys')
-.controller('sendSurveyCtrl', function($scope, templates, templateSurveyService) {
+.controller('sendSurveyCtrl', function($scope, templates, templateSurveyService, authService, $state) {
     
     
     $scope.templates = templates;
@@ -20,8 +20,21 @@ angular.module('surveys')
                                         // updated the DOM.
             $('select').material_select();
         }, 100);
-     });
+    });
    
+    $scope.adminLogout = function() {
+        authService.logout()
+        .then(function( response ) {
+            console.log('in adminCtrl');
+            console.log('in logout')
+            console.log('response', response);
+            if (response.status === 200) {
+                $state.go('login', {
+                    successRedirect: 'admin'
+                });
+            }
+        }); 
+    }
        
     $scope.loadSelectedTemplate = function() {
         console.log('selectedTemplate', $scope.selectedTemplate);
@@ -75,11 +88,16 @@ angular.module('surveys')
         .then(function( response ) {
             console.log('in writeSurvey');
             console.log('response', response);
-        //    $scope.surveyId = response.data._id;
-        //    $scope.updateUserRecords();
-            // $state.go('admin');
+            if (response.status === 200) {
+                $state.go('admin', {
+                    toastMessage: 'Survey Successfully Sent'
+                });
+            }        
+        })
+        .catch(function(err) {
+            console.error('err = ', err);
+            $scope.errorMsg = 'Error in Sending Survey'
         });
-             
     };
       
     /* $scope.findUsersInCohort = function() {

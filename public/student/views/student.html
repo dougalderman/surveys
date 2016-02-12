@@ -2,17 +2,17 @@
     <img class="logo" src="/images/devmountain_logo.png" height="70">
     </img>
     <div class="headerTitle">Surveys Requested</div>
+    <div class="student_logout" ng-click="studentLogout()">Logout</div>
 </header>
 
 <div id="studentMain" class="surveyContainer">
     <div class="container">
-
+        <h4>Surveys Requested: </h4>
         <div class="" ng-repeat="survey in untakenSurveys">
-            <a ui-sref="takeSurvey({survey_id: survey._id})">{{survey.name}}</a>
+            <a ui-sref="takeSurvey({surveyId: survey._id})">{{survey.name}}</a>
         </div>
         
         <br><br>
-        <button class="student_logout" ng-click="studentLogout()">Logout</button>
     </div>
 </div>
 
