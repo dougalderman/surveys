@@ -240,6 +240,89 @@ html, body {
     height: 500px;  
 }
 
+#loginScreen .container {
+    height: 100vh;
+    text-align: center;
+}
 
+#loginScreen form {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#loginScreen h4 {
+    color: #2aabe2;
+    margin-bottom: 40px;
+}
+
+#loginScreen .button {
+    width: 100px;
+    font-family: Arial;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    margin-top: -20px;
+    background: #444;
+    color: white;
+}
+
+#loginScreen .signup {
+    font-size: 1.2em;
+    background-color:  #2aabe2;
+}
+
+#loginScreen .error_msg {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+#signupScreen .container {
+    height: 100vh;
+    text-align: center;
+}
+
+#signupScreen form {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#signupScreen h4 {
+    color: #2aabe2;
+    margin-bottom: 40px;
+}
+
+#signupScreen .button {
+    width: 100px;
+    font-family: Arial;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    margin-top: -20px;
+    background: #444;
+    color: white;
+}
+
+#signupScreen .error_msg {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+#studentMain .container {
+    height: 100vh;
+    text-align: center;
+}
+
+#studentMain button  {
+    width: 100px;
+    font-family: Arial;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    background: #444;
+    color: white;
+}
+
+
+ 
 
 

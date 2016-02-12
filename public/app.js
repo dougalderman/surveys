@@ -6,23 +6,56 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 	.state('student', {
 		url: '/student',
 		templateUrl: 'student/views/student.html',
-        
-	})
+        controller: 'studentCtrl',
+        resolve: {
+             auth: function(authService, $state, $stateParams) {
+                return authService.checkForAuth()
+                .then(function( response ) {
+                    if (response.status === 200) {
+                        return response.data;
+                    }
+                })
+                .catch(function(err) {
+                    // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login');
+                });
+            }
+        }
+    })
     .state('takeSurvey', {
 		url: '/student/take_survey',
 		templateUrl: 'student/views/takeSurvey.html',
-        controller: 'takeSurveyCtrl'
+        controller: 'takeSurveyCtrl',
+        resolve: {
+            survey: function(takeSurveyService, $stateParams) {
+                 return takeSurveyService.getSurvey($stateParams.survey_id)
+                 .then(function( response ) {
+                      return response.data;
+                 })
+                 .catch(function(err) {
+                      // For any error, send them back to login screen.     
+                     console.error('err = ', err);
+                     $state.go('login');
+                 });
+            }
+        }
 	})
 	.state('admin', {
 		url: '/admin',
 		templateUrl: 'admin/views/admin.html',
 		controller: 'adminCtrl',
         resolve: {
-            auth: function(templateSurveyService) {
-                return templateSurveyService.checkForAdminAuth()
+            auth: function(authService) {
+                return authService.checkForAdminAuth()
                 .then(function( response ) {
-                     return response.data;
-              }); 
+                    return response.data;
+                })
+                .catch(function(err) {
+                    // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login');
+                });
             }
         } 
 	})
@@ -35,11 +68,16 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
-              }); 
+                })
+                .catch(function(err) {
+                     // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login');
+                });
             }
         } 
 	})
-    .state('deleteTemplate', {
+    /* .state('deleteTemplate', {
 		url: '/admin/delete_template',
 		templateUrl: 'admin/views/deleteTemplate.html',
 		controller: 'deleteTemplateCtrl',
@@ -51,7 +89,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
               }); 
             }
         } 
-	})
+	}) */
     .state('sendSurvey', {
 		url: '/admin/send_survey',
 		templateUrl: 'admin/views/sendSurvey.html',
@@ -61,7 +99,12 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 return templateSurveyService.getAllTemplateNames()
                 .then(function( response ) {
                      return response.data;
-              }); 
+                })
+                .catch(function(err) {
+                     // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login');
+                });
             }
         } 
 	})
@@ -74,7 +117,12 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                 return templateSurveyService.getAllSurveyNamesAndDates()
                 .then(function( response ) {
                      return response.data;
-              }); 
+                })
+                .catch(function(err) {
+                     // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    $state.go('login');
+                });
             }
         } 
 		
@@ -86,19 +134,14 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 	})
     .state('login', {
 		url: '/login',
-		templateUrl: 'admin/views/login.html',
-		controller: 'studentLoginCtrl'
-	})
-    .state('adminLogin', {
-		url: '/admin/login',
-		templateUrl: 'admin/views/login.html',
-		controller: 'adminLoginCtrl'
-	})
+		templateUrl: 'auth/views/login.html',
+		controller: 'loginCtrl'
+    })
     .state('signup', {
 		url: '/signup',
-		templateUrl: 'admin/views/signup.html',
+		templateUrl: 'auth/views/signup.html',
 		controller: 'signupCtrl'
-	})
+    })
    
 
 	$urlRouterProvider.otherwise('/student');

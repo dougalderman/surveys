@@ -174,6 +174,14 @@ angular.module('surveys')
             url: 'admin/data/results_51225.json'
         });
      }; */
+    
+      this.checkForAdminAuth = function(survey_id) {
+        return $http({
+            method: 'GET',
+            url: '/api/admin/current_user'
+        });
+    }; 
+    
 // Non-CRUD    
     
     this.findMatch = function(str) { // look for $$something$$

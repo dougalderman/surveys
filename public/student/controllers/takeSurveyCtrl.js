@@ -1,7 +1,8 @@
 angular.module('surveys')
-.controller('takeSurveyCtrl', function(takeSurveyService, $scope ) {
+.controller('takeSurveyCtrl', function(takeSurveyService, $scope, survey ) {
 
-
+    $scope.survey = survey;
+    
     $scope.results = {};
     
     $scope.notAnswered = [];
@@ -29,7 +30,7 @@ angular.module('surveys')
         
     }
        
-    $scope.readSurvey = function() {
+    /* $scope.readSurvey = function() {
        takeSurveyService.getSurvey($scope.surveyID)
        .then(function( response ) {
             console.log('in takeSurveyCtrl');
@@ -37,7 +38,7 @@ angular.module('surveys')
             $scope.survey = response.data;
             $scope.initializeResults();
         }); 
-    }
+    } */
     
     $scope.checkForRequired = function() {
        
@@ -119,21 +120,22 @@ angular.module('surveys')
         if (allRequiredAnswered) {
             $scope.newResults = $scope.convertValues()
             console.log('newResults = ', $scope.newResults);
-     /*   takeSurveyService.writeSurveyResults($scope.newResults)
-         .then(function( response ) {
-            console.log('in takeSurveyCtrl');
-            console.log('in processForm');
-            console.log('after writeSurveyResults');
-            console.log('response', response);
-            takeSurveyService.deleteFromUntakenSurveys($scope.survey._id, $scope.student._id)
-           .then(function( response ) {
+            takeSurveyService.writeSurveyResults($scope.newResults)
+            .then(function( response ) {
                 console.log('in takeSurveyCtrl');
                 console.log('in processForm');
-                console.log('after deleteUntakenSurvey');
                 console.log('response', response);
-                // send back to previous page
-        }); */
-            
+                if (response.status === 200) {
+                    $state.go('student', {
+                        surveySuccessFlag: true
+                    });
+                }
+             })
+            .catch(function(err) {
+            // For any error, send them back to admin login screen.     
+                console.error('err = ', err);
+                $scope.errorMsg = err.data.message;
+            });        
         }
         else {
            alert('Need to answer all required questions shown in red');
@@ -141,8 +143,8 @@ angular.module('surveys')
     }
     
     
-    $scope.readSurvey();
+    // $scope.readSurvey();
      
-
+    $scope.initializeResults();
     
 });

@@ -16,9 +16,10 @@ module.exports = function(passport) {
         });
     });
     
+        
     // LOCAL AUTH
     
-    passport.use('local-signup', new LocalStrategy({
+    passport.use('local-login', new localStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
@@ -31,7 +32,7 @@ module.exports = function(passport) {
 
           // find a user whose email is the same as the forms email
           // we are checking to see if the user trying to login already exists
-          User.findOne({ 'email' :  email }, function(err, user) {
+          user.findOne({ 'email' :  email }, function(err, user) {
               // if there are any errors, return the error
               if (err) return done(err);
 
@@ -40,23 +41,11 @@ module.exports = function(passport) {
                 if (user.validPassword(password)) {
                     return done(null, user);
                 } else {
-                    return done(null, false);
+                    return done('Invalid Password', false);
                 }
               } else {
                   // if there is no user with that email
-
-                  // create the user
-                  var newUser = new user();
-
-                  // set the user's local credentials
-                  newUser.email    = email;
-                  newUser.password = newUser.generateHash(password);
-
-                  // save the user
-                  newUser.save(function(err) {
-                      if (err) throw err;
-                      return done(null, newUser);
-                  });
+                  return done('User not found', false);
               }
 
           });

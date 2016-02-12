@@ -1,1 +1,18 @@
-<a ui-sref="takeSurvey">Take a survey</a>
+<header class="surveyHeader">
+    <img class="logo" src="/images/devmountain_logo.png" height="70">
+    </img>
+    <div class="headerTitle">Surveys Requested</div>
+</header>
+
+<div id="studentMain" class="surveyContainer">
+    <div class="container">
+
+        <div class="" ng-repeat="survey in untakenSurveys">
+            <a ui-sref="takeSurvey({survey_id: survey._id})">{{survey.name}}</a>
+        </div>
+        
+        <br><br>
+        <button class="student_logout" ng-click="studentLogout()">Logout</button>
+    </div>
+</div>
+
