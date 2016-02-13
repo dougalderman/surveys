@@ -1,20 +1,12 @@
-<div class="navbar-fixed">
-    <header class="surveyHeader">
-        <img class="logo" src="/images/devmountain_logo.png" height="70">
-        </img>
-        <div class="headerTitle">{{survey.name}}</div>
-    </header>
-</div>
-
-<div id="takeSurvey" class="surveyContainer">
+<div id="takeSurvey" class="takeSurveyContainer">
+    <div class="takeSurveyHeader">
+        <img class="logo" src="/images/devmountain_logo_blacktext.png" height="35">
+        <div class="headerCenter">{{survey.name}}</div>
+        <div class="headerRight">{{topic}}</div>
+    </div>
     
-    <div class="container">
-    
-        <h4>{{survey.description}}</h4>
-        <h4>{{topic}}</h4>
-        <br><br>
-        <p class="required"> * Required</p>
-        <br> 
+    <div class="surveyBody">
+        
         <form ng-submit="processForm()">
             <div class="survey-question" ng-repeat = "question in survey.questions">
               <numeric-question low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'numeric'"></numeric-question>

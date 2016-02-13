@@ -32,7 +32,6 @@ html, body {
     height: inherit;
     line-height: inherit;
     width: inherit;
-    vertical-align: center;
     text-align: center;
     position: absolute;
     left: 0;
@@ -47,7 +46,7 @@ html, body {
     font-size: 1.5em;
     background: inherit;
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 17px;
     text-align: center;
     line-height: 35px;
@@ -62,8 +61,58 @@ html, body {
     padding: 40px 0;
 }
 
+div #takeSurvey {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./../images/devmountain_class_pic.jpg');
+    background-size: cover;
+    position: fixed;
+}
+
+#takeSurvey .takeSurveyHeader {
+    height: 70px;
+    position: relative;
+    align-items: left;
+    width: 100%;
+    background-color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.7em;    
+}
+
+#takeSurvey .takeSurveyHeader img {
+    position: absolute;
+    top: 17px;
+    left: 0;   
+    height: 35px;
+    line-height: 35px;
+}
+
+#takeSurvey .takeSurveyHeader .headerCenter {
+    position: absolute;
+    top: 17px;
+    height: 35px;
+    line-height: 35px;
+    width: inherit;
+    text-align: center;
+}
+
+#takeSurvey .takeSurveyHeader .headerRight {
+    position: absolute;
+    top: 17px;
+    right: 5px;
+    height: 35px;
+    line-height: 35px;
+}
+
+#takeSurvey .surveyBody {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 #takeSurvey h4 {
-    font-family: Arial;
+    font-family: Helvetica, sans-serif;
     font-size: 1.8em;
     color: rgb(0, 25, 100);
 }
@@ -74,8 +123,8 @@ html, body {
 }
 
 #takeSurvey p {
-    font-family: 'Times New Roman';
-    font-size: 1.4em;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.3em;
 }
 
 #takeSurvey .required {
