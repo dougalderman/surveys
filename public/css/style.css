@@ -67,10 +67,11 @@ div #takeSurvey {
     background-image: url('./../images/devmountain_class_pic.jpg');
     background-size: cover;
     position: fixed;
+    /* opacity: 0.5; */
 }
 
 #takeSurvey .takeSurveyHeader {
-    height: 70px;
+    height: 90px;
     position: relative;
     align-items: left;
     width: 100%;
@@ -81,27 +82,27 @@ div #takeSurvey {
 
 #takeSurvey .takeSurveyHeader img {
     position: absolute;
-    top: 17px;
+    top: 22px;
     left: 0;   
-    height: 35px;
-    line-height: 35px;
+    height: 45px;
+    line-height: 45px;
 }
 
 #takeSurvey .takeSurveyHeader .headerCenter {
     position: absolute;
-    top: 17px;
-    height: 35px;
-    line-height: 35px;
+    top: 22px;
+    height: 45px;
+    line-height: 45px;
     width: inherit;
     text-align: center;
 }
 
 #takeSurvey .takeSurveyHeader .headerRight {
     position: absolute;
-    top: 17px;
+    top: 22px;
     right: 5px;
-    height: 35px;
-    line-height: 35px;
+    height: 45px;
+    line-height: 45px;
 }
 
 #takeSurvey .surveyBody {
@@ -125,6 +126,7 @@ div #takeSurvey {
 #takeSurvey p {
     font-family: Helvetica, sans-serif;
     font-size: 1.3em;
+    text-align: center; 
 }
 
 #takeSurvey .required {
@@ -132,13 +134,24 @@ div #takeSurvey {
 }
 
 #takeSurvey .survey-question {
-    margin-bottom: 120px;
+    width: 60%;
+    height: 200px;
+    background-color: #fff;
+    margin: 40px auto; 
+}
+
+#takeSurvey .question-directive {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
 }
 
 #takeSurvey .range-field {
-    position: relative;
+    position: relative; 
     height: 40px;
     width:  60%;
+    margin: 0 auto;
+/*   line-height: 40px; */
 }
 
 #takeSurvey .slider_left {
@@ -169,7 +182,52 @@ div #takeSurvey {
     top: 50px;
 } 
 
-#takeSurvey .boolQuestion {
+#takeSurvey input[type=range] + .thumb {
+    background-color: #2aabe2;
+}
+
+#takeSurvey input[type=range]::-webkit-slider-thumb {
+    background-color: #2aabe2;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #2aabe2;
+}
+
+#takeSurvey .bool_question_container {
+    height: 40px;
+    width: 180px;
+    position: relative;
+    margin: 30px auto;
+}
+
+#takeSurvey .bool_question {
+    height: 40px;
+    width: 80px;
+    background-color: #2aabe2;
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+}
+
+#takeSurvey .bool_question:hover {
+    cursor: pointer;
+}
+
+#takeSurvey .left {
+    left: 0;
+}
+
+#takeSurvey .right {
+    right: 0;
+}
+
+#takeSurvey .black_border {
+    border: 2px solid black;
+}
+
+/* #takeSurvey .boolQuestion {
     visibility: visible;
     position: static;
     margin-right: 10px;
@@ -179,25 +237,50 @@ div #takeSurvey {
 #takeSurvey .radioLabel {
     font-family: Arial;
     font-size: 0.9em;
+} */
+
+#takeSurvey .submit_div {
+    width: 60%;
+    height: 200px;
+    background-color: #fff;
+    margin-top: 40px;
+    margin-bottom: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 200px;
 }
 
 #takeSurvey .button {
-    width: 100px;
     font-family: Arial;
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    margin-top: -20px;
-    background: #444;
-    color: white;
+    font-size: 2.2em;
+    background-color: #2aabe2;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    height: 80px;
+    width: 200px;
+    /*color: #2aabe2; */
 }
 
-#takeSurvey .materialize-textarea {
-    width: 60%;
-}
+#takeSurvey .input-field {
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+} 
 
 #takeSurvey .bright_red {
     color: red;
     font-weight: bold;
+}
+
+#takeSurvey textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #2aabe2;
+  box-shadow: 0 1px 0 0 #2aabe2;
+}
+
+#takeSurvey textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #2aabe2;
 }
 
 #adminMain {

@@ -12,7 +12,7 @@ angular.module('surveys')
     $scope.response = {};
     
     $scope.notAnswered = [];
-    
+      
     $scope.readTopic = function() {
         takeSurveyService.getTopic($scope.survey.topic)
         .then(function( response ) {
@@ -137,10 +137,7 @@ angular.module('surveys')
         
         return newObj;
     }
-       
-       
-    
-    
+           
     $scope.processForm = function() {
         var allRequiredAnswered = $scope.checkForRequired();
         if (allRequiredAnswered) {

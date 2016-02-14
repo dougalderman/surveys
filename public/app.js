@@ -70,7 +70,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                     // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
                     if (err.status === 403) { //  if unauthorized
-                        $state.go('unAuthorized')
+                        $state.go('student')
                     }
                     else { 
                         $state.go('login', {
@@ -95,7 +95,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
                     if (err.status === 403) { //  if unauthorized
-                        $state.go('unAuthorized')
+                        $state.go('student')
                     }
                     else { 
                         $state.go('login', {
@@ -133,7 +133,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
                     if (err.status === 403) { //  if unauthorized
-                        $state.go('unAuthorized')
+                        $state.go('student')
                     }
                     else { 
                         $state.go('login', {
@@ -158,7 +158,7 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                      // For any error, send them back to admin login screen.     
                     console.error('err = ', err);
                     if (err.status === 403) { //  if unauthorized
-                        $state.go('unAuthorized')
+                        $state.go('student')
                     }
                     else { 
                         $state.go('login', {
@@ -189,10 +189,10 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'auth/views/signup.html',
 		controller: 'signupCtrl'
     })
-    .state('unAuthorized', {
+    /*.state('unAuthorized', {
 		url: '/unauthorized',
 		template: '<h1>Not authorized</h1>'
-	})
+	}) */
    
 
 	$urlRouterProvider.otherwise('/student');

@@ -3,6 +3,8 @@ angular.module('surveys')
     console.log('auth', auth);
     console.log('$stateParams = ', $stateParams);
     
+    $scope.name = auth.first_name + ' ' + auth.last_name;
+    
     $(document).ready(function() {
         if ($stateParams.toastMessage) 
              Materialize.toast($stateParams.toastMessage, 4000);

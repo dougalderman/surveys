@@ -1,8 +1,6 @@
 <p ng-class= "{bright_red: notAnswered[questionIndex]}">{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
  
-<div class="row">
-    <div class="input-field col s12">
-          <textarea ng-model="response.textAnswer" id="textarea{{questionIndex}}" class="materialize-textarea"></textarea>
-          <label for="textarea{{questionIndex}}">Type Response Below</label>
-    </div>
-</div>
+<div class="input-field">
+      <textarea ng-model="response.textAnswer" id="textarea{{questionIndex}}" class="materialize-textarea"></textarea>
+      <label for="textarea{{questionIndex}}">Type Response Below</label>
+ </div>
