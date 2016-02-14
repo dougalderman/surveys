@@ -10,7 +10,7 @@
         <form ng-submit="processForm()">
             <div class="survey-question" ng-repeat = "question in survey.questions">
               <numeric-question class="question-directive" low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'numeric'"></numeric-question>
-                <boolean-question class="question-directive" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'boolean'"></boolean-question>
+                <boolean-question class="question-directive" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-if="question.type === 'boolean'"></boolean-question>
                <text-question class="question-directive" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'text'"></text-question>
             </div>
             <div class = "submit_div">

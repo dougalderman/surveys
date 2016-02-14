@@ -223,8 +223,9 @@ input[type=range]::-moz-range-thumb {
     right: 0;
 }
 
-#takeSurvey .black_border {
-    border: 2px solid black;
+#takeSurvey .black_border_and_text {
+    border: 3px solid black;
+    color: black;
 }
 
 /* #takeSurvey .boolQuestion {

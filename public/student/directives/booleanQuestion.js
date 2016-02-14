@@ -10,18 +10,21 @@ angular.module('surveys')
             questionType: '@',
             response: '=',
             notAnswered: '=',
+            borderOnYes: '=',
+            borderOnNo: '='
         },
         controller: function($scope) {
             
-             $scope.borderOnYes = [],
-             $scope.borderOnNo = [];
-                
-             $scope.handleBooleanAnswer = function(answer, indx) { 
-                $scope.response = answer;
-                if (answer)
-                    $scope.borderOnYes[indx] === true;
-                else
-                    $scope.borderOnNo[indx] === true;
+            $scope.handleBooleanAnswer = function(answer, indx) { 
+                $scope.response.booleanAnswer = answer;
+                if (answer) {
+                    $scope.borderOnYes[indx] = true;
+                    $scope.borderOnNo[indx] = false;
+                }
+                else {
+                    $scope.borderOnNo[indx] = true;
+                    $scope.borderOnYes[indx] = false;
+                }
             } 
         }
     }

@@ -12,6 +12,9 @@ angular.module('surveys')
     $scope.response = {};
     
     $scope.notAnswered = [];
+    
+    $scope.borderOnYes = [],
+    $scope.borderOnNo = [];
       
     $scope.readTopic = function() {
         takeSurveyService.getTopic($scope.survey.topic)
@@ -42,6 +45,8 @@ angular.module('surveys')
                 type: question.type
             };
             $scope.notAnswered[index] = false;
+            $scope.borderOnYes[index] = false;
+            $scope.borderOnNo[index] = false;
         });
         console.log('$scope.results.answers = ', $scope.results.answers);
         console.log('$scope.notAnswered = ', $scope.notAnswered)
@@ -84,7 +89,8 @@ angular.module('surveys')
                         }
                         break;
                     case 'boolean':
-                        if (!$scope.results.answers[i].booleanAnswer) {
+                        console.log('typeof booleanAnswer: ', typeof $scope.results.answers[i].booleanAnswer)
+                        if (typeof $scope.results.answers[i].booleanAnswer === "undefined") { // if not answered (versus answered no, which is falsy)
                             console.log('boolean not answered');
                             $scope.notAnswered[i] = true;
                             allRequiredFieldsAnswered = false;

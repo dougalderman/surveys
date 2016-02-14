@@ -1,6 +1,6 @@
 <p ng-class= "{bright_red: notAnswered[questionIndex]}">{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
 
 <div class="bool_question_container">
-    <div class="bool_question left" ng-class="{black_border: borderOnYes[questionIndex]}" ng-click="handleBooleanAnswer(true, questionIndex)">Yes</div>
-    <div class="bool_question right" ng-class="{black_border: borderOnNo[questionIndex]}" ng-click="handleBooleanAnswer(false, questionIndex)">No</div>
+    <div class="bool_question left" ng-class="{black_border_and_text: borderOnYes[questionIndex]}" ng-click="handleBooleanAnswer(true, questionIndex)">Yes</div>
+    <div class="bool_question right" ng-class="{black_border_and_text: borderOnNo[questionIndex]}" ng-click="handleBooleanAnswer(false, questionIndex)">No</div>
 </div>
