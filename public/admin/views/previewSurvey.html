@@ -6,11 +6,11 @@
     <br>
     <div id="survey_questions" ng-repeat="question in surveyQuestions">
     
-        <p class="bold">Question Text: {{question.questionText}}</p>
+        <h4>Question Text: {{question.questionText}}</h4>
         <p>Question Type: {{question.type}}</p>
-        <p>Question Required?: {{question.required}}</p>
-        <p>Question Low Value (if numeric): {{question.lowValue}}</p>
-        <p>Question High Value (if numeric): {{question.highValue}}</p>
+        <p>Question Required? {{question.required}}</p>
+        <p ng-if="question.type==='numeric'">Question Low Value: {{question.lowValue}}</p>
+        <p ng-if="question.type==='numeric'">Question High Value: {{question.highValue}}</p>
         <br>
     
     </div>

@@ -64,7 +64,7 @@ app.get('/api/admin/results/:id', authCtrl.requireAdminAuth, adminSurveyCtrl.rea
 app.get('/api/admin/surveys/sent_to/:survey_id', authCtrl.requireAdminAuth, adminSurveyCtrl.readSentTo); // Get First and last names of users sent survey. Param is survey Mongo ID. After getting array of Mongo user ID's, query first and last names of users in array, and return array of names. Surveys and Users collection.
 app.get('/api/admin/surveys/untaken/:survey_id', authCtrl.requireAdminAuth, adminSurveyCtrl.readUntaken); // Get First and last names of users who have not yet taken survey. Param is survey Mongo ID. After getting array of Mongo user ID's, query first and last names of users in array, and return array of names. Surveys and Users collection.
 // app.put('/api/admin/surveys/:cohort_id', authCtrl.authCtrl.requireAuth, adminSurveyCtrl.update); // Write requested and untaken users to survey record. Param is user cohort ID, and query is survey Mongo ID. Surveys collection.
-app.get('/api/admin/templates', authCtrl.requireAdminAuth, templatesCtrl.readNames) // Get all template names and Mongo ID's. Templates collection.
+app.get('/api/admin/templates', authCtrl.requireAdminAuth, templatesCtrl.readNames) // Get all template names and Mongo ID's. Templates collection. Sort ascending by template name.
 app.get('/api/admin/templates/:id', authCtrl.requireAdminAuth, templatesCtrl.read) // Get specific template based on Mongo ID.
 app.post('/api/admin/templates', authCtrl.requireAdminAuth, templatesCtrl.create) // Writes new template. Templates collection.
 app.put('/api/admin/templates/:id', authCtrl.requireAdminAuth, templatesCtrl.update) // Updates existing template. Templates collection.

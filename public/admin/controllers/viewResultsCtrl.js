@@ -1,15 +1,17 @@
 angular.module('surveys')
 .controller('viewResultsCtrl', function($scope, surveys, templateSurveyService, authService, $state) {
     
+       
  //   $scope.surveys = surveys;
     $scope.displaySurveys = [];
     for (var i = 0; i < surveys.length; i++) {
+        var dateObject = new Date(surveys[i].dateSent);
+        var date = (dateObject.getMonth() + 1) + '/' + dateObject.getDate() + '/' + dateObject.getFullYear(); 
         $scope.displaySurveys[i] = {};
-        var timeIndex = surveys[i].dateSent.indexOf('T');
-        surveys[i].dateSent = surveys[i].dateSent.slice(0, timeIndex);
-        $scope.displaySurveys[i].nameDate = surveys[i].name + '___' + surveys[i].dateSent;
+        $scope.displaySurveys[i].nameDate = surveys[i].name + '___' + date;
         $scope.displaySurveys[i]._id = surveys[i]._id;
     }
+    
     $scope.userReportData = [];
     $scope.q_a_columns = [];
     $scope.q_a_data = [];
@@ -43,9 +45,9 @@ angular.module('surveys')
         showGridFooter: true,
         showColumnFooter: true,
         columnDefs: [
-          {field: 'first_name', displayName: 'First Name', enableHiding: false},
-          {field: 'last_name', displayName: 'Last Name', enableHiding: false},
-          {field: 'took_survey',  displayName: 'Took Survey?', enableHiding: false, footerCellTemplate: templateSurveyService.getYesNoFooterCellTemplate(), aggregationType: templateSurveyService.calculateYesCount}
+          {field: 'first_name', displayName: 'First Name', enableHiding: false, headerCellClass: 'grid_header'},
+          {field: 'last_name', displayName: 'Last Name', enableHiding: false, headerCellClass: 'grid_header'},
+          {field: 'took_survey',  displayName: 'Took Survey?', enableHiding: false, headerCellClass: 'grid_header', footerCellTemplate: templateSurveyService.getYesNoFooterCellTemplate(), aggregationType: templateSurveyService.calculateYesCount}
         ]
     };
     

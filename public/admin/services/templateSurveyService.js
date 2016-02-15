@@ -307,6 +307,10 @@ angular.module('surveys')
         return '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> Yes: {{col.getAggregationValue()}}</div> </div>';
     };
     
+    this.getNumericFooterCellTemplate = function() {
+        return '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> {{col.getAggregationText()}} {{col.getAggregationValue() | number:1 }}</div></div>';
+    };
+    
     this.calculateYesCount = function(visRows, self) {
         var yesCount = 0;
         var column_id = self.name;
@@ -344,11 +348,13 @@ angular.module('surveys')
                 displayName: survey.questions[i].questionText,
                 /* width: 160, */
                 headerTooltip: true,
-                enableHiding: false
+                enableHiding: false,
+                headerCellClass: 'grid_header'
             });
             switch(survey.questions[i].type) {
                 case 'numeric':
                     newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg;
+                    newArray[i].footerCellTemplate =  this.getNumericFooterCellTemplate();
                     break;
                 case 'boolean' :
                     /* newArray[i].footerCellTemplate = '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> True: {{col.getTrueCount()}}, False: {{col.getFalseCount()}}</div> </div>';

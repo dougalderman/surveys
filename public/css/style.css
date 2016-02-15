@@ -215,30 +215,48 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
-#takeSurvey .left {
+#takeSurvey .left_bool {
     left: 0;
 }
 
-#takeSurvey .right {
+#takeSurvey .right_bool {
     right: 0;
 }
 
 #takeSurvey .black_border_and_text {
     border: 3px solid black;
     color: black;
+    line-height: 34px;
 }
 
-/* #takeSurvey .boolQuestion {
-    visibility: visible;
-    position: static;
-    margin-right: 10px;
+#takeSurvey #validation_modal {
+    background-color: #2aabe2;
+    color: #fff;
+    font-weight: bold;
 }
 
+#takeSurvey #validation_modal .red_modal_font {
+    color: red;
+}
 
-#takeSurvey .radioLabel {
-    font-family: Arial;
-    font-size: 0.9em;
-} */
+#takeSurvey #validation_modal h4 {
+    color: #fff;
+    font-weight: bold;
+}
+
+#takeSurvey #validation_modal .modal-footer {
+    background-color: #2aabe2;
+    color: #fff;
+    font-weight: bold;
+}
+
+#takeSurvey #validation_modal .modal-action {
+    background-color: #fff;
+}
+
+.lean-overlay {
+    display: none !important; /* override materialize */
+}
 
 #takeSurvey .submit_div {
     width: 60%;
@@ -347,6 +365,25 @@ input[type=range]::-moz-range-thumb {
     color: white;
 }
 
+#createModifyTemplate #confirm_modal .red_background {
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    width: 85px;
+    text-align: center;
+    padding: 0;
+}
+
+#createModifyTemplate #confirm_modal .green_background {
+    background-color: green;
+    color: black;
+    font-weight: bold;
+    width: 85px;
+    text-align: center;
+    padding: 0;
+    margin-right: 10px;
+}
+
 /* #sendSurvey p {
   font-family: 'Times New Roman';
   font-size: 1.3em;
@@ -370,18 +407,24 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
+#sendSurvey .variable_name {
+    color: green;
+}
+
 #sendSurvey div > option {
     display: none;
 }
 
-.preview_survey h4 {
-    font-family: Arial;
-    font-size: 1.7em;
+.preview_survey h4, #viewSurveyResults h4 {
+    font-family: Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: rgb(0, 53, 139);
 }
 
 #survey_questions p {
     font-family: Helvetica;
     font-size: 1.2em;
+    color: black
 }
 
 #survey_questions .bold {
@@ -400,6 +443,15 @@ input[type=range]::-moz-range-thumb {
 #viewSurveyResults .q_a_grid {
     width: 800px;
     height: 500px;  
+}
+
+#viewSurveyResults .grid_header {
+    color: #fff;
+    background-color: #000;
+}
+
+#viewSurveyResults .ui-grid-footer-info {
+    font-weight: bold;
 }
 
 #loginScreen .container {
@@ -431,6 +483,11 @@ input[type=range]::-moz-range-thumb {
     font-size: 1.2em;
     background-color:  #2aabe2;
 }
+
+#loginScreen .input-field .prefix.active {
+  color:  #2aabe2;
+}
+
 
 #signupScreen .container {
     height: 100vh;
@@ -466,16 +523,47 @@ input[type=range]::-moz-range-thumb {
     font-family: Arial;
     font-size: 1.8em;
     margin-top: 70px;
+    margin-bottom: 20px;
 }
 
 #studentMain a {
-    font-family: Arial;
-    font-size: 1.4em;
-    margin-top: 30px;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.6em;
+    /* margin-top: 50px; */
 }
 
+/* Override materialize */
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #2aabe2;
+    box-shadow: 0 1px 0 0 #2aabe2;
+}
 
-
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #2aabe2;
+}
+/* End Override materialize */
 
  
 

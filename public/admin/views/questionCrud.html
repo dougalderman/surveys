@@ -4,7 +4,7 @@
     <p class="bold_text">Question Text:</p>
     <div class="row">
         <div class="input-field col s6">
-            <input ng-model="question.questionText" type="text" id="questionText{{questionIndex}}">
+            <input ng-model="question.questionText" type="text" id="questionText{{questionIndex}}" required>
             <!--<label for="questionText">Type Question Text Below</label>-->
         </div>
         <div class="input-field col s6">
@@ -15,7 +15,7 @@
     <p>Choose Question Type:</p>
     <div class="row">
         <div class="input-field col s6">
-            <select id="choose_question_type" ng-model="question.type" ng-options="type for type in questionTypes" ng-change="updateQuestionType()" >
+            <select id="choose_question_type" ng-model="question.type" ng-options="type for type in questionTypes" ng-change="updateQuestionType()">
                 
                 <option value="" disabled selected>Choose Question Type</option>
                 <!--<option value="numeric">Numeric</option>

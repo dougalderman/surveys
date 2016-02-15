@@ -85,13 +85,33 @@ angular.module('surveys')
     $scope.deleteQuestion = function(indx) {
         $scope.template.questions.splice(indx, 1);
     }
+    
+    $scope.updateExistingTemplate = function() {
+        console.log('update template')
+        templateSurveyService.updateTemplate($scope.template._id, $scope.template)
+        .then(function( response ) {
+            console.log('in createModifyTemplateCtrl');
+            console.log('in processForm')
+            console.log('response', response);
+            if (response.status === 200) {
+                $state.go('admin', {
+                    toastMessage: 'Template Successfully Updated'
+                });
+            }
+        })
+        .catch(function(err) {
+            console.error('err = ', err);
+            $scope.errorMsg = 'Error in Creating Template'
+        });
+    } 
 
     $scope.processForm = function() {
         console.log('in processForm');
         console.log('template', $scope.template);
         if ($scope.selectedTemplateName === $scope.template.name) { // if haven't changed name
-            var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving.");
-            if (select === true) {
+             $('#confirm_modal').openModal();
+              /* var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving."); */
+           /* if (select === true) {
                 console.log('update template')
                 templateSurveyService.updateTemplate($scope.template._id, $scope.template)
                 .then(function( response ) {
@@ -108,7 +128,7 @@ angular.module('surveys')
                     console.error('err = ', err);
                     $scope.errorMsg = 'Error in Creating Template'
                 });
-            }
+            } */
         } 
         else {  // new template
             console.log('new template');

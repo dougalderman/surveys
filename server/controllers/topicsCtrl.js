@@ -23,6 +23,7 @@ module.exports = {
         console.log('req.query = ', req.query)
         topicsModel
         .find(req.query)
+        .sort({name: 'asc'})
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);

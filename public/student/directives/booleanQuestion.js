@@ -17,7 +17,7 @@ angular.module('surveys')
             
             $scope.handleBooleanAnswer = function(answer, indx) { 
                 $scope.response.booleanAnswer = answer;
-                if (answer) {
+                if (answer==='true') {
                     $scope.borderOnYes[indx] = true;
                     $scope.borderOnNo[indx] = false;
                 }

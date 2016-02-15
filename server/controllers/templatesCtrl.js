@@ -41,6 +41,7 @@ module.exports = {
         console.log('in readNames');
         templatesModel
         .find({},'name')
+        .sort({name: 'asc'})
         .exec(function(err, result) {
              console.log('err', err);
              console.log('result', result);

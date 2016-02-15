@@ -89,8 +89,8 @@ angular.module('surveys')
                         }
                         break;
                     case 'boolean':
-                        console.log('typeof booleanAnswer: ', typeof $scope.results.answers[i].booleanAnswer)
-                        if (typeof $scope.results.answers[i].booleanAnswer === "undefined") { // if not answered (versus answered no, which is falsy)
+                        if (!$scope.results.answers[i].booleanAnswer) {
+                        /* Note--boolean answers are saved in directive as string "true" or "false". They are converted to boolean in convertValues() below */
                             console.log('boolean not answered');
                             $scope.notAnswered[i] = true;
                             allRequiredFieldsAnswered = false;
@@ -169,7 +169,8 @@ angular.module('surveys')
             });        
         }
         else {
-           alert('Need to answer all required questions shown in red');
+        /*   alert('Need to answer all required questions shown in red');*/
+            $('#validation_modal').openModal();
         }
     }
     

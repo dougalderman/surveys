@@ -27,7 +27,7 @@
             <p>Name:</p>
             <div class="row">
                 <div class="input-field col s6">
-                      <input ng-model="template.name" type="text" id="templateName">
+                      <input ng-model="template.name" type="text" id="templateName" required>
                       <!--<label for="templateName">Type Name Below</label>-->
                 </div>
             </div>
@@ -51,7 +51,15 @@
             <br>
             <p class="error_msg" ng-show="errorMsg">{{errorMsg}}</p>
             <button class="button" type="submit">Save</button>
-
+            <div id="confirm_modal" class="modal">
+                <div class="modal-content">
+                    <p>Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving.</p>
+                </div>
+                <div class="modal-footer">
+                    <div class=" red_background modal-action modal-close waves-effect waves-green btn-flat">Cancel</div>
+                    <div class=" green_background modal-action modal-close waves-effect waves-green btn-flat" ng-click="updateExistingTemplate()">OK</div>
+                </div>
+            </div>
         </form>
         
         

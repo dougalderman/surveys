@@ -115,6 +115,60 @@
         "email": "yenta511@netflix.com",
         "password": "123",
         "roles": ["student"]
+    },
+    {
+        "first_name": "Barb",
+        "last_name": "Latts",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "barb222@gmail.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Sydney",
+        "last_name": "Victor",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "syd321@msn.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Joe",
+        "last_name": "Matheson",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "irobot@yahoo.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Jean-Luc",
+        "last_name": "Picard",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "captain@startrek.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Chew",
+        "last_name": "Bacca",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "chewy@starwars.com",
+        "password": "123",
+        "roles": ["student"]
+    },
+    {
+        "first_name": "Mary",
+        "last_name": "Patrick",
+        "student_id": 913131,
+        "cohort":  350,
+        "email": "mary@magneto.com",
+        "password": "123",
+        "roles": ["student"]
     }
 ]
    

@@ -25,7 +25,7 @@
             <p>Survey Name:</p>
                 <div class="row">
                     <div class="input-field col s6">
-                          <input ng-model="survey.name" type="text" id="surveyName">
+                          <input ng-model="survey.name" type="text" id="surveyName" required>
                 </div>
             </div>    
 
@@ -40,8 +40,8 @@
             <div ng-repeat="var_name in var_names" class="row">
 
                 <div class="input-field col s6">
-                   <p>{{var_name}}:</p>
-                      <input ng-model="var_values[$index]" type="text" id="var_value{{$index}}">
+                   <p class="variable_name">{{var_name}}:</p>
+                      <input ng-model="var_values[$index]" type="text" id="var_value{{$index}}" required>
                 </div>
             </div>
             
@@ -58,7 +58,7 @@
             <p>Send to (cohort ID):</p>
                 <div class="row">
                     <div class="input-field col s6">
-                          <input ng-model="survey.cohortSentTo" type="number" id="cohort_sentTo">
+                          <input ng-model="survey.cohortSentTo" type="number" id="cohort_sentTo" required>
                     </div>
                 </div>    
             
