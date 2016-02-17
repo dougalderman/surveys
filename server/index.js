@@ -15,7 +15,7 @@ var adminSurveyCtrl = require('./controllers/adminSurveyCtrl.js'),
 require('./controllers/passport')(passport);
 
 var app = express(),
-    port = 7518;
+    port = config.port;
 
 app.use(bodyParser.json());
 
