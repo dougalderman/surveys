@@ -1,5 +1,5 @@
 angular.module('surveys')
-.controller('createModifyTemplateCtrl', function($scope, templates, templateSurveyService, authService, $state) {
+.controller('createModifyTemplateCtrl', function($scope, templates, templateSurveyService, authService, $state, materialSelect) {
     
     $scope.templates = templates;
     $scope.template = {};
@@ -20,7 +20,7 @@ angular.module('surveys')
         window.setTimeout(function() {  // Need to delay execution of material_select to make sure Angular has 
                                         // updated the DOM.
             $('select').material_select();
-        }, 100);
+        }, materialSelect.TIMEOUT);
      });
     
     $scope.adminLogout = function() {

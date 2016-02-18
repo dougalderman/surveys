@@ -1,5 +1,5 @@
 angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.exporter'])
-
+.constant('materialSelect', {TIMEOUT: 300}) // timeout in ms for material_select() to be called for select dropdowns
 .config(function( $stateProvider, $urlRouterProvider ) {
 
 	$stateProvider
