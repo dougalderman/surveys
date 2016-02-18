@@ -1,8 +1,9 @@
 angular.module('surveys')
-.controller('sendSurveyCtrl', function($scope, templates, templateSurveyService, authService, $state, materialSelect) {
+.controller('sendSurveyCtrl', function($scope, templates, topics, templateSurveyService, authService, $state, materialSelect) {
     
     
     $scope.templates = templates;
+    $scope.topics = topics;
     $scope.template = {};
     $scope.template.questions = [];
     $scope.var_names = [];
@@ -14,6 +15,7 @@ angular.module('surveys')
         
     console.log('In sendSurveyCtrl');
     console.log('templates', $scope.templates);
+    console.log('topics', $scope.topics);
     
     $(document).ready(function() {
         window.setTimeout(function() {  // Need to delay execution of material_select to make sure Angular has 
@@ -53,7 +55,7 @@ angular.module('surveys')
         }); 
     };
     
-    $scope.loadTopicNames = function() {
+   /*  $scope.loadTopicNames = function() {
         templateSurveyService.getAllTopicNames()
         .then(function( response ) {
             console.log('in sendSurveyCtrl');
@@ -61,7 +63,7 @@ angular.module('surveys')
             console.log('response', response);
             $scope.topics = response.data;
         }); 
-    };
+    }; */
     
     $scope.previewSurvey = function() {
         $scope.prevSurvey = {};
@@ -125,6 +127,6 @@ angular.module('surveys')
     };
        
     
-    $scope.loadTopicNames();
+ //   $scope.loadTopicNames();
     
 });
