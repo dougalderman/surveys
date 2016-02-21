@@ -8,7 +8,8 @@ module.exports = {
         console.log('in create');
         console.log('req.body = ', req.body);
       
-        var newUser = new usersModel(req.body)
+        var newUser = new usersModel(req.body);
+        newUser.password = newUser.generateHash(newUser.password);
         newUser.save(function(err, result) {
             if (err)
                 return res.status(500).send(err);
