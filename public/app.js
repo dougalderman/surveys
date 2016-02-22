@@ -1,5 +1,5 @@
 angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.exporter'])
-
+.constant('materialSelect', {TIMEOUT: 100}) // timeout in ms for material_select() to be called for select dropdowns
 .config(function( $stateProvider, $urlRouterProvider ) {
 
 	$stateProvider
@@ -140,6 +140,16 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
                             successRedirect: 'sendSurvey'
                         });
                     }
+                });
+            },
+            topics: function(templateSurveyService, $state) {
+                return templateSurveyService.getAllTopicNames()
+                .then(function( response ) {
+                     return response.data;
+                })
+                .catch(function(err) {
+                     // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
                 });
             }
         } 

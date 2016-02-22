@@ -3,10 +3,10 @@
         "first_name": "Dan",
         "last_name": "Abrams",
         "student_id": 32512,
-        "cohort":  350,
+        "cohort":  100,
         "email": "dabrams@yahoo.com",
         "password": "123",
-        "roles": ["student"]
+        "roles": ["admin"]
     },
     {
         "first_name": "Julie",
