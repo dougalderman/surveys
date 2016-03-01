@@ -103,9 +103,12 @@ Here are the question and answer schema:
 ####Create / Modify Template
 
 Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
-![Create Modify Template Page](https://github.com/dougalderman/surveys/blob/master/images/create_modify_template_entry.jpg
+
+![Create Modify Template Page](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template.jpg)
 
 The select template drop down box integrates Materialize CSS framework and Angular, using ng-options to display a variable number of template options.
+
+![Select Template Drop Down Box](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template4.jpg)
 
 ```html
 <div class="container">
@@ -160,3 +163,5 @@ A feature of the Create/Modify template page is that it ng-repeats over a questi
 Templates can use variables, which are enclosed with double $$'s: e.g. $$var_name$$. This allows the adminstrator to set variables when sending surveys, avoiding having to create a large number of templates. 
 
 A modal pops up if the user tries to modify an existing template without changing the name, prompting him to either cancel out or overwrite the existing template. A successful save takes you back to the Admin Main Menu, with a toast.
+
+![Modal Pop Up](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template5.jpg)
