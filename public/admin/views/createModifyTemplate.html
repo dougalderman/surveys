@@ -14,10 +14,7 @@
             <div class="input-field col s6">
                 <select id="choose_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
                     <option value="" disabled selected>Select Template</option>
-<!--                    <option ng-repeat="template in templates" value="{{template._id}}">{{template.name}}</option>
-                    </div>-->
                 </select>
-                <!--label>Select Template</label>-->
             </div>
         </div>
         
@@ -28,7 +25,6 @@
             <div class="row">
                 <div class="input-field col s6">
                       <input ng-model="template.name" type="text" id="templateName" required>
-                      <!--<label for="templateName">Type Name Below</label>-->
                 </div>
             </div>
 
@@ -36,7 +32,6 @@
             <div class="row">
                 <div class="input-field col s6">
                       <input ng-model="template.description" type="text" id="templateDescription">
-                      <!--<label for="tempateDescription">Type Description Below</label>-->
                 </div>
             </div>
 

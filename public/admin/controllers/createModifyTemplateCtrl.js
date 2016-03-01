@@ -37,23 +37,8 @@ angular.module('surveys')
         }); 
     }
    
-    /* $scope.readAllTemplateNames = function() {
-        templateSurveyService.getAllTemplateNames()
-         .then(function( response ) {
-            console.log('in createModifyTemplateCtrl');
-            console.log('in readAllTemplateNames');
-            console.log('response', response);
-            $scope.templates = response.data;
-            console.log('templates', $scope.templates)
-        }); 
-
-    }; */
-
-       
     $scope.loadSelectedTemplate = function() {
-        /* $scope.templateId  = $('#choose_template').val();
-        console.log('templateId = ', $scope.templateId); */
-       console.log('selectedTemplate', $scope.selectedTemplate);
+        console.log('selectedTemplate', $scope.selectedTemplate);
         templateSurveyService.getTemplate($scope.selectedTemplate._id)
         .then(function( response ) {
             console.log('in createModifyTemplateCtrl');
@@ -61,7 +46,6 @@ angular.module('surveys')
             console.log('response', response);
             $scope.template = response.data;
             $scope.selectedTemplateName = $scope.template.name // save name to compare with name at submit
-            // $('select').material_select();
         }); 
     };
     
@@ -69,8 +53,6 @@ angular.module('surveys')
         
         console.log('createModifyTemplateCtrl');
         console.log('in addNewQuestion()');
-        /* var newElement = $compile('<question-crud question="question" question-types="quest_types" question-index="questionIndex + 1" delete-question="deleteQuestion(indx)">')($scope)
-        $('#add_question_button').append(newElement); */
         $scope.template.questions.push(
             {
                 "questionText" :  "",
@@ -110,25 +92,6 @@ angular.module('surveys')
         console.log('template', $scope.template);
         if ($scope.selectedTemplateName === $scope.template.name) { // if haven't changed name
              $('#confirm_modal').openModal();
-              /* var select = confirm("Confirm to overwrite existing template. If you want to create a new template, hit 'Cancel' and change template name before saving."); */
-           /* if (select === true) {
-                console.log('update template')
-                templateSurveyService.updateTemplate($scope.template._id, $scope.template)
-                .then(function( response ) {
-                    console.log('in createModifyTemplateCtrl');
-                    console.log('in processForm')
-                    console.log('response', response);
-                    if (response.status === 200) {
-                        $state.go('admin', {
-                            toastMessage: 'Template Successfully Updated'
-                        });
-                    }
-                })
-                .catch(function(err) {
-                    console.error('err = ', err);
-                    $scope.errorMsg = 'Error in Creating Template'
-                });
-            } */
         } 
         else {  // new template
             console.log('new template');
@@ -136,8 +99,6 @@ angular.module('surveys')
                 delete $scope.template._id; // delete id in case user modifies template and changes name.
             
             templateSurveyService.writeNewTemplate($scope.template)
-            // then / catch for promise
-            // $state.go(admin)
             .then(function( response ) {
                 console.log('in createModifyTemplateCtrl');
                 console.log('in processForm')
