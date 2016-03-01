@@ -38,18 +38,125 @@ This site was intended to be eventually integrated into the DevMountain system. 
 
 The admin section was designed more for functionality than appearance, since it will be used by a handful of people. The take survey page was designed for appearance, as it will be used by most students.
 
+##Detailed Usage
 
+###Models
+Here are the 5 Mongoose collections:
+
+```javascript
+/* -Surveys */
+	name: {type: 'String', required: true},
+	description: {type: 'String'},
+	cohortSentTo: {type: 'Number'},
+	usersSentTo: [{type: Schema.Types.ObjectId, ref: 'Users'}],
+	usersUntaken: [{type: Schema.Types.ObjectId, ref: 'Users'}],
+	dateSent: {type: 'Date', required: true},
+	topic: {type: Schema.Types.ObjectId, ref: 'Topics'},
+	questions: [questionSchema]
+
+	
+/* Templates */
+	name: {type: 'String', required: true},
+	description: {type: 'String'},
+	questions: [questionSchema]
+
+	
+/* Results */
+	survey: {type: Schema.Types.ObjectId, ref: 'Surveys'},
+	user: {type: Schema.Types.ObjectId, ref: 'Users'},
+	answers: [answerSchema]
+	
+	
+/* Users */
+	first_name: {type: 'String'},
+	last_name: {type: 'String'},
+	cohort:  {type: 'Number'},
+	email: {type: 'String'},
+	password: {type: 'String'},
+	roles: [{type: 'String'}],
+	
+/* Topics */
+	name: {type: 'String'}
+```
+
+Here are the question and answer schema:
+
+```javascript
+/* questionSchema */
+		questionText: {type: 'String', required: true},
+		type: {type: 'String', lowercase: true, required: true, enum: ['numeric', 'boolean', 'text']},
+		required: {type: 'Boolean', required: true, default: true},
+		lowValue: {type: 'Number', min: 1},
+		highValue: {type: 'Number', min: 1}
+
+		
+/* answerSchema */
+		type: {type: 'String', lowercase: true, required: true, enum: ['numeric', 'boolean', 'text']},
+		numericAnswer: {type: 'Number', min: 1},
+		booleanAnswer: {type: 'Boolean' },
+		textAnswer: {type: 'String'}
+		
+```
+
+###Detailed Description of System
+
+####Create / Modify Template
 
 Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
-    <img ng-src="images/create_modify_template_entry.jpg">
+![Create Modify Template Page](https://github.com/dougalderman/surveys/blob/master/images/create_modify_template_entry.jpg
+
 The select template drop down box integrates Materialize CSS framework and Angular, using ng-options to display a variable number of template options.
-    <img ng-src="images/create_modify_template_dropdown.jpg">
+
+```html
+<div class="container">
+        
+        <p>Select Template:</p>
+        <div class="row">
+            <div class="input-field col s6">
+                <select id="choose_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
+                    <option value="" disabled selected>Select Template</option>
+<!--                    <option ng-repeat="template in templates" value="{{template._id}}">{{template.name}}</option>
+                    </div>-->
+                </select>
+                <!--label>Select Template</label>-->
+            </div>
+        </div>
+```
+
+Templates are loaded in the resolve of the createModifyTemplate state in app.js, calling a service function that does an http request to one of the 29 server endpoints:
+
+```javascript
+ resolve: {
+            templates: function(templateSurveyService, $state) {
+                return templateSurveyService.getAllTemplateNames()
+                .then(function( response ) {
+                     return response.data;
+                })
+                .catch(function(err) {
+                     // For any error, send them back to admin login screen.     
+                    console.error('err = ', err);
+                    if (err.status === 403) { //  if unauthorized
+                        $state.go('student')
+                    }
+                    else { 
+                        $state.go('login', {
+                            successRedirect: 'createModifyTemplate'
+                        });
+                    }
+                });
+            }
+        }         
+```
+
+A feature of the Create/Modify template page is that it ng-repeats over a question-crud directive that displays and provides editing capability for all the existing questions in a template, and allows the user to add a new question to the template. There are 3 question types: numeric, boolean, or text. Numeric are assumed to be a range, with options for low value and high value. Questions can be removed by clicking the X to the right of the question, or added by clicking the Add New Question button at the bottom.:
+
+```html
+            <div ng-repeat="question in template.questions">
+                <question-crud question="question" question-types="quest_types" question-index="$index" delete-question="deleteQuestion(indx)"></question-crud>
+            </div>
+            
+            <button class="button" type="button" ng-click="addNewQuestion()">Add New Question</button>
+```
 Templates can use variables, which are enclosed with double $$'s: e.g. $$var_name$$. This allows the adminstrator to set variables when sending surveys, avoiding having to create a large number of templates. 
-    <img ng-src="images/create_modify_template_variables.jpg">
- Each question in the template is a directive that is ng-repeated for the array of questions. There are 3 question types: numeric, boolean, or text. Numeric are assumed to be a range, with options for low value and high value. Questions can be removed by clicking the X to the right of the question, or added by clicking the Add New Question button at the bottom.
-    <img ng-src="images/create_modify_template_question.jpg">  
- If you try to save an existing template without changing the name, a Modal pops up, asking if you are sure you want to overwrite the existing template. A successful save takes you back to the Admin Main Menu, with a toast.
-    
 
-
-
+A modal pops up if the user tries to modify an existing template without changing the name, prompting him to either cancel out or overwrite the existing template. A successful save takes you back to the Admin Main Menu, with a toast.
