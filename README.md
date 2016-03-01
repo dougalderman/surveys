@@ -118,10 +118,7 @@ The select template drop down box integrates Materialize CSS framework and Angul
             <div class="input-field col s6">
                 <select id="choose_template" ng-options="templ.name for templ in templates" ng-model="selectedTemplate" ng-change="loadSelectedTemplate()">
                     <option value="" disabled selected>Select Template</option>
-<!--                    <option ng-repeat="template in templates" value="{{template._id}}">{{template.name}}</option>
-                    </div>-->
                 </select>
-                <!--label>Select Template</label>-->
             </div>
         </div>
 ```
