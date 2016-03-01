@@ -104,11 +104,11 @@ Here are the question and answer schema:
 
 Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
 
-![Create Modify Template Page](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template.jpg)
+![Create Modify Template Page](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template.jpg)
 
 The select template drop down box integrates Materialize CSS framework and Angular, using ng-options to display a variable number of template options.
 
-![Select Template Drop Down Box](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template4.jpg)
+![Select Template Drop Down Box](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template4.jpg)
 
 ```html
 <div class="container">
@@ -153,6 +153,9 @@ Templates are loaded in the resolve of the createModifyTemplate state in app.js,
 
 A feature of the Create/Modify template page is that it ng-repeats over a question-crud directive that displays and provides editing capability for all the existing questions in a template, and allows the user to add a new question to the template. There are 3 question types: numeric, boolean, or text. Numeric are assumed to be a range, with options for low value and high value. Questions can be removed by clicking the X to the right of the question, or added by clicking the Add New Question button at the bottom.:
 
+![Question Crud Directive](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template2.jpg)
+
+
 ```html
             <div ng-repeat="question in template.questions">
                 <question-crud question="question" question-types="quest_types" question-index="$index" delete-question="deleteQuestion(indx)"></question-crud>
@@ -164,4 +167,4 @@ Templates can use variables, which are enclosed with double $$'s: e.g. $$var_nam
 
 A modal pops up if the user tries to modify an existing template without changing the name, prompting him to either cancel out or overwrite the existing template. A successful save takes you back to the Admin Main Menu, with a toast.
 
-![Modal Pop Up](https://github.com/dougalderman/surveys/tree/master/readme_images/Create_Modify_Template5.jpg)
+![Modal Pop Up](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template5.jpg)
