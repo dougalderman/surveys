@@ -106,19 +106,6 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
             }
         } 
 	})
-    /* .state('deleteTemplate', {
-		url: '/admin/delete_template',
-		templateUrl: 'admin/views/deleteTemplate.html',
-		controller: 'deleteTemplateCtrl',
-        resolve: {
-            templates: function(templateSurveyService) {
-                return templateSurveyService.getAllTemplateNames()
-                .then(function( response ) {
-                     return response.data;
-              }); 
-            }
-        } 
-	}) */
     .state('sendSurvey', {
 		url: '/admin/send_survey',
 		templateUrl: 'admin/views/sendSurvey.html',
@@ -180,11 +167,6 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
         } 
 		
 	})
-    /*.state('updateTopics', {
-		url: '/admin/update_topics',
-		templateUrl: 'admin/views/updateTopics.html',
-		controller: 'updateTopicsCtrl'
-	}) */
     .state('login', {
 		url: '/login',
 		templateUrl: 'auth/views/login.html',
@@ -199,12 +181,6 @@ angular.module('surveys', ['ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.
 		templateUrl: 'auth/views/signup.html',
 		controller: 'signupCtrl'
     })
-    /*.state('unAuthorized', {
-		url: '/unauthorized',
-		template: '<h1>Not authorized</h1>'
-	}) */
-   
-
-	$urlRouterProvider.otherwise('/student');
+    $urlRouterProvider.otherwise('/student');
 
 });

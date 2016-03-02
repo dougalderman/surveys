@@ -8,9 +8,6 @@ angular.module('surveys')
             surveyDescription: '@',
             surveyTopic: '@',
             surveyQuestions: '='
-        }, 
-        controller: function($scope) {
-                                   
         }
     }
         

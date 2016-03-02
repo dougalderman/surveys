@@ -1,5 +1,5 @@
 angular.module('surveys')
-.directive('questionCrud', function() {
+.directive('questionCrud', function(materialSelect) {
     return {
         restrict: 'E',
         templateUrl: 'admin/views/questionCrud.html', 
@@ -14,13 +14,12 @@ angular.module('surveys')
                 window.setTimeout(function() {  // Need to delay execution of material_select to make sure Angular has 
                                         // updated the DOM.
                     $('select').material_select();
-                }, 100);
+                }, materialSelect.TIMEOUT);
             });
                         
                     
             $scope.updateQuestionType = function() {
-                // $scope.question.type  = $('#choose_question_type').val();
-                // console.log('question type = ', $scope.question.type);
+                
             };
             
         }

@@ -2,12 +2,6 @@ angular.module('surveys')
 .service('authService', function( $http ) {
     this.login = function(userData) {
         console.log('userData = ', userData);
-        
-       /* var body = {
-            email: userData.email,
-            password: userData.password
-        } */
-        
         return $http({
             method: 'POST',
             url: '/api/login',
@@ -44,6 +38,5 @@ angular.module('surveys')
             url: '/api/current_admin_user'
         });
     };
-
         
 });

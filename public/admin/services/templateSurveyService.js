@@ -9,28 +9,12 @@ angular.module('surveys')
         });
     }; 
     
-    // Staged data from json below:
-    /* this.getAllTemplateNames = function() {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/templateNames.json'
-        });
-     }; */
-    
-     this.getTemplate = function(id) {
+    this.getTemplate = function(id) {
     	return $http({
             method: 'GET',
             url: '/api/admin/templates/' + id 
         });
     }; 
-    
-    // Staged data from json below:
-    /* this.getTemplate = function(id) {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/nickJonesTemplate.json'
-        });
-    }; */
     
     this.updateTemplate = function(id, data) {
     	return $http({
@@ -55,21 +39,6 @@ angular.module('surveys')
         });
     }; 
     
-    // Staged data from json below:
-    /* this.getAllTopicNames = function() {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/topicNames.json'
-        });
-     }; */
-    
-     /* this.checkForUsersInCohort = function(cohortId) {
-    	return $http({
-            method: 'GET',
-            url: '/api/admin/users/cohort/' + cohortId,
-        });
-    };  */
-    
     this.writeNewSurvey = function(data) {
     	return $http({
             method: 'POST',
@@ -78,21 +47,6 @@ angular.module('surveys')
         });
     }; 
     
-    /* this.updateSurveyUsers = function(survey_id, cohort_id) {
-    	return $http({
-            method: 'PUT',
-            url: '/api/admin/surveys/' + survey_id + '?cohort=' + cohort_id,
-        });
-    }; */
-    
-    // Staged data from json below:
-    /* this.checkForUsers = function(cohortId) {
-    	return $http({
-            method: 'GET',
-            url: '/admin/data/usersInCohort.json',
-        });
-    }; */
-    
     this.getAllSurveyNamesAndDates = function() {
     	return $http({
             method: 'GET',
@@ -100,28 +54,12 @@ angular.module('surveys')
         });
     }; 
     
-    // Staged data from json below:
-    /* this.getAllSurveyNames = function() {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/surveyNames.json'
-        });
-     }; */
-    
     this.getSurvey = function(id) {
     	return $http({
             method: 'GET',
             url: '/api/admin/surveys/' + id 
         });
     }; 
-    
-    // Staged data from json below:
-    /* this.getSurvey = function() {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/survey1.json'
-        });
-     }; */
     
     this.getTopic = function(topic_id) {
     	return $http({
@@ -137,28 +75,12 @@ angular.module('surveys')
         });
     }; 
     
-    // Staged data from json below:
-    /* this.getSurveyUsersRequested = function(survey_id) {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/usersRequested.json'
-        });
-     }; */
-    
     this.getSurveyUsersUntaken = function(survey_id) {
         return $http({
             method: 'GET',
             url: '/api/admin/surveys/untaken/' + survey_id 
         });
     }; 
-    
-    // Staged data from json below:
-    /* this.getSurveyUsersUntaken = function(survey_id) {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/usersUntaken.json'
-        });
-     }; */
     
     this.getSurveyResults = function(survey_id) {
         return $http({
@@ -167,15 +89,7 @@ angular.module('surveys')
         });
     }; 
     
-    // Staged data from json below:
-    /* this.getSurveyResults = function(survey_id) {
-    	return $http({
-            method: 'GET',
-            url: 'admin/data/results_51225.json'
-        });
-     }; */
-    
-      this.checkForAdminAuth = function(survey_id) {
+    this.checkForAdminAuth = function(survey_id) {
         return $http({
             method: 'GET',
             url: '/api/admin/current_user'
@@ -238,10 +152,6 @@ angular.module('surveys')
     this.compileVariables = function(survey, varNames, varValues) {
         var arrayOfVars = [];
         var newSurvey = {};
-        
-//        for (var p in survey) {
-//            newSurvey[p] = survey[p]
-//        }
         
         newSurvey = JSON.parse(JSON.stringify(survey));
         
@@ -325,23 +235,6 @@ angular.module('surveys')
     this.loadQAColumns = function(survey, results)     {
         var newArray = [];
           
-        /* newArray.push({
-            field: 'column0',
-            displayName: '',
-            width: 80,
-            enableHiding: false
-        }); 
-        
-        for (var i = 1; i <= survey.questions.length; i++) {
-            newArray.push({
-                field: 'column' + i,
-                displayName: survey.questions[i - 1].questionText,
-                width: 120,
-                headerTooltip: true,
-                enableHiding: false
-            });
-        } */
-        
         for (var i = 0; i < survey.questions.length; i++) {
             newArray.push({
                 field: 'column' + i,
@@ -357,20 +250,6 @@ angular.module('surveys')
                     newArray[i].footerCellTemplate =  this.getNumericFooterCellTemplate();
                     break;
                 case 'boolean' :
-                    /* newArray[i].footerCellTemplate = '<div class="ui-grid-cell-contents" col-index="renderIndex"> <div> True: {{col.getTrueCount()}}, False: {{col.getFalseCount()}}</div> </div>';
-                    newArray[i].getTrueCount = function( aggregation, fieldValue, numValue ){
-                        if ( typeof(aggregation.count) === 'undefined' ){
-    aggregation.count = 0;
-                        }
-                        if ( typeof(aggregation.total) === 'undefined' ){
-      aggregation.total = 0;
-                        }
-                        aggregation.count++;
-                        if (fieldValue) { // if true
-                            aggregation.total++;
-                        }
-                        return aggregation.total;
-                    }; */
                     newArray[i].footerCellTemplate =  this.getYesNoFooterCellTemplate();
                     newArray[i].aggregationType = this.calculateYesCount;
                     break;
@@ -383,20 +262,6 @@ angular.module('surveys')
         return newArray;
     };
     
-    /* this.sortByType = function(answers) {
-        answers.sort(function(a, b) {
-            if (a.type > b.type) {
-                return 1;
-             }
-            if (a.type < b.type) {
-                return -1;
-            }
-            // a must be equal to b
-            return 0; 
-        });
-        return answers;
-    }; */
-      
     this.loadQAData = function(survey, results)     {
         var newArray = [];
         
