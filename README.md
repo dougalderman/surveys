@@ -165,3 +165,14 @@ Templates can use variables, which are enclosed with double $$'s: e.g. $$var_nam
 A modal pops up if the user tries to modify an existing template without changing the name, prompting him to either cancel out or overwrite the existing template. A successful save takes you back to the Admin Main Menu, with a toast.
 
 ![Modal Pop Up](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template5.jpg)
+
+####Send Survey
+
+The Send Survey page allows the user to select from a list of templates in order to send out a new survey.
+
+![Send Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Send_Survey.jpg)
+
+After selecting the template, the user can select values for the variables in the template. 
+
+
+
