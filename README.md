@@ -172,7 +172,59 @@ The Send Survey page allows the user to select from a list of templates in order
 
 ![Send Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Send_Survey.jpg)
 
-After selecting the template, the user can select values for the variables in the template. 
+After selecting the template, the user can select values for the variables in the template. A service function does a regex check for the $$var_name$$ pattern, and pushes them into an array:
+
+```javascript
+this.findMatch = function(str) { // look for $$something$$
+    var regex = /\$\$(.*?)\$\$/g;
+    var resultArr = [];
+    var arr = regex.exec(str);
+    while (arr !== null) {
+        resultArr.push(arr[1]);
+        arr = regex.exec(str);
+    }
+            
+    return resultArr;
+}
+```
+
+After finding the variables, they are displayed in the view using an ng-repeat:
+
+```html
+ <p ng-show="var_names.length">Variables:</p>
+ <div ng-repeat="var_name in var_names" class="row">
+        <div class="input-field col s6">
+                <p class="variable_name">{{var_name}}:</p>
+                <input ng-model="var_values[$index]" type="text" id="var_value{{$index}}" required>
+        </div>
+ </div>
+```
+
+![Variables](https://github.com/dougalderman/surveys/blob/master/readme_images/Send_Survey2.jpg)
+
+After the user enters values for the variables, these are later compiled when the survey is previewed or sent by doing a regexp replace:
+
+```javascript
+if (varNames && varValues) {
+        for (var i = 0; i < varNames.length; i++) {
+             var regexstring = '\\$\\$' + varNames[i] + '\\$\\$';
+             var regexp = new RegExp(regexstring, 'g');
+             newSurvey.name = newSurvey.name.replace(regexp, varValues[i]);
+             newSurvey.description = newSurvey.description.replace(regexp, varValues[i]);
+             for (var j = 0; j < newSurvey.questions.length; j++) {
+                  newSurvey.questions[j].questionText = newSurvey.questions[j].questionText.replace(regexp, varValues[i])
+             }
+        }
+}
+```
+The user selects the topic using a dropdown. Topics are stored in a separate collection. The user also enters a cohort number to send to. The cohort number is a field in the user collection. 
+
+After entering values in the input fields the user can preview the survey by clicking a button:
+
+![Preview Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Send_Survey3.jpg)
+
+The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clickin the "Send" button writes a new survey to the survey collection. 
+
 
 
 
