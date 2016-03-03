@@ -287,7 +287,7 @@ this.loadQAColumns = function(survey, results)     {
     };
 ```
 
-A similar function loaded in the data for the questions from an array of survey answers. 
+A similar function loaded in the data for the answers from an array of survey answers. 
 
 Data can be exported to a csv file using the built-in UI-Grid export feature (by clicking on the menu tab at top right of grid). The csv file can be imported into Excel or another statistical program for further analysis.
 
