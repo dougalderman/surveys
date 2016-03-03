@@ -223,7 +223,76 @@ After entering values in the input fields the user can preview the survey by cli
 
 ![Preview Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Send_Survey3.jpg)
 
-The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clickin the "Send" button writes a new survey to the survey collection. 
+The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clicking the "Send" button writes a new survey to the survey collection. 
+
+####View Reports
+The View Reports screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
+
+![View Reports](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports.jpg)
+
+After the user selects from a dropdown list of surveys in reverse date order, the reports will display. The first report, Report of Users Sent Survey, provides a list of user names and a column indicating whether they took the survey or not. 
+
+![Report of Users Sent Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports2.jpg)
+
+I did a custom column footer aggregation feature to count the number of "Yes" rows. 
+
+```javascript
+this.calculateYesCount = function(visRows, self) {
+        var yesCount = 0;
+        var column_id = self.name;
+        visRows.forEach(function(row, index, array) {
+            if (row.entity[column_id] === 'Yes') {
+                yesCount++;
+            }
+        });
+        return yesCount;
+    };
+```
+
+The Questions and Answers report has all the survey questions as columns, and each answer as a separate row.
+
+![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports3.jpg)
+
+I created a function to load the columns from an array of survey questions. As can be seen below, I used either the built-in avge aggregation function or my custom 'Yes Count' function, depending on question type:
+
+```javascript
+this.loadQAColumns = function(survey, results)     {
+        var newArray = [];
+          
+        for (var i = 0; i < survey.questions.length; i++) {
+            newArray.push({
+                field: 'column' + i,
+                displayName: survey.questions[i].questionText,
+                /* width: 160, */
+                headerTooltip: true,
+                enableHiding: false,
+                headerCellClass: 'grid_header'
+            });
+            switch(survey.questions[i].type) {
+                case 'numeric':
+                    newArray[i].aggregationType = uiGridConstants.aggregationTypes.avg;
+                    newArray[i].footerCellTemplate =  this.getNumericFooterCellTemplate();
+                    break;
+                case 'boolean' :
+                    newArray[i].footerCellTemplate =  this.getYesNoFooterCellTemplate();
+                    newArray[i].aggregationType = this.calculateYesCount;
+                    break;
+                case 'text' :
+                    newArray[i].cellTooltip = true;
+                    break;
+            }
+        } 
+        
+        return newArray;
+    };
+```
+
+A similar function loaded in the data for the questions from an array of survey answers. 
+
+Data can be exported to a csv file using the built-in UI-Grid export feature (by clicking on the menu tab at top right of grid). The csv file can be imported into Excel or another statistical program for further analysis.
+
+
+
 
 
 
