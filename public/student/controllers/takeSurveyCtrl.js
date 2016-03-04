@@ -1,8 +1,6 @@
 angular.module('surveys')
 .controller('takeSurveyCtrl', function(takeSurveyService, $scope, auth, $stateParams, $state) {
 
-    // $scope.survey = survey;
-    
     console.log('in takeSurveyCtrl');
     
     console.log('$stateParams.surveyId = ', $stateParams.surveyId);
@@ -34,10 +32,7 @@ angular.module('surveys')
        
     $scope.initializeResults = function() {
        
-       /*     $scope.results.survey = response._id; 
-            $scope.results.user = [logged in]; */
         $scope.results.answers = [];
-        // $scope.requiredFld = [];
         
         console.log('$scope.survey.questions', $scope.survey.questions);
         $scope.survey.questions.forEach(function(question, index, array) {
@@ -169,7 +164,6 @@ angular.module('surveys')
             });        
         }
         else {
-        /*   alert('Need to answer all required questions shown in red');*/
             $('#validation_modal').openModal();
         }
     }

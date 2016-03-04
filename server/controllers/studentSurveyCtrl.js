@@ -87,35 +87,4 @@ module.exports = {
         })
     }
     
-   /* deleteUntaken: function(req, res) {
-        console.log('in studentSurveyCtrl');
-        console.log('in deleteUntaken');
-        console.log('req.params = ', req.params)
-        console.log('req.query = ', req.query)
-        surveysModel
-        .find(req.query)
-        .exec(function(err, result) {
-             console.log('err', err);
-             console.log('result', result);
-             if (err) {
-                 console.log('in error routine');
-                 return res.status(500).send(err);
-             }
-             else {
-                 if (result.usersUntaken) {
-                    var indx = result.usersUntaken.indexOf(req.params.student_id);
-                    if (indx !== -1) {
-                        result.usersUntaken = result.usersUntaken.splice(indx, 1)
-                    }
-                    result.save(function(er, re) {
-                        if (er)
-                            return res.status(500).send(er);
-                        else
-                            res.send(re);  
-                    });
-                 }
-             }
-        });
-    } */
-    
 }

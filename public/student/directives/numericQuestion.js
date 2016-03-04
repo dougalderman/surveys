@@ -19,7 +19,6 @@ angular.module('surveys')
                       
             if ($scope.questionType === 'numeric') {
             
-                /* $scope.response = {}; */
                 if ($scope.required)
                     $scope.response.numericAnswer = 0;
                 else

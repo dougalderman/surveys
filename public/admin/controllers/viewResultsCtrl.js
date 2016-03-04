@@ -2,7 +2,6 @@ angular.module('surveys')
 .controller('viewResultsCtrl', function($scope, surveys, templateSurveyService, authService, $state, materialSelect) {
     
        
- //   $scope.surveys = surveys;
     $scope.displaySurveys = [];
     for (var i = 0; i < surveys.length; i++) {
         var dateObject = new Date(surveys[i].dateSent);

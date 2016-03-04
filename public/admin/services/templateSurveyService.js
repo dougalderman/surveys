@@ -266,7 +266,6 @@ angular.module('surveys')
         var newArray = [];
         
         for (var i = 0; i < results.length; i++) {
-            // results[i].answers = this.sortByType(results[i].answers);
             newArray[i] = {};
             for (var j = 0; j < results[i].answers.length; j++) {
                 var columnId = 'column' + j;

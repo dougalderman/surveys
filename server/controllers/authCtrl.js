@@ -16,14 +16,6 @@ var setSignupDefaults = function(user) {
 
 module.exports = {
     
-    /* successRedirect: function(req, res) {
-        if (checkRoles(req.user, 'admin'))
-            res.redirect('/#/admin');
-        else 
-            return res.status(403).send('Not authorized');
-    }, */
-
-    
     successRespond: function(req, res) {
         res.json(req.user);
     },

@@ -7,10 +7,6 @@ html, body {
     padding: 0;
 }
 
-/* #takeSurvey label {
-    margin-right: 20px;
-} */
-
 .surveyHeader {
     background-color: #444;
     width: 100%;
@@ -22,7 +18,6 @@ html, body {
 
 .surveyHeader .logo {
     padding: 15px 15px 15px 0px;
-    /* border-right: 1px solid; */
 }
 
 .surveyHeader .headerTitle {
@@ -67,7 +62,6 @@ div #takeSurvey {
     background-image: url('./../images/devmountain_class_pic.jpg');
     background-size: cover;
     position: fixed;
-    /* opacity: 0.5; */
 }
 
 #takeSurvey .takeSurveyHeader {
@@ -151,7 +145,6 @@ div #takeSurvey {
     height: 40px;
     width:  60%;
     margin: 0 auto;
-/*   line-height: 40px; */
 }
 
 #takeSurvey .slider_left {
@@ -279,7 +272,6 @@ input[type=range]::-moz-range-thumb {
     border: none;
     height: 80px;
     width: 200px;
-    /*color: #2aabe2; */
 }
 
 #takeSurvey .input-field {
@@ -316,14 +308,6 @@ input[type=range]::-moz-range-thumb {
     font-family: Arial;
     font-size: 2em;
 }
-
-/* #templateName {
-    width: 40%;
-}
-
-#templateDescription {
-    width: 60%;
-} */
 
 #createModifyTemplate p, #sendSurvey p {
     font-family: Helvetica, sans-serif;
@@ -383,11 +367,6 @@ input[type=range]::-moz-range-thumb {
     padding: 0;
     margin-right: 10px;
 }
-
-/* #sendSurvey p {
-  font-family: 'Times New Roman';
-  font-size: 1.3em;
-} */
 
 #sendSurvey .container .row {
   margin-bottom: 50px;
@@ -529,7 +508,6 @@ input[type=range]::-moz-range-thumb {
 #studentMain a {
     font-family: Helvetica, sans-serif;
     font-size: 1.6em;
-    /* margin-top: 50px; */
 }
 
 /* Override materialize */

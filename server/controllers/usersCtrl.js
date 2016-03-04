@@ -56,44 +56,6 @@ module.exports = {
         })
     }, 
     
-    /* readRequestedSurveyUsers: function(req, res) {
-        console.log('in usersCtrl');
-        console.log('in readRequestedSurveyUsers');
-        console.log('req.params', req.params)
-        usersModel
-        .find({'requested_survey' : req.params.id}, 'first_name last_name')
-        .exec(function(err, result) {
-             console.log('err', err);
-             console.log('result', result);
-             if (err) {
-                 console.log('in error routine');
-                 return res.status(500).send(err);
-             }
-             else {
-                 res.send(result)
-             }
-        })
-    },
-    
-     readUntakenSurveyUsers: function(req, res) {
-        console.log('in usersCtrl');
-        console.log('in readUntakenSurveyUsers');
-        console.log('req.params', req.params)
-        usersModel
-        .find({'untaken_survey' : req.params.id}, 'first_name last_name')
-        .exec(function(err, result) {
-             console.log('err', err);
-             console.log('result', result);
-             if (err) {
-                 console.log('in error routine');
-                 return res.status(500).send(err);
-             }
-             else {
-                 res.send(result)
-             }
-        })
-    }, */
-    
     update: function(req, res) {
         console.log('in usersCtrl');
         console.log('in update');

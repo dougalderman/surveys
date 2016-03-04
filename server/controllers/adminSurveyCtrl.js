@@ -163,41 +163,5 @@ module.exports = {
              }
         })
     }
-    
-    /* update: function(req, res) {
-        console.log('in adminSurveyCtrl');
-        console.log('in update');
-        console.log('req.params = ', req.params);
-        console.log('req.query = ', req.query);
-        surveysModel
-        .find(req.query, 'usersSentTo usersUntaken')
-        .exec(function(err, result) {
-            console.log('err', err);
-            console.log('result', result);
-            if (err) {
-                console.log('in error routine');
-                return res.status(500).send(err);
-            }
-            else {
-                if (!result.usersSentTo)
-                    result.usersSentTo = [];
-                 
-                result.usersSentTo.push(req.params.user_id);
-                    
-                if (!result.usersUntaken)
-                    result.usersUntaken = [];
-                 
-                result.usersUntaken.push(req.params.user_id);
-                 
-                result.save(function(er, re) {
-                    if (er)
-                        return res.status(500).send(er);
-                    else
-                        res.send(re);  
-                });
-                
-             }
-        });
-    } */
- 
+  
 }

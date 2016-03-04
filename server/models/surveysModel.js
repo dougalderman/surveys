@@ -10,7 +10,6 @@ var surveysSchema = new Schema({
 	usersUntaken: [{type: Schema.Types.ObjectId, ref: 'Users'}],
 	dateSent: {type: 'Date', required: true},
 	topic: {type: Schema.Types.ObjectId, ref: 'Topics'},
-//	results: [{type: Schema.Types.ObjectId, ref: 'Results'}],
 	questions: [questionSchema]
 });
 
