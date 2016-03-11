@@ -253,7 +253,7 @@ The Questions and Answers report has all the survey questions as columns, and ea
 
 ![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports3.jpg)
 
-I created a function to load the columns from an array of survey questions. As can be seen below, I used either the built-in avge aggregation function or my custom 'Yes Count' function, depending on question type:
+I created a function to load the columns from an array of survey questions. As can be seen below, I used either the built-in avg aggregation function or my custom 'Yes Count' function, depending on question type:
 
 ```javascript
 this.loadQAColumns = function(survey, results)     {
