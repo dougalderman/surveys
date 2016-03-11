@@ -9,29 +9,17 @@ This survey system is a template-based survey administration system that could b
  - Mongo database.
  -  Server with Node.js installed
 
-###Installation
-1. git clone https://github.com/dougalderman/surveys
-2. npm install
-3. Create a server/config/config.js file with the following format:
-	 ```
-	     module.exports = {
-	        express: {
-	            secret: [put a secret code here]
-	        },
-	        port: [put port number here] } 
-	```
-4. node server/index.js
-5. Signup 2 new users.
-6. Change the roles field of one of the users from ['student'] to ['admin'] by using a Mongo DB tool.
-7. Add topics to the topics collection using a Mongo DB tool. The only field you need to add is name (name of the topic).
-8. Sign in as the admin user you just created.
-9. Point the browser to [url]/#/admin to get the admin main menu.
-10. Create a new template.
-11. Use the template to send a survey. Send to Cohort 350, which is the default cohort for users who sign up.
-12. Log out. Login as the other user you created. You should see the survey you sent. Click on this survey.
-13. Take the survey.
-14. Log out. Login as the admin user. View Results. Select the survey you just sent. You should see results for the user who took the survey.
-15. Add more users. Create more templates, and send more surveys. View Results. 
+###Demo Instructions
+
+1. Signup a new user (fake email OK)
+2. Login using the admin user dabrams@yahoo.com.
+3. Point the browser to [url]/#/admin to get the admin main menu.
+4. Create a new template.
+5. Use the template to send a survey. Send to Cohort 350, which is the default cohort for users who sign up.
+6. Log out. Login as the other user you created. You should see the survey you sent. Click on this survey.
+7. Take the survey.
+8. Log out. Login as the admin user. View Results. Select the survey you just sent. You should see results for the user who took the survey.
+9. Add more users. Create more templates, and send more surveys. View Results. 
 
 ##Design Goals
 This site was intended to be eventually integrated into the DevMountain system. A separate Passport local auth system was created to allow for testing and demonstration independent of DevMountain. Due to DevMountain already having a user admin system, a separate user admin system was not created for this project.
