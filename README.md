@@ -12,7 +12,7 @@ This survey system is a template-based survey administration system that could b
 ###Demo Instructions
 
 1. Signup a new user (fake email OK)
-2. Login using the admin user dabrams@yahoo.com.
+2. Login using the admin user dabrams@yahoo.com (password 123).
 3. Point the browser to [url]/#/admin to get the admin main menu.
 4. Create a new template.
 5. Use the template to send a survey. Send to Cohort 350, which is the default cohort for users who sign up.
