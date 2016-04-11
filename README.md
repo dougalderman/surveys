@@ -10,7 +10,7 @@ This survey system is a template-based survey administration system that could b
  -  Server with Node.js installed
 
 ###Installation
-1. git clone https://github.com/dougalderman/surveys
+1. git clone https://github.com/dougalderman/surveys.git
 2. npm install
 3. Create a server/config/config.js file with the following format:
 	 ```
