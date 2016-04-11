@@ -1,4 +1,6 @@
 #DevMountain Survey Enhancement
+
+See Demo Version at http://104.131.74.125/ (switch to Demo branch Readme.md for Demo instructions).
  
 The purpose of this project is to make an efficient process for DevMountain to create, deliver, and manage survey results, using the MEAN stack. Currently, surveys are done via Google Docs. Students are messaged when surveys are available, with the message including a link to the survey. Many students ignore the messages and don't take the surveys. Creating and modifying surveys take too much of the teacher's time. Results are available in Excel for each individual survey.
 
@@ -225,14 +227,14 @@ After entering values in the input fields the user can preview the survey by cli
 
 The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clicking the "Send" button writes a new survey to the survey collection. 
 
-####View Reports
-The View Reports screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
+####View Results
+The View Results screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
 
-![View Reports](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports.jpg)
+![View Reports](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results.jpg)
 
 After the user selects from a dropdown list of surveys in reverse date order, the reports will display. The first report, Report of Users Sent Survey, provides a list of user names and a column indicating whether they took the survey or not. 
 
-![Report of Users Sent Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports2.jpg)
+![Report of Users Sent Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results.jpg)
 
 I did a custom column footer aggregation feature to count the number of "Yes" rows. 
 
@@ -251,7 +253,7 @@ this.calculateYesCount = function(visRows, self) {
 
 The Questions and Answers report has all the survey questions as columns, and each answer as a separate row.
 
-![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports3.jpg)
+![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results3.jpg)
 
 I created a function to load the columns from an array of survey questions. As can be seen below, I used either the built-in avg aggregation function or my custom 'Yes Count' function, depending on question type:
 
