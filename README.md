@@ -1,4 +1,6 @@
 #DevMountain Survey Enhancement
+
+See Demo Version at http://104.131.74.125/
  
 The purpose of this project is to make an efficient process for DevMountain to create, deliver, and manage survey results, using the MEAN stack. Currently, surveys are done via Google Docs. Students are messaged when surveys are available, with the message including a link to the survey. Many students ignore the messages and don't take the surveys. Creating and modifying surveys take too much of the teacher's time. Results are available in Excel for each individual survey.
 
@@ -213,14 +215,14 @@ After entering values in the input fields the user can preview the survey by cli
 
 The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clicking the "Send" button writes a new survey to the survey collection. 
 
-####View Reports
-The View Reports screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
+####View Results
+The View Results screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
 
-![View Reports](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports.jpg)
+![View Results](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results.jpg)
 
 After the user selects from a dropdown list of surveys in reverse date order, the reports will display. The first report, Report of Users Sent Survey, provides a list of user names and a column indicating whether they took the survey or not. 
 
-![Report of Users Sent Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports2.jpg)
+![Report of Users Sent Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results2.jpg)
 
 I did a custom column footer aggregation feature to count the number of "Yes" rows. 
 
@@ -239,7 +241,7 @@ this.calculateYesCount = function(visRows, self) {
 
 The Questions and Answers report has all the survey questions as columns, and each answer as a separate row.
 
-![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Reports3.jpg)
+![Questions and Answers](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results3.jpg)
 
 I created a function to load the columns from an array of survey questions. As can be seen below, I used either the built-in avg aggregation function or my custom 'Yes Count' function, depending on question type:
 
@@ -279,9 +281,89 @@ A similar function loaded in the data for the answers from an array of survey an
 
 Data can be exported to a csv file using the built-in UI-Grid export feature (by clicking on the menu tab at top right of grid). The csv file can be imported into Excel or another statistical program for further analysis.
 
+####Take Survey
+The Take Survey screen lets students take a requested survey. It contains a fixed background DevMountain classroom image with a variable number of scrollable question boxes. 
 
+![Take Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Take_Survey_Screen2.jpg)
 
+This fixed picture / scrollable question visual effect was created by creating a parent div id takeSurvey with a background image and fixed position, and a child div class surveyBody, with overflow-y set to scroll:
 
+```css
+div #takeSurvey {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./../images/devmountain_class_pic.jpg');
+    background-size: cover;
+    position: fixed;
+}
 
+#takeSurvey .surveyBody {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    overflow-y: scroll;
+}
+```
 
+takeSurveyCtrl.js is passed the survey ID. It uses this Mongo ID to read the survey record from the Surveys Collection. The survey record has survey name and topic, which are displayed in the header. All survey questions are read into the scope from the survey record. Each question type (numeric, boolean, and text) is a separate directive that is set to show ng-if the question type matches the directive question type. The Take Survey page ng-repeats through all the questions in the survey:
 
+```html
+<div class="survey-question" ng-repeat = "question in survey.questions">
+              <numeric-question class="question-directive" low-value="question.lowValue" high-value="question.highValue" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'numeric'"></numeric-question>
+                <boolean-question class="question-directive" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" border-on-yes="borderOnYes" border-on-no="borderOnNo" ng-if="question.type === 'boolean'"></boolean-question>
+               <text-question class="question-directive" required="question.required" question-text="{{question.questionText}}" response="results.answers[$index]" question-index="{{$index}}" question-type="{{question.type}}" not-answered="notAnswered" ng-if="question.type === 'text'"></text-question>
+</div>
+```
+
+Numeric questions utilize a Materialize slider for user input, and text questions utilize a Materialize textarea. I did a custom Yes / No user input for boolean questions:
+
+![3 Question Types](https://github.com/dougalderman/surveys/blob/master/readme_images/Take_Survey_Screen3.jpg)
+
+The Custom Yes / No directive html contained nested div's that were set to ng-class black_border_and_text if borderOnYes[questionIndex] is true. This variable is set in the handleBooleanAnswer function in the directive controller:
+
+```html
+<div class="bool_question_container">
+    <div class="bool_question left_bool" ng-class="{black_border_and_text: borderOnYes[questionIndex]}" ng-click="handleBooleanAnswer('true', questionIndex)">Yes</div>
+    <div class="bool_question right_bool" ng-class="{black_border_and_text: borderOnNo[questionIndex]}" ng-click="handleBooleanAnswer('false', questionIndex)">No</div>
+</div>
+```
+
+```javascript
+$scope.handleBooleanAnswer = function(answer, indx) { 
+        $scope.response.booleanAnswer = answer;
+        if (answer==='true') {
+                $scope.borderOnYes[indx] = true;
+                $scope.borderOnNo[indx] = false;
+        }
+        else {
+                $scope.borderOnNo[indx] = true;
+                $scope.borderOnYes[indx] = false;
+        }
+} 
+```
+Upon user submit, the controller does custom form validation checking that all required questions are answered. If a required question isn't answered, the bright_red class will ng-show (the question text will display bright red):
+
+```html
+<p ng-class= "{bright_red: notAnswered[questionIndex]}">{{questionText}}<span class="required" ng-show="required">&nbsp;&nbsp;*</span></p>
+```
+
+After successful submit, takeSurveyCtrl.js writes the survey answers to the Results collection (by calling a service function that hits /api/survey/results). takeSurveyCtrl.js passes control back to the calling screen, with a "Survey Successfully Submitted" toast. 
+
+On the server, when the /api/survey/results endpoint is hit, studentSurveyCtrl.js writes the survey answers to the Results collection, then removes the user from the usersUntaken array in the Surveys collection:
+
+```javascript
+if (resul._doc.usersUntaken) {
+        var indx = resul._doc.usersUntaken.indexOf(surveyUser);
+        if (indx !== -1) {
+                resul._doc.usersUntaken.splice(indx, 1)
+                resul.save(function(er, re) {
+                if (er)
+                        return res.status(500).send(er);
+                else
+                        res.send(re);
+                });
+       }
+}
+```
+
+This removes the survey from the Surveys Requested list seen by the student.
