@@ -380,5 +380,5 @@ if (resul._doc.usersUntaken) {
 
 This removes the survey from the Surveys Requested list seen by the student.
 
-##License:
+##License
 This code is open source under the MIT license:  https://opensource.org/licenses/MIT
