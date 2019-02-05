@@ -1,12 +1,12 @@
-#DevMountain Survey Enhancement
+# DevMountain Survey Enhancement
 
 See Demo Version at http://159.203.187.71:6320
  
 The purpose of this project is to make an efficient process for DevMountain to create, deliver, and manage survey results, using the MEAN stack. Currently, surveys are done via Google Docs. Students are messaged when surveys are available, with the message including a link to the survey. Many students ignore the messages and don't take the surveys. Creating and modifying surveys take too much of the teacher's time. Results are available in Excel for each individual survey.
 
-This survey system is a template-based survey administration system that could be integrated into the DevMountain website. An administration main menu has selections for creating / modifying templates, sending surveys and viewing results. Students see links to requested surveys when they log in. They click on the link, take the survey, then return back to the previous screen. Mongo DB collections include templates, surveys, users, results, and topics.The Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
+This survey system is a template-based survey administration system that could be integrated into the DevMountain website. An administration main menu has selections for creating / modifying templates, sending surveys and viewing results. Students see links to requested surveys when they log in. They click on the link, take the survey, then return back to the previous screen. Mongo DB collections include templates, surveys, users, results, and topics. Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
 
-##Getting Started
+## Getting Started
 ### Prerequisites
  - Mongo database.
  -  Server with Node.js installed
@@ -46,14 +46,14 @@ This survey system is a template-based survey administration system that could b
 8. Log out. Login as the admin user. View Results. Select the survey you just sent. You should see results for the user who took the survey.
 9. Add more users. Create more templates, and send more surveys. View Results. 
 
-##Design Goals
+## Design Goals
 This site was intended to be eventually integrated into the DevMountain system. A separate Passport local auth system was created to allow for testing and demonstration independent of DevMountain. Due to DevMountain already having a user admin system, a separate user admin system was not created for this project.
 
 The admin section was designed more for functionality than appearance, since it will be used by a handful of people. The take survey page was designed for appearance, as it will be used by most students.
 
-##Detailed Usage
+## Detailed Usage
 
-###Models
+### Models
 Here are the 5 Mongoose collections:
 
 ```javascript
@@ -111,9 +111,9 @@ Here are the question and answer schema:
 		
 ```
 
-###Detailed Description of System
+### Detailed Description of System
 
-####Create / Modify Template
+#### Create / Modify Template
 
 Templates are the building blocks of surveys. You can build a new template from scratch, or modify an existing one.
 
@@ -179,7 +179,7 @@ A modal pops up if the user tries to modify an existing template without changin
 
 ![Modal Pop Up](https://github.com/dougalderman/surveys/blob/master/readme_images/Create_Modify_Template5.jpg)
 
-####Send Survey
+#### Send Survey
 
 The Send Survey page allows the user to select from a list of templates in order to send out a new survey.
 
@@ -238,7 +238,7 @@ After entering values in the input fields the user can preview the survey by cli
 
 The preview survey feature is a directive that displays the survey template with variables compiled. It was necessary to duplicate the survey into a temporary object before previewing it to store the compiled variables, to allow for the user to make changes to the variables after previewing it. Clicking the "Send" button writes a new survey to the survey collection. 
 
-####View Results
+#### View Results
 The View Results screen uses UI-Grid to display a report on which users took the survey or not, as well as all the questions and answers.
 
 ![View Results](https://github.com/dougalderman/surveys/blob/master/readme_images/View_Results.jpg)
@@ -304,7 +304,7 @@ A similar function loaded in the data for the answers from an array of survey an
 
 Data can be exported to a csv file using the built-in UI-Grid export feature (by clicking on the menu tab at top right of grid). The csv file can be imported into Excel or another statistical program for further analysis.
 
-####Take Survey
+#### Take Survey
 The Take Survey screen lets students take a requested survey. It contains a fixed background DevMountain classroom image with a variable number of scrollable question boxes. 
 
 ![Take Survey](https://github.com/dougalderman/surveys/blob/master/readme_images/Take_Survey_Screen2.jpg)
@@ -391,5 +391,5 @@ if (resul._doc.usersUntaken) {
 
 This removes the survey from the Surveys Requested list seen by the student.
 
-##License
+## License
 This code is open source under the MIT license:  https://opensource.org/licenses/MIT
