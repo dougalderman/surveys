@@ -1,0 +1,44 @@
+[
+    {
+        "name" : "HTML/CSS"
+    },
+    {
+        "name" : "Javascript I"
+    },
+    {
+        "name" : "Javascript II"
+    },
+    {
+        "name" : "Closures"
+    },
+    {
+        "name" : "JQuery"
+    },
+    {
+        "name" : "Angular I"
+    },
+    {
+        "name" : "Angular II"
+    },
+    {
+        "name" : "Angular III"
+    },
+    {
+        "name" : "Angular IV"
+    },
+    {
+        "name" : "Node I"
+    },
+    {
+        "name" : "Node II"
+    },
+    {
+        "name" : "Mongo"
+    },
+    {
+        "name" : "Mongoose"
+    },
+    {
+        "name" : "Express"
+    }
+]
