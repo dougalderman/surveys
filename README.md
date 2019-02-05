@@ -35,7 +35,7 @@ This survey system is a template-based survey administration system that could b
 14. Log out. Login as the admin user. View Results. Select the survey you just sent. You should see results for the user who took the survey.
 15. Add more users. Create more templates, and send more surveys. View Results. 
 
-###Demo Instructions
+### Demo Instructions
 1. Signup a new user (fake email OK)
 2. Login using the admin user dabrams@yahoo.com (password 123).
 3. Point the browser to [url]/#/admin to get the admin main menu.
