@@ -1,6 +1,6 @@
 #DevMountain Survey Enhancement
 
-See Demo Version at http://104.131.74.125:6320
+See Demo Version at http://159.203.187.71:6320
  
 The purpose of this project is to make an efficient process for DevMountain to create, deliver, and manage survey results, using the MEAN stack. Currently, surveys are done via Google Docs. Students are messaged when surveys are available, with the message including a link to the survey. Many students ignore the messages and don't take the surveys. Creating and modifying surveys take too much of the teacher's time. Results are available in Excel for each individual survey.
 
@@ -11,8 +11,31 @@ This survey system is a template-based survey administration system that could b
  - Mongo database.
  -  Server with Node.js installed
 
-###Demo Instructions
+### Installation
+1. git clone https://github.com/dougalderman/surveys.git
+2. npm install
+3. Create a server/config/config.js file with the following format:
+	 ```
+	     module.exports = {
+	        express: {
+	            secret: [put a secret code here]
+	        },
+	        port: [put port number here] } 
+	```
+4. node server/index.js
+5. Signup 2 new users.
+6. Change the roles field of one of the users from ['student'] to ['admin'] by using a Mongo DB tool.
+7. Add topics to the topics collection using a Mongo DB tool. The only field you need to add is name (name of the topic).
+8. Sign in as the admin user you just created.
+9. Point the browser to [url]/#/admin to get the admin main menu.
+10. Create a new template.
+11. Use the template to send a survey. Send to Cohort 350, which is the default cohort for users who sign up.
+12. Log out. Login as the other user you created. You should see the survey you sent. Click on this survey.
+13. Take the survey.
+14. Log out. Login as the admin user. View Results. Select the survey you just sent. You should see results for the user who took the survey.
+15. Add more users. Create more templates, and send more surveys. View Results. 
 
+###Demo Instructions
 1. Signup a new user (fake email OK)
 2. Login using the admin user dabrams@yahoo.com (password 123).
 3. Point the browser to [url]/#/admin to get the admin main menu.
