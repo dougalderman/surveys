@@ -65,7 +65,7 @@ div #takeSurvey {
 }
 
 #takeSurvey .takeSurveyHeader {
-    height: 90px;
+    height: 120px;
     position: relative;
     align-items: left;
     width: 100%;
@@ -97,6 +97,15 @@ div #takeSurvey {
     right: 5px;
     height: 45px;
     line-height: 45px;
+}
+
+#takeSurvey .takeSurveyHeader .warning {
+    position: absolute;
+    top: 70px;
+    width: inherit;
+    text-align: center;
+    color: red;
+    font-size: 1em;
 }
 
 #takeSurvey .surveyBody {
